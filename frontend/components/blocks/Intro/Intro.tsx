@@ -13,6 +13,7 @@ type Props = {
 	generalQuestionsUrl: string | null;
 	whitePaperPdf: FileType | null;
 	animateContent: boolean;
+	animation: any;
 };
 
 const IntroWrapper = styled.div`
@@ -101,6 +102,11 @@ const VideoWrapper = styled.div`
 	width: 100%;
 	height: 100%;
 	z-index: 1;
+	overflow: hidden;
+
+	.media-wrapper {
+		transform: scale(1.2);
+	}
 `;
 
 const MotionWrapper = styled(motion.div)``;
@@ -168,7 +174,8 @@ const Intro = (props: Props) => {
 		migrationGuideUrl,
 		generalQuestionsUrl,
 		whitePaperPdf,
-		animateContent
+		animateContent,
+		animation
 	} = props;
 
 	return (

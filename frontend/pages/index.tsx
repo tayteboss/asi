@@ -5,7 +5,7 @@ import {
 	SiteSettingsType,
 	TransitionsType
 } from '../shared/types/types';
-import { motion } from 'framer-motion';
+import { motion, useAnimation } from 'framer-motion';
 import client from '../client';
 import {
 	homePageQueryString,
@@ -51,6 +51,25 @@ const Page = (props: Props) => {
 		};
 	}, []);
 
+	const foreAnimation = useAnimation();
+	const backAnimation = useAnimation();
+
+	const handleMouseMove = (e: any) => {
+		const { clientX, clientY } = e;
+		const moveX = clientX - window.innerWidth / 2;
+		const moveY = clientY - window.innerHeight / 2;
+		const backOffsetFactor = 50;
+		const foreOffsetFactor = 85;
+		backAnimation.start({
+			x: moveX / backOffsetFactor,
+			y: moveY / backOffsetFactor
+		});
+		foreAnimation.start({
+			x: moveX / foreOffsetFactor,
+			y: moveY / foreOffsetFactor
+		});
+	};
+
 	return (
 		<PageWrapper
 			variants={pageTransitionVariants}
@@ -58,6 +77,7 @@ const Page = (props: Props) => {
 			animate="visible"
 			exit="hidden"
 			$animateContent={animateContent}
+			onMouseMove={(e) => handleMouseMove(e)}
 		>
 			<NextSeo
 				title={data?.seoTitle || ''}
@@ -69,6 +89,7 @@ const Page = (props: Props) => {
 				generalQuestionsUrl={data?.generalQuestionsUrl}
 				whitePaperPdf={data?.whitePaperPdf}
 				animateContent={animateContent}
+				animation={backAnimation}
 			/>
 			<Footer
 				telegram={siteSettings?.telegram}
