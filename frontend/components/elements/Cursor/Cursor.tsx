@@ -21,7 +21,7 @@ const CursorWrapper = styled.div<StyledProps>`
 	z-index: 1000;
 	position: fixed;
 	display: ${(props) => (props.$isOnDevice ? 'none' : 'block')};
-	mix-blend-mode: difference;
+	mix-blend-mode: exclusion;
 
 	transition: opacity ${(props) => props.theme.transitionSpeed.default} ease;
 	transition-delay: 500ms;
@@ -37,10 +37,10 @@ const CursorRing = styled(motion.div)<StyledProps>`
 	flex-flow: row;
 	align-content: center;
 	justify-content: center;
-	top: ${(props) => (props.$isHoveringLink ? '-12px' : '-25px')};
-	left: ${(props) => (props.$isHoveringLink ? '-12px' : '-25px')};
-	height: ${(props) => (props.$isHoveringLink ? '24px' : '50px')};
-	width: ${(props) => (props.$isHoveringLink ? '24px' : '50px')};
+	top: ${(props) => (props.$isHoveringLink ? '-12px' : '-40px')};
+	left: ${(props) => (props.$isHoveringLink ? '-12px' : '-40px')};
+	height: ${(props) => (props.$isHoveringLink ? '24px' : '80px')};
+	width: ${(props) => (props.$isHoveringLink ? '24px' : '80px')};
 	background: var(--colour-white);
 	border-radius: 100px;
 	pointer-events: none;
@@ -72,6 +72,7 @@ const SmallRing = styled(motion.div)<StyledProps>`
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	opacity: ${(props) => props.$isHoveringLink && 0};
 
 	transition: height 300ms ease, width 300ms ease, background 200ms ease,
 		top 300ms ease, left 300ms ease, border-radius 300ms ease;

@@ -26,7 +26,6 @@ const App = (props: Props) => {
 	const { Component, pageProps } = props;
 
 	const [hasVisited, setHasVisited] = useState<boolean>(false);
-	const [appCursorRefresh, setAppCursorRefresh] = useState<number>(0);
 
 	const router = useRouter();
 	const routerEvents = router.events;
@@ -69,11 +68,6 @@ const App = (props: Props) => {
 							pageTransitionVariants={pageTransitionVariants}
 						/>
 					</AnimatePresence>
-					<Cursor
-						cursorRefresh={() =>
-							setAppCursorRefresh(appCursorRefresh + 1)
-						}
-					/>
 				</Layout>
 			</ThemeProvider>
 		</>

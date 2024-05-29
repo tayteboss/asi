@@ -15,6 +15,7 @@ import Footer from '../components/common/Footer';
 import Intro from '../components/blocks/Intro';
 import pxToRem from '../utils/pxToRem';
 import { useEffect, useState } from 'react';
+import Cursor from '../components/elements/Cursor';
 
 const PageWrapper = styled(motion.div)<{ $animateContent: boolean }>`
 	background: var(--colour-black);
@@ -40,6 +41,7 @@ const Page = (props: Props) => {
 	const { data, siteSettings, pageTransitionVariants } = props;
 
 	const [animateContent, setAnimateContent] = useState(false);
+	const [appCursorRefresh, setAppCursorRefresh] = useState<number>(0);
 
 	useEffect(() => {
 		const timer = setTimeout(() => {
@@ -70,6 +72,10 @@ const Page = (props: Props) => {
 		});
 	};
 
+	useEffect(() => {
+		setAppCursorRefresh(appCursorRefresh + 1);
+	}, [animateContent]);
+
 	return (
 		<PageWrapper
 			variants={pageTransitionVariants}
@@ -98,6 +104,9 @@ const Page = (props: Props) => {
 				privacy={siteSettings?.privacyUrl}
 				terms={siteSettings?.termsUrl}
 				animateContent={animateContent}
+			/>
+			<Cursor
+				cursorRefresh={() => setAppCursorRefresh(appCursorRefresh + 1)}
 			/>
 		</PageWrapper>
 	);
