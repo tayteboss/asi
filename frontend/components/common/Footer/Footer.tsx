@@ -7,6 +7,7 @@ import SingularityLogo from '../../svgs/SingularityLogo';
 import FetchLogoSvg from '../../svgs/FetchLogoSvg';
 import OceanLogoSvg from '../../svgs/OceanLogoSvg';
 import useViewportWidth from '../../../hooks/useViewportWidth';
+import { AnimatePresence, motion } from 'framer-motion';
 
 type Props = {
 	telegram: string | null;
@@ -14,17 +15,25 @@ type Props = {
 	privacy: string | null;
 	terms: string | null;
 	cookies: string | null;
+	animateContent: boolean;
 };
 
-const FooterWrapper = styled.footer`
+const OuterWrapper = styled(motion.div)``;
+
+const FooterWrapper = styled(motion.footer)`
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
+	padding-top: ${pxToRem(30)};
 
 	@media (max-width: 1240px) {
 		flex-direction: column;
 		align-items: flex-start;
 		gap: ${pxToRem(20)};
+	}
+
+	@media ${(props) => props.theme.mediaBreakpoints.tabletPortrait} {
+		padding-top: ${pxToRem(20)};
 	}
 
 	@media ${(props) => props.theme.mediaBreakpoints.mobile} {
@@ -84,71 +93,120 @@ const TextLink = styled.span`
 	}
 `;
 
+const wrapperVariants = {
+	hidden: {
+		height: 0,
+		transition: {
+			duration: 0.5,
+			ease: 'easeInOut'
+		}
+	},
+	visible: {
+		height: 'auto',
+		transition: {
+			duration: 0.5,
+			ease: 'easeInOut',
+			when: 'beforeChildren'
+		}
+	}
+};
+
+const innerVariants = {
+	hidden: {
+		opacity: 0,
+		transition: {
+			duration: 0.5,
+			ease: 'easeInOut'
+		}
+	},
+	visible: {
+		opacity: 1,
+		transition: {
+			duration: 0.5,
+			ease: 'easeInOut'
+		}
+	}
+};
+
 const Footer = (props: Props) => {
-	const { telegram, twitter, privacy, terms, cookies } = props;
+	const { telegram, twitter, privacy, terms, cookies, animateContent } =
+		props;
 
 	const viewport = useViewportWidth();
 	const isMobile = viewport === 'mobile';
 
 	return (
-		<FooterWrapper>
-			<LinksWrapper>
-				{telegram && (
-					<Link href={telegram} target="_blank">
-						<SecondaryButtonLayout
-							useTelegram
-							title="Join our telegram channel"
-						/>
-					</Link>
-				)}
-				{twitter && (
-					<Link href={twitter} target="_blank">
-						<SecondaryButtonLayout
-							useTwitter
-							title="Follow us on X"
-						/>
-					</Link>
-				)}
-			</LinksWrapper>
-			<LogosWrapper>
-				<LogoWrapper $height={isMobile ? 20 : 28}>
-					<LogoSvg colour="#747474" />
-				</LogoWrapper>
-				<Divider />
-				<SecondaryLogoWrapper>
-					<LogoWrapper $height={isMobile ? 20 : 23}>
-						<SingularityLogo />
-					</LogoWrapper>
-					<LogoWrapper $height={isMobile ? 10 : 13}>
-						<FetchLogoSvg />
-					</LogoWrapper>
-					<LogoWrapper $height={isMobile ? 16 : 23}>
-						<OceanLogoSvg />
-					</LogoWrapper>
-				</SecondaryLogoWrapper>
-			</LogosWrapper>
-			<SecondaryLinksWrapper>
-				{privacy && (
-					<Link href={privacy} target="_blank">
-						<TextLink className="type-mono">
-							Privacy Policy
-						</TextLink>
-					</Link>
-				)}
-				{cookies && (
-					<Link href={cookies} target="_blank">
-						<TextLink className="type-mono">Cookie Policy</TextLink>
-					</Link>
-				)}
-				{terms && (
-					<Link href={terms} target="_blank">
-						<TextLink className="type-mono">
-							Terms & Conditions
-						</TextLink>
-					</Link>
-				)}
-			</SecondaryLinksWrapper>
-		</FooterWrapper>
+		<AnimatePresence>
+			{animateContent && (
+				<OuterWrapper
+					variants={wrapperVariants}
+					initial="hidden"
+					animate="visible"
+					exit="hidden"
+				>
+					<FooterWrapper variants={innerVariants}>
+						<LinksWrapper>
+							{telegram && (
+								<Link href={telegram} target="_blank">
+									<SecondaryButtonLayout
+										useTelegram
+										title="Join our telegram channel"
+									/>
+								</Link>
+							)}
+							{twitter && (
+								<Link href={twitter} target="_blank">
+									<SecondaryButtonLayout
+										useTwitter
+										title="Follow us on X"
+									/>
+								</Link>
+							)}
+						</LinksWrapper>
+						<LogosWrapper>
+							<LogoWrapper $height={isMobile ? 20 : 28}>
+								<LogoSvg colour="#747474" />
+							</LogoWrapper>
+							<Divider />
+							<SecondaryLogoWrapper>
+								<LogoWrapper $height={isMobile ? 20 : 23}>
+									<SingularityLogo />
+								</LogoWrapper>
+								<LogoWrapper $height={isMobile ? 10 : 13}>
+									<FetchLogoSvg />
+								</LogoWrapper>
+								<LogoWrapper $height={isMobile ? 16 : 23}>
+									<OceanLogoSvg />
+								</LogoWrapper>
+							</SecondaryLogoWrapper>
+						</LogosWrapper>
+						<SecondaryLinksWrapper>
+							{privacy && (
+								<Link href={privacy} target="_blank">
+									<TextLink className="type-mono">
+										Privacy Policy
+									</TextLink>
+								</Link>
+							)}
+							{cookies && (
+								<Link href={cookies} target="_blank">
+									<TextLink className="type-mono">
+										Cookie Policy
+									</TextLink>
+								</Link>
+							)}
+							{terms && (
+								<Link href={terms} target="_blank">
+									<TextLink className="type-mono">
+										Terms & Conditions
+									</TextLink>
+								</Link>
+							)}
+						</SecondaryLinksWrapper>
+					</FooterWrapper>
+				</OuterWrapper>
+			)}
+		</AnimatePresence>
 	);
 };
 

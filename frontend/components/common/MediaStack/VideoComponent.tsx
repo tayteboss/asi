@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import { MediaType } from '../../../shared/types/types';
 import { AnimatePresence, motion } from 'framer-motion';
 import Image from 'next/image';
-import useViewportWidth from '../../../hooks/useViewportWidth';
 
 const VideoComponentWrapper = styled.div`
 	position: relative;
@@ -69,17 +68,12 @@ type Props = {
 const VideoComponent = (props: Props) => {
 	const { data, inView, isPriority } = props;
 
-	const viewport = useViewportWidth();
-	const isMobile = viewport === 'mobile';
-
-	const playbackId =
-		isMobile && data?.mobileVideo?.asset?.playbackId
-			? data.mobileVideo.asset.playbackId
-			: data?.video?.asset?.playbackId;
+	const playbackId = 'jLT1ybyG9zRufktCBkTvt9xpDgExSI3NcEeurxePld8';
 	const posterUrl =
-		isMobile && data?.mobileVideo?.asset?.playbackId
-			? `https://image.mux.com/${data.mobileVideo.asset.playbackId}/thumbnail.png?width=214&height=121&time=1`
-			: `https://image.mux.com/${data?.video?.asset?.playbackId}/thumbnail.png?width=214&height=121&time=1`;
+		'https://image.mux.com/jLT1ybyG9zRufktCBkTvt9xpDgExSI3NcEeurxePld8/thumbnail.png?width=214&height=121&time=1';
+
+	// const playbackId = data?.asset?.playbackId;
+	// const posterUrl = `https://image.mux.com/${data?.asset?.playbackId}/thumbnail.png?width=214&height=121&time=1`;
 
 	return (
 		<VideoComponentWrapper className="media-wrapper">

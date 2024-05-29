@@ -30,6 +30,7 @@ export const GlobalStyles = createGlobalStyle`
 		outline: none;
 		border-radius: 0;
 		box-shadow: none;
+		cursor: none;
 	}
 
 	-webkit-text-size-adjust: 100%;

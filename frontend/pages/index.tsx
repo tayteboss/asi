@@ -14,18 +14,19 @@ import {
 import Footer from '../components/common/Footer';
 import Intro from '../components/blocks/Intro';
 import pxToRem from '../utils/pxToRem';
+import { useEffect, useState } from 'react';
 
-const PageWrapper = styled(motion.div)`
+const PageWrapper = styled(motion.div)<{ $animateContent: boolean }>`
 	background: var(--colour-black);
-	padding: ${pxToRem(30)};
+	padding: ${(props) => (props.$animateContent ? pxToRem(30) : '0')};
 	display: flex;
 	flex-direction: column;
-	gap: ${pxToRem(30)};
 	height: 100dvh;
 
+	transition: padding var(--transition-speed-slow) var(--transition-ease);
+
 	@media ${(props) => props.theme.mediaBreakpoints.tabletMedium} {
-		padding: ${pxToRem(20)};
-		gap: ${pxToRem(20)};
+		padding: ${(props) => (props.$animateContent ? pxToRem(20) : '0')};
 	}
 `;
 
@@ -38,12 +39,25 @@ type Props = {
 const Page = (props: Props) => {
 	const { data, siteSettings, pageTransitionVariants } = props;
 
+	const [animateContent, setAnimateContent] = useState(false);
+
+	useEffect(() => {
+		const timer = setTimeout(() => {
+			setAnimateContent(true);
+		}, 1500);
+
+		return () => {
+			clearTimeout(timer);
+		};
+	}, []);
+
 	return (
 		<PageWrapper
 			variants={pageTransitionVariants}
 			initial="hidden"
 			animate="visible"
 			exit="hidden"
+			$animateContent={animateContent}
 		>
 			<NextSeo
 				title={data?.seoTitle || ''}
@@ -54,6 +68,7 @@ const Page = (props: Props) => {
 				migrationGuideUrl={data?.migrationGuideUrl}
 				generalQuestionsUrl={data?.generalQuestionsUrl}
 				whitePaperPdf={data?.whitePaperPdf}
+				animateContent={animateContent}
 			/>
 			<Footer
 				telegram={siteSettings?.telegram}
@@ -61,6 +76,7 @@ const Page = (props: Props) => {
 				cookies={siteSettings?.cookiesUrl}
 				privacy={siteSettings?.privacyUrl}
 				terms={siteSettings?.termsUrl}
+				animateContent={animateContent}
 			/>
 		</PageWrapper>
 	);
