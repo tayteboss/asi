@@ -1,5 +1,17 @@
-/* @font-face {
-	font-family: 'HaasGrot';
-	src: url('/fonts/HaasGrotDisp-55Roman.woff2') format('woff2'), url('/fonts/HaasGrotDisp-55Roman.woff') format('woff'), url('/fonts/HaasGrotDisp-55Roman.ttf') format('truetype'), url('/fonts/HaasGrotDisp-55Roman.otf') format('opentype');
+@font-face {
+	font-family: 'Decima Mono';
+	src: url('/fonts/decima-mono.otf') format('opentype');
 	font-display: swap;
-} */
+}
+
+@font-face {
+	font-family: 'Favorit Pro Book';
+	src: url('/fonts/FavoritPro-Book.otf') format('opentype');
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'Favorit Pro Medium';
+	src: url('/fonts/FavoritPro-Medium.otf') format('opentype');
+	font-display: swap;
+}

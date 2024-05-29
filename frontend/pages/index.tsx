@@ -13,11 +13,20 @@ import {
 } from '../lib/sanityQueries';
 import Footer from '../components/common/Footer';
 import Intro from '../components/blocks/Intro';
+import pxToRem from '../utils/pxToRem';
 
 const PageWrapper = styled(motion.div)`
 	background: var(--colour-black);
+	padding: ${pxToRem(30)};
 	display: flex;
 	flex-direction: column;
+	gap: ${pxToRem(30)};
+	height: 100dvh;
+
+	@media ${(props) => props.theme.mediaBreakpoints.tabletMedium} {
+		padding: ${pxToRem(20)};
+		gap: ${pxToRem(20)};
+	}
 `;
 
 type Props = {
@@ -28,9 +37,6 @@ type Props = {
 
 const Page = (props: Props) => {
 	const { data, siteSettings, pageTransitionVariants } = props;
-
-	console.log('data', data);
-	console.log('siteSettings', siteSettings);
 
 	return (
 		<PageWrapper

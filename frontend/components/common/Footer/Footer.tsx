@@ -15,7 +15,6 @@ type Props = {
 };
 
 const FooterWrapper = styled.footer`
-	padding: 0 ${pxToRem(36)};
 	display: flex;
 	justify-content: space-between;
 	align-items: center;

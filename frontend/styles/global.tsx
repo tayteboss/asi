@@ -93,8 +93,15 @@ export const GlobalStyles = createGlobalStyle`
 	h4,
 	.type-h4{
 		font-size: ${pxToRem(70)};
-		line-height: ${pxToRem(77)};
+		line-height: ${pxToRem(75)};
 		letter-spacing: -2.1px;
+		font-weight: 200;
+
+		@media ${theme.mediaBreakpoints.tabletMedium} {
+			font-size: ${pxToRem(50)};
+			line-height: ${pxToRem(55)};
+			letter-spacing: -1.75px;
+		}
 
 		@media ${theme.mediaBreakpoints.tabletPortrait} {
 			font-size: ${pxToRem(35)};

@@ -13,7 +13,6 @@ type Props = {
 };
 
 const IntroWrapper = styled.div`
-	padding: ${pxToRem(30)};
 	flex: 1;
 `;
 
@@ -21,12 +20,11 @@ const Inner = styled.div`
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
-	height: 100%;
 	background: var(--colour-grey);
 	border-radius: ${pxToRem(30)};
 	padding: ${pxToRem(40)};
-	height: calc(100dvh - 72px - 60px);
-	overflow-y: auto;
+	overflow: auto;
+	height: 100%;
 `;
 
 const LogoWrapper = styled.div`
@@ -45,6 +43,10 @@ const TitleWrapper = styled.div`
 const Title = styled.h1`
 	color: var(--colour-black);
 	width: 80%;
+
+	@media ${(props) => props.theme.mediaBreakpoints.tabletMedium} {
+		width: 100%;
+	}
 `;
 
 const LinksWrapper = styled.div`
