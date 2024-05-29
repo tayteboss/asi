@@ -6,6 +6,7 @@ export const GlobalStyles = createGlobalStyle`
 	:root {
 		--colour-white: ${theme.colours.white};
 		--colour-black: ${theme.colours.black};
+		--colour-grey: ${theme.colours.grey};
 		--font-default: ${theme.fonts.default};
 		--transition-speed-default: ${theme.transitionSpeed.default};
 		--transition-speed-fast: ${theme.transitionSpeed.fast};
@@ -83,66 +84,21 @@ export const GlobalStyles = createGlobalStyle`
 	}
 
 	h1,
-	.type-h1 {
-		font-size: ${pxToRem(48)};
-		line-height: ${pxToRem(48)};
-
-		@media ${theme.mediaBreakpoints.tabletPortrait} {
-			font-size: ${pxToRem(38)};
-			line-height: ${pxToRem(38)};
-		}
-
-		@media ${theme.mediaBreakpoints.mobile} {
-			font-size: ${pxToRem(28)};
-			line-height: ${pxToRem(28)};
-		}
-	}
-
+	.type-h1,
 	h2,
-	.type-h2 {
-		font-size: ${pxToRem(48)};
-		line-height: ${pxToRem(48)};
-
-		@media ${theme.mediaBreakpoints.tabletPortrait} {
-			font-size: ${pxToRem(38)};
-			line-height: ${pxToRem(38)};
-		}
-
-		@media ${theme.mediaBreakpoints.mobile} {
-			font-size: ${pxToRem(28)};
-			line-height: ${pxToRem(28)};
-		}
-	}
-
+	.type-h2,
 	h3,
-	.type-h3 {
-		font-size: ${pxToRem(48)};
-		line-height: ${pxToRem(28)};
-
-		@media ${theme.mediaBreakpoints.tabletPortrait} {
-			font-size: ${pxToRem(38)};
-			line-height: ${pxToRem(38)};
-		}
-
-		@media ${theme.mediaBreakpoints.mobile} {
-			font-size: ${pxToRem(28)};
-			line-height: ${pxToRem(28)};
-		}
-	}
-
+	.type-h3,
 	h4,
-	.type-h4 {
-		font-size: ${pxToRem(48)};
-		line-height: ${pxToRem(28)};
+	.type-h4{
+		font-size: ${pxToRem(70)};
+		line-height: ${pxToRem(77)};
+		letter-spacing: -2.1px;
 
 		@media ${theme.mediaBreakpoints.tabletPortrait} {
-			font-size: ${pxToRem(38)};
+			font-size: ${pxToRem(35)};
 			line-height: ${pxToRem(38)};
-		}
-
-		@media ${theme.mediaBreakpoints.mobile} {
-			font-size: ${pxToRem(28)};
-			line-height: ${pxToRem(28)};
+			letter-spacing: -1.05px;
 		}
 	}
 
@@ -151,8 +107,13 @@ export const GlobalStyles = createGlobalStyle`
 	a,
 	button,
 	div {
-		font-size: ${pxToRem(16)};
-		line-height: ${pxToRem(16)};
+		font-size: ${pxToRem(14)};
+		line-height: ${pxToRem(18)};
+
+		@media ${theme.mediaBreakpoints.tabletPortrait} {
+			font-size: ${pxToRem(12)};
+			line-height: ${pxToRem(16)};
+		}
 	}
 
 	mux-player {

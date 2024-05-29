@@ -13,7 +13,7 @@ import useHeaderHeight from '../hooks/useHeaderHeight';
 
 const pageTransitionVariants: TransitionsType = {
 	hidden: { opacity: 0, transition: { duration: 0.3 } },
-	visible: { opacity: 1, transition: { duration: 0.3, delay: 0.25 } },
+	visible: { opacity: 1, transition: { duration: 0.3, delay: 0.25 } }
 };
 
 type Props = {
@@ -22,14 +22,11 @@ type Props = {
 };
 
 const App = (props: Props) => {
-	const {
-		Component,
-		pageProps
-	} = props;
+	const { Component, pageProps } = props;
 
 	const [hasVisited, setHasVisited] = useState<boolean>(false);
 
-	const router= useRouter();
+	const router = useRouter();
 	const routerEvents = router.events;
 
 	const handleExitComplete = (): void => {
@@ -52,7 +49,7 @@ const App = (props: Props) => {
 
 		return () => {
 			clearTimeout(timer);
-		}
+		};
 	}, []);
 
 	return (
@@ -74,6 +71,6 @@ const App = (props: Props) => {
 			</ThemeProvider>
 		</>
 	);
-}
+};
 
 export default App;
