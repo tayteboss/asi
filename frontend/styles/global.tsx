@@ -7,6 +7,7 @@ export const GlobalStyles = createGlobalStyle`
 		--colour-white: ${theme.colours.white};
 		--colour-black: ${theme.colours.black};
 		--colour-grey: ${theme.colours.grey};
+		--colour-lime: ${theme.colours.lime};
 		--font-default: ${theme.fonts.default};
 		--transition-speed-default: ${theme.transitionSpeed.default};
 		--transition-speed-fast: ${theme.transitionSpeed.fast};
@@ -38,7 +39,7 @@ export const GlobalStyles = createGlobalStyle`
 	}
 
 	html {
-		background: var(--colour-white);
+		background: var(--colour-black);
 		font-size: 16px;
 
 		&.no-scroll {
@@ -75,7 +76,7 @@ export const GlobalStyles = createGlobalStyle`
 	}
 
 	a {
-		text-decoration: underline;
+		text-decoration: none;
 		color: var(--colour-black);
 	}
 

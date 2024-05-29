@@ -7,6 +7,12 @@ export type MediaType = {
 	caption?: string;
 };
 
+export type FileType = {
+	asset: {
+		url: string;
+	};
+};
+
 export type TransitionsType = {
 	hidden: {
 		opacity: number;
@@ -36,8 +42,20 @@ export type SlugType = {
 };
 
 export type HomePageType = {
-	seoTitle: string;
-	seoDescription: string;
+	seoTitle: string | null;
+	seoDescription: string | null;
+	generalQuestionsUrl: string | null;
+	media: MediaType | null;
+	migrationGuideUrl: string | null;
+	title: string | null;
+	whitePaperPdf: FileType | null;
+};
+
+export type SiteSettingsType = {
+	privacyUrl: string | null;
+	telegram: string | null;
+	termsUrl: string | null;
+	twitter: string | null;
 };
 
 export type WorkPageType = {

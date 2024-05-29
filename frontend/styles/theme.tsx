@@ -1,8 +1,9 @@
 export const theme = {
 	colours: {
 		black: '#000000',
-		grey: '#747474',
-		white: '#FFFFFF'
+		grey: 'rgba(255, 255, 255, 0.30)',
+		white: '#FFFFFF',
+		lime: '#B1FCAB'
 	},
 	fonts: {
 		default: 'arial'
