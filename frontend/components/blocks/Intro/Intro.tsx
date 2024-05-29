@@ -210,10 +210,7 @@ const Intro = (props: Props) => {
 											href={migrationGuideUrl}
 											target="_blank"
 										>
-											<ButtonLayout
-												isPrimary
-												title="Migration Guide"
-											/>
+											<ButtonLayout title="Migration Guide" />
 										</Link>
 									</MotionWrapper>
 								)}

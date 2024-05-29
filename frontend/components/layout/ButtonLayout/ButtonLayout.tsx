@@ -4,21 +4,25 @@ import { useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 
 type Props = {
-	isPrimary?: boolean;
 	type?: 'link' | 'download';
 	title?: string;
 };
 
-const ButtonLayoutWrapper = styled.div<{ $isPrimary: boolean }>`
+const ButtonLayoutWrapper = styled.div`
 	padding: ${pxToRem(10)} ${pxToRem(20)};
-	background: ${(props) =>
-		props.$isPrimary ? 'var(--colour-lime)' : 'var(--colour-grey)'};
-	backdrop-filter: ${(props) => (props.$isPrimary ? '' : 'blur(10px)')};
+	background: var(--colour-grey);
+	backdrop-filter: blur(10px);
 	color: var(--colour-black);
 	display: flex;
 	gap: ${pxToRem(8)};
 	border-radius: 100px;
 	position: relative;
+
+	transition: all var(--transition-speed-default) var(--transition-ease);
+
+	&:hover {
+		background: var(--colour-lime);
+	}
 `;
 
 const Title = styled(motion.span)``;
@@ -64,13 +68,12 @@ const hoverTitleVariants = {
 };
 
 const ButtonLayout = (props: Props) => {
-	const { isPrimary = false, type = 'link', title = '' } = props;
+	const { type = 'link', title = '' } = props;
 
 	const [isHovered, setIsHovered] = useState(false);
 
 	return (
 		<ButtonLayoutWrapper
-			$isPrimary={isPrimary}
 			onMouseOver={() => setIsHovered(true)}
 			onMouseOut={() => setIsHovered(false)}
 		>
