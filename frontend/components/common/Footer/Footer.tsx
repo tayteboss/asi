@@ -95,16 +95,18 @@ const Footer = (props: Props) => {
 			<LinksWrapper>
 				{telegram && (
 					<Link href={telegram} target="_blank">
-						<SecondaryButtonLayout useTelegram>
-							Join our telegram channel
-						</SecondaryButtonLayout>
+						<SecondaryButtonLayout
+							useTelegram
+							title="Join our telegram channel"
+						/>
 					</Link>
 				)}
 				{twitter && (
 					<Link href={twitter} target="_blank">
-						<SecondaryButtonLayout useTwitter>
-							Follow us on X
-						</SecondaryButtonLayout>
+						<SecondaryButtonLayout
+							useTwitter
+							title="Follow us on X"
+						/>
 					</Link>
 				)}
 			</LinksWrapper>

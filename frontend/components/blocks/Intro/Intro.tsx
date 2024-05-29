@@ -93,9 +93,10 @@ const Intro = (props: Props) => {
 					<LinksWrapper>
 						{migrationGuideUrl && (
 							<Link href={migrationGuideUrl} target="_blank">
-								<ButtonLayout isPrimary>
-									Migration Guide
-								</ButtonLayout>
+								<ButtonLayout
+									isPrimary
+									title="Migration Guide"
+								/>
 							</Link>
 						)}
 						{whitePaperPdf?.asset?.url && (
@@ -103,14 +104,15 @@ const Intro = (props: Props) => {
 								href={whitePaperPdf.asset.url}
 								target="_blank"
 							>
-								<ButtonLayout type="download">
-									White Paper
-								</ButtonLayout>
+								<ButtonLayout
+									type="download"
+									title="White Paper"
+								/>
 							</Link>
 						)}
 						{generalQuestionsUrl && (
 							<Link href={generalQuestionsUrl} target="_blank">
-								<ButtonLayout>White Paper</ButtonLayout>
+								<ButtonLayout title="White Paper" />
 							</Link>
 						)}
 					</LinksWrapper>
