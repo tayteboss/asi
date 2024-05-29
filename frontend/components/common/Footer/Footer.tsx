@@ -13,6 +13,7 @@ type Props = {
 	twitter: string | null;
 	privacy: string | null;
 	terms: string | null;
+	cookies: string | null;
 };
 
 const FooterWrapper = styled.footer`
@@ -20,15 +21,14 @@ const FooterWrapper = styled.footer`
 	justify-content: space-between;
 	align-items: center;
 
-	@media ${(props) => props.theme.mediaBreakpoints.tabletMedium} {
+	@media (max-width: 1240px) {
 		flex-direction: column;
 		align-items: flex-start;
-		gap: ${pxToRem(30)};
+		gap: ${pxToRem(20)};
 	}
 
 	@media ${(props) => props.theme.mediaBreakpoints.mobile} {
 		padding-bottom: ${pxToRem(30)};
-		gap: ${pxToRem(20)};
 	}
 `;
 
@@ -40,7 +40,7 @@ const LinksWrapper = styled.div`
 const LogosWrapper = styled.div`
 	display: flex;
 	align-items: center;
-	gap: ${pxToRem(30)};
+	gap: ${pxToRem(25)};
 
 	@media ${(props) => props.theme.mediaBreakpoints.tabletPortrait} {
 		gap: ${pxToRem(20)};
@@ -61,20 +61,12 @@ const Divider = styled.div`
 	height: ${pxToRem(30)};
 	width: 1px;
 	background: #747474;
-
-	@media ${(props) => props.theme.mediaBreakpoints.tabletPortrait} {
-		gap: ${pxToRem(20)};
-	}
 `;
 
 const SecondaryLogoWrapper = styled.div`
 	display: flex;
 	align-items: center;
-	gap: ${pxToRem(30)};
-
-	@media ${(props) => props.theme.mediaBreakpoints.tabletPortrait} {
-		gap: ${pxToRem(20)};
-	}
+	gap: ${pxToRem(20)};
 `;
 
 const SecondaryLinksWrapper = styled.div`
@@ -84,10 +76,16 @@ const SecondaryLinksWrapper = styled.div`
 
 const TextLink = styled.span`
 	color: #747474;
+
+	transition: all var(--transition-speed-default) var(--transition-ease);
+
+	&:hover {
+		color: var(--colour-lime);
+	}
 `;
 
 const Footer = (props: Props) => {
-	const { telegram, twitter, privacy, terms } = props;
+	const { telegram, twitter, privacy, terms, cookies } = props;
 
 	const viewport = useViewportWidth();
 	const isMobile = viewport === 'mobile';
@@ -133,6 +131,11 @@ const Footer = (props: Props) => {
 						<TextLink className="type-mono">
 							Privacy Policy
 						</TextLink>
+					</Link>
+				)}
+				{cookies && (
+					<Link href={cookies} target="_blank">
+						<TextLink className="type-mono">Cookie Policy</TextLink>
 					</Link>
 				)}
 				{terms && (

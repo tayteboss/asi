@@ -58,6 +58,7 @@ const Page = (props: Props) => {
 			<Footer
 				telegram={siteSettings?.telegram}
 				twitter={siteSettings?.twitter}
+				cookies={siteSettings?.cookiesUrl}
 				privacy={siteSettings?.privacyUrl}
 				terms={siteSettings?.termsUrl}
 			/>

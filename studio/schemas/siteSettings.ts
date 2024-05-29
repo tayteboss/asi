@@ -26,6 +26,11 @@ export default {
       type: 'url',
     },
     {
+      title: 'Cookies URL',
+      name: 'cookiesUrl',
+      type: 'url',
+    },
+    {
       title: 'Terms URL',
       name: 'termsUrl',
       type: 'url',

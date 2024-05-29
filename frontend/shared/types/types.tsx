@@ -56,6 +56,7 @@ export type SiteSettingsType = {
 	telegram: string | null;
 	termsUrl: string | null;
 	twitter: string | null;
+	cookiesUrl: string | null;
 };
 
 export type WorkPageType = {
