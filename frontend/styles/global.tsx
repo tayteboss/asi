@@ -9,6 +9,7 @@ export const GlobalStyles = createGlobalStyle`
 		--colour-grey: ${theme.colours.grey};
 		--colour-lime: ${theme.colours.lime};
 		--font-default: ${theme.fonts.default};
+		--font-mono: ${theme.fonts.mono};
 		--transition-speed-default: ${theme.transitionSpeed.default};
 		--transition-speed-fast: ${theme.transitionSpeed.fast};
 		--transition-speed-extra-fast: ${theme.transitionSpeed.extraFast};
@@ -34,8 +35,8 @@ export const GlobalStyles = createGlobalStyle`
 	-webkit-text-size-adjust: 100%;
 
 	::selection {
-		background-color: black;
-		color: white;
+		background-color: var(--colour-lime);
+		color: var(--colour-black);
 	}
 
 	html {
@@ -121,6 +122,17 @@ export const GlobalStyles = createGlobalStyle`
 		@media ${theme.mediaBreakpoints.tabletPortrait} {
 			font-size: ${pxToRem(12)};
 			line-height: ${pxToRem(16)};
+		}
+	}
+
+	.type-mono {
+		font-family: var(--font-mono);
+		font-size: ${pxToRem(12)};
+		line-height: ${pxToRem(15)};
+
+		@media ${theme.mediaBreakpoints.tabletPortrait} {
+			font-size: ${pxToRem(11)};
+			line-height: ${pxToRem(14)};
 		}
 	}
 

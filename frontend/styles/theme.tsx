@@ -6,7 +6,8 @@ export const theme = {
 		lime: '#B1FCAB'
 	},
 	fonts: {
-		default: 'Favorit Pro Book'
+		default: 'Favorit Pro Book',
+		mono: 'Decima Mono'
 	},
 	mediaBreakpoints: {
 		desktop: '(min-width: 1680px)',

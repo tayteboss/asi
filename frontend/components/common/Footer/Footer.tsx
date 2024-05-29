@@ -6,6 +6,7 @@ import LogoSvg from '../../svgs/LogoSvg';
 import SingularityLogo from '../../svgs/SingularityLogo';
 import FetchLogoSvg from '../../svgs/FetchLogoSvg';
 import OceanLogoSvg from '../../svgs/OceanLogoSvg';
+import useViewportWidth from '../../../hooks/useViewportWidth';
 
 type Props = {
 	telegram: string | null;
@@ -18,17 +19,32 @@ const FooterWrapper = styled.footer`
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
+
+	@media ${(props) => props.theme.mediaBreakpoints.tabletMedium} {
+		flex-direction: column;
+		align-items: flex-start;
+		gap: ${pxToRem(30)};
+	}
+
+	@media ${(props) => props.theme.mediaBreakpoints.mobile} {
+		padding-bottom: ${pxToRem(30)};
+		gap: ${pxToRem(20)};
+	}
 `;
 
-const LHS = styled.div`
+const LinksWrapper = styled.div`
 	display: flex;
 	gap: ${pxToRem(30)};
 `;
 
-const RHS = styled.div`
+const LogosWrapper = styled.div`
 	display: flex;
 	align-items: center;
 	gap: ${pxToRem(30)};
+
+	@media ${(props) => props.theme.mediaBreakpoints.tabletPortrait} {
+		gap: ${pxToRem(20)};
+	}
 `;
 
 const LogoWrapper = styled.div<{ $height: number }>`
@@ -45,20 +61,40 @@ const Divider = styled.div`
 	height: ${pxToRem(30)};
 	width: 1px;
 	background: #747474;
+
+	@media ${(props) => props.theme.mediaBreakpoints.tabletPortrait} {
+		gap: ${pxToRem(20)};
+	}
 `;
 
 const SecondaryLogoWrapper = styled.div`
 	display: flex;
 	align-items: center;
 	gap: ${pxToRem(30)};
+
+	@media ${(props) => props.theme.mediaBreakpoints.tabletPortrait} {
+		gap: ${pxToRem(20)};
+	}
+`;
+
+const SecondaryLinksWrapper = styled.div`
+	display: flex;
+	gap: ${pxToRem(20)};
+`;
+
+const TextLink = styled.span`
+	color: #747474;
 `;
 
 const Footer = (props: Props) => {
 	const { telegram, twitter, privacy, terms } = props;
 
+	const viewport = useViewportWidth();
+	const isMobile = viewport === 'mobile';
+
 	return (
 		<FooterWrapper>
-			<LHS>
+			<LinksWrapper>
 				{telegram && (
 					<Link href={telegram} target="_blank">
 						<SecondaryButtonLayout useTelegram>
@@ -73,24 +109,40 @@ const Footer = (props: Props) => {
 						</SecondaryButtonLayout>
 					</Link>
 				)}
-			</LHS>
-			<RHS>
-				<LogoWrapper $height={28}>
+			</LinksWrapper>
+			<LogosWrapper>
+				<LogoWrapper $height={isMobile ? 20 : 28}>
 					<LogoSvg colour="#747474" />
 				</LogoWrapper>
 				<Divider />
 				<SecondaryLogoWrapper>
-					<LogoWrapper $height={23}>
+					<LogoWrapper $height={isMobile ? 20 : 23}>
 						<SingularityLogo />
 					</LogoWrapper>
-					<LogoWrapper $height={13}>
+					<LogoWrapper $height={isMobile ? 10 : 13}>
 						<FetchLogoSvg />
 					</LogoWrapper>
-					<LogoWrapper $height={23}>
+					<LogoWrapper $height={isMobile ? 16 : 23}>
 						<OceanLogoSvg />
 					</LogoWrapper>
 				</SecondaryLogoWrapper>
-			</RHS>
+			</LogosWrapper>
+			<SecondaryLinksWrapper>
+				{privacy && (
+					<Link href={privacy} target="_blank">
+						<TextLink className="type-mono">
+							Privacy Policy
+						</TextLink>
+					</Link>
+				)}
+				{terms && (
+					<Link href={terms} target="_blank">
+						<TextLink className="type-mono">
+							Terms & Conditions
+						</TextLink>
+					</Link>
+				)}
+			</SecondaryLinksWrapper>
 		</FooterWrapper>
 	);
 };

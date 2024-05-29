@@ -25,12 +25,24 @@ const Inner = styled.div`
 	padding: ${pxToRem(40)};
 	overflow: auto;
 	height: 100%;
+
+	@media ${(props) => props.theme.mediaBreakpoints.tabletMedium} {
+		padding: ${pxToRem(30)};
+	}
+
+	@media ${(props) => props.theme.mediaBreakpoints.tabletPortrait} {
+		padding: ${pxToRem(20)};
+	}
 `;
 
 const LogoWrapper = styled.div`
 	svg {
 		width: ${pxToRem(236)};
 		height: auto;
+
+		@media ${(props) => props.theme.mediaBreakpoints.tabletPortrait} {
+			width: ${pxToRem(200)};
+		}
 	}
 `;
 
@@ -38,6 +50,10 @@ const TitleWrapper = styled.div`
 	display: flex;
 	flex-direction: column;
 	gap: ${pxToRem(46)};
+
+	@media ${(props) => props.theme.mediaBreakpoints.mobile} {
+		padding-top: ${pxToRem(20)};
+	}
 `;
 
 const Title = styled.h1`
@@ -52,6 +68,12 @@ const Title = styled.h1`
 const LinksWrapper = styled.div`
 	display: flex;
 	gap: ${pxToRem(30)};
+
+	@media ${(props) => props.theme.mediaBreakpoints.tabletPortrait} {
+		flex-direction: column;
+		align-items: flex-start;
+		gap: ${pxToRem(10)};
+	}
 `;
 
 const BlankCell = styled.div``;
