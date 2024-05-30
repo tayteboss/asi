@@ -63,6 +63,19 @@ const LogoWrapper = styled.div<{ $height: number }>`
 	svg {
 		height: 100%;
 		width: auto;
+
+		path {
+			transition: all var(--transition-speed-default)
+				var(--transition-ease);
+		}
+	}
+
+	&:hover {
+		svg {
+			path {
+				fill: var(--colour-lime);
+			}
+		}
 	}
 `;
 
@@ -169,15 +182,27 @@ const Footer = (props: Props) => {
 							</LogoWrapper>
 							<Divider />
 							<SecondaryLogoWrapper>
-								<LogoWrapper $height={isMobile ? 20 : 23}>
-									<SingularityLogo />
-								</LogoWrapper>
-								<LogoWrapper $height={isMobile ? 10 : 13}>
-									<FetchLogoSvg />
-								</LogoWrapper>
-								<LogoWrapper $height={isMobile ? 16 : 23}>
-									<OceanLogoSvg />
-								</LogoWrapper>
+								<Link
+									href="https://singularitynet.io"
+									target="_blank"
+								>
+									<LogoWrapper $height={isMobile ? 20 : 23}>
+										<SingularityLogo />
+									</LogoWrapper>
+								</Link>
+								<Link href="https://fetch.ai" target="_blank">
+									<LogoWrapper $height={isMobile ? 10 : 13}>
+										<FetchLogoSvg />
+									</LogoWrapper>
+								</Link>
+								<Link
+									href="https://oceanprotocol.com"
+									target="_blank"
+								>
+									<LogoWrapper $height={isMobile ? 16 : 23}>
+										<OceanLogoSvg />
+									</LogoWrapper>
+								</Link>
 							</SecondaryLogoWrapper>
 						</LogosWrapper>
 						<SecondaryLinksWrapper>

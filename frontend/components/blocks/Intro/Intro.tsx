@@ -239,7 +239,7 @@ const Intro = (props: Props) => {
 											href={generalQuestionsUrl}
 											target="_blank"
 										>
-											<ButtonLayout title="White Paper" />
+											<ButtonLayout title="General Questions" />
 										</Link>
 									</MotionWrapper>
 								)}
