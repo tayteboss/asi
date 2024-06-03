@@ -1,10 +1,8 @@
 import styled from 'styled-components';
-import { FileType } from '../../../shared/types/types';
 import LogoSvg from '../../svgs/LogoSvg';
 import pxToRem from '../../../utils/pxToRem';
 import ButtonLayout from '../../layout/ButtonLayout';
 import Link from 'next/link';
-import VideoComponent from '../../common/MediaStack/VideoComponent';
 import { AnimatePresence, motion } from 'framer-motion';
 import FetchLogoSvg from '../../svgs/FetchLogoSvg';
 import OceanLogoSvg from '../../svgs/OceanLogoSvg';
@@ -14,11 +12,15 @@ import useViewportWidth from '../../../hooks/useViewportWidth';
 type Props = {
 	title: string | null;
 	animateContent: boolean;
-	animation: any;
 };
 
 const IntroWrapper = styled.div`
-	flex: 1;
+	height: 80vh;
+	min-height: ${pxToRem(720)};
+
+	@media ${(props) => props.theme.mediaBreakpoints.tabletPortrait} {
+		min-height: ${pxToRem(500)};
+	}
 
 	.media-wrapper {
 		height: 100%;
@@ -253,7 +255,7 @@ const Intro = (props: Props) => {
 									target="_blank"
 								>
 									<SecondaryLogoWrapper
-										$height={isMobile ? 24 : 38}
+										$height={isMobile ? 24 : 40}
 										variants={titleVariants}
 									>
 										<OceanLogoSvg />

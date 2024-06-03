@@ -19,9 +19,6 @@ import { useEffect, useState } from 'react';
 const PageWrapper = styled(motion.div)<{ $animateContent: boolean }>`
 	background: var(--colour-black);
 	padding: ${(props) => (props.$animateContent ? pxToRem(30) : '0')};
-	display: flex;
-	flex-direction: column;
-	height: 100dvh;
 
 	transition: padding var(--transition-speed-slow) var(--transition-ease);
 
@@ -39,36 +36,17 @@ type Props = {
 const Page = (props: Props) => {
 	const { data, siteSettings, pageTransitionVariants } = props;
 
-	const [animateContent, setAnimateContent] = useState(false);
+	const [animateContent, setAnimateContent] = useState(true);
 
-	useEffect(() => {
-		const timer = setTimeout(() => {
-			setAnimateContent(true);
-		}, 750);
+	// useEffect(() => {
+	// 	const timer = setTimeout(() => {
+	// 		setAnimateContent(true);
+	// 	}, 750);
 
-		return () => {
-			clearTimeout(timer);
-		};
-	}, []);
-
-	const foreAnimation = useAnimation();
-	const backAnimation = useAnimation();
-
-	const handleMouseMove = (e: any) => {
-		const { clientX, clientY } = e;
-		const moveX = clientX - window.innerWidth / 2;
-		const moveY = clientY - window.innerHeight / 2;
-		const backOffsetFactor = 50;
-		const foreOffsetFactor = 85;
-		backAnimation.start({
-			x: moveX / backOffsetFactor,
-			y: moveY / backOffsetFactor
-		});
-		foreAnimation.start({
-			x: moveX / foreOffsetFactor,
-			y: moveY / foreOffsetFactor
-		});
-	};
+	// 	return () => {
+	// 		clearTimeout(timer);
+	// 	};
+	// }, []);
 
 	return (
 		<PageWrapper
@@ -77,17 +55,12 @@ const Page = (props: Props) => {
 			animate="visible"
 			exit="hidden"
 			$animateContent={animateContent}
-			onMouseMove={(e) => handleMouseMove(e)}
 		>
 			<NextSeo
 				title={data?.seoTitle || ''}
 				description={data?.seoDescription || ''}
 			/>
-			<Intro
-				title={data?.title}
-				animateContent={animateContent}
-				animation={backAnimation}
-			/>
+			<Intro title={data?.title} animateContent={animateContent} />
 			<Footer
 				documentationPdf={data?.documentationPdf}
 				migrationGuideContent={data?.migrationGuideContent}

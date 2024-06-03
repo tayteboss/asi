@@ -2,12 +2,9 @@ import Link from 'next/link';
 import styled from 'styled-components';
 import SecondaryButtonLayout from '../../layout/SecondaryButtonLayout';
 import pxToRem from '../../../utils/pxToRem';
-import LogoSvg from '../../svgs/LogoSvg';
-import SingularityLogo from '../../svgs/SingularityLogo';
-import FetchLogoSvg from '../../svgs/FetchLogoSvg';
-import OceanLogoSvg from '../../svgs/OceanLogoSvg';
-import useViewportWidth from '../../../hooks/useViewportWidth';
 import { AnimatePresence, motion } from 'framer-motion';
+import { FileType } from '../../../shared/types/types';
+import FooterContent from '../../blocks/FooterContent';
 
 type Props = {
 	telegram: string | null;
@@ -16,45 +13,57 @@ type Props = {
 	terms: string | null;
 	cookies: string | null;
 	animateContent: boolean;
+	migrationGuideContent: any | null;
+	documentationPdf: FileType | null;
 };
 
-const OuterWrapper = styled(motion.div)``;
+const OuterWrapper = styled(motion.div)`
+	padding-top: ${pxToRem(36)};
+`;
 
 const FooterWrapper = styled(motion.footer)`
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	padding-top: ${pxToRem(30)};
-
-	@media (max-width: 1240px) {
-		flex-direction: column;
-		align-items: flex-start;
-		gap: ${pxToRem(20)};
-	}
+	border-top: 1px solid var(--colour-white);
+	padding-top: ${pxToRem(26)};
 
 	@media ${(props) => props.theme.mediaBreakpoints.tabletPortrait} {
-		padding-top: ${pxToRem(20)};
-	}
-
-	@media ${(props) => props.theme.mediaBreakpoints.mobile} {
-		padding-bottom: ${pxToRem(30)};
+		flex-direction: column;
+		gap: ${pxToRem(20)};
+		align-items: flex-start;
 	}
 `;
 
 const LinksWrapper = styled.div`
 	display: flex;
 	gap: ${pxToRem(30)};
+
+	@media ${(props) => props.theme.mediaBreakpoints.mobile} {
+		justify-content: space-between;
+		width: 100%;
+	}
 `;
 
 const SecondaryLinksWrapper = styled.div`
 	display: flex;
 	gap: ${pxToRem(20)};
+
+	@media ${(props) => props.theme.mediaBreakpoints.mobile} {
+		justify-content: space-between;
+		width: 100%;
+	}
 `;
 
 const TextLink = styled.span`
-	color: #747474;
+	color: var(--colour-white);
+	font-size: 1rem;
 
 	transition: all var(--transition-speed-default) var(--transition-ease);
+
+	@media ${(props) => props.theme.mediaBreakpoints.tabletPortrait} {
+		font-size: ${pxToRem(13)};
+	}
 
 	&:hover {
 		color: var(--colour-lime);
@@ -97,8 +106,16 @@ const innerVariants = {
 };
 
 const Footer = (props: Props) => {
-	const { telegram, twitter, privacy, terms, cookies, animateContent } =
-		props;
+	const {
+		telegram,
+		twitter,
+		privacy,
+		terms,
+		cookies,
+		animateContent,
+		documentationPdf,
+		migrationGuideContent
+	} = props;
 
 	return (
 		<AnimatePresence>
@@ -109,6 +126,10 @@ const Footer = (props: Props) => {
 					animate="visible"
 					exit="hidden"
 				>
+					<FooterContent
+						documentationPdf={documentationPdf}
+						migrationGuideContent={migrationGuideContent}
+					/>
 					<FooterWrapper variants={innerVariants}>
 						<LinksWrapper>
 							{telegram && (
@@ -131,21 +152,21 @@ const Footer = (props: Props) => {
 						<SecondaryLinksWrapper>
 							{privacy && (
 								<Link href={privacy} target="_blank">
-									<TextLink className="type-mono">
+									<TextLink className="type-book">
 										Privacy Policy
 									</TextLink>
 								</Link>
 							)}
 							{cookies && (
 								<Link href={cookies} target="_blank">
-									<TextLink className="type-mono">
+									<TextLink className="type-book">
 										Cookie Policy
 									</TextLink>
 								</Link>
 							)}
 							{terms && (
 								<Link href={terms} target="_blank">
-									<TextLink className="type-mono">
+									<TextLink className="type-book">
 										Terms & Conditions
 									</TextLink>
 								</Link>

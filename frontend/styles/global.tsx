@@ -97,6 +97,7 @@ export const GlobalStyles = createGlobalStyle`
 		font-size: ${pxToRem(80)};
 		line-height: ${pxToRem(80)};
 		letter-spacing: -5.6px;
+		font-weight: 200;
 
 		@media ${theme.mediaBreakpoints.tabletMedium} {
 			font-size: ${pxToRem(50)};
@@ -122,6 +123,49 @@ export const GlobalStyles = createGlobalStyle`
 		@media ${theme.mediaBreakpoints.tabletPortrait} {
 			font-size: ${pxToRem(12)};
 			line-height: ${pxToRem(16)};
+		}
+	}
+
+	.rich-text {
+		* {
+			font-size: ${pxToRem(22)};
+			line-height: ${pxToRem(29)};
+			letter-spacing: -0.7px;
+			color: var(--colour-white);
+			font-family: var(--font-book);
+	
+			@media ${theme.mediaBreakpoints.tabletPortrait} {
+				font-size: ${pxToRem(16)};
+				line-height: ${pxToRem(20)};
+			}
+		}
+	
+		p {
+			&:not(:last-child) {
+				margin-bottom: ${pxToRem(24)};
+
+				@media ${theme.mediaBreakpoints.tabletPortrait} {
+					margin-bottom: ${pxToRem(16)};
+				}
+			}
+		}
+
+		ul {
+			padding-left: ${pxToRem(20)};
+
+			li {
+				position: relative;
+				list-style-type: none;
+				padding-left: 10px;
+
+				&::before {
+					content: '•';
+					position: absolute;
+					left: -10px;
+					top: 0;
+					color: var(--colour-white);
+				}
+			}
 		}
 	}
 

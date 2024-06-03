@@ -6,11 +6,13 @@ import { AnimatePresence, motion } from 'framer-motion';
 type Props = {
 	type?: 'link' | 'download';
 	title?: string;
+	isActive?: boolean;
 };
 
-const ButtonLayoutWrapper = styled.div`
+const ButtonLayoutWrapper = styled.div<{ $isActive: boolean }>`
 	padding: ${pxToRem(10)} ${pxToRem(20)};
-	background: var(--colour-grey);
+	background: ${(props) =>
+		props.$isActive ? 'var(--colour-lime)' : 'var(--colour-white)'};
 	backdrop-filter: blur(10px);
 	color: var(--colour-black);
 	display: flex;
@@ -23,11 +25,25 @@ const ButtonLayoutWrapper = styled.div`
 	&:hover {
 		background: var(--colour-lime);
 	}
+
+	@media ${(props) => props.theme.mediaBreakpoints.tabletPortrait} {
+		padding: ${pxToRem(10)} ${pxToRem(15)};
+	}
 `;
 
-const Title = styled(motion.span)``;
+const Title = styled(motion.span)`
+	@media ${(props) => props.theme.mediaBreakpoints.tabletPortrait} {
+		font-size: ${pxToRem(13)};
+		white-space: nowrap;
+	}
+`;
 
-const HoverTitle = styled(motion.span)``;
+const HoverTitle = styled(motion.span)`
+	@media ${(props) => props.theme.mediaBreakpoints.tabletPortrait} {
+		font-size: ${pxToRem(13)};
+		white-space: nowrap;
+	}
+`;
 
 const titleVariants = {
 	hidden: {
@@ -68,7 +84,7 @@ const hoverTitleVariants = {
 };
 
 const ButtonLayout = (props: Props) => {
-	const { type = 'link', title = '' } = props;
+	const { type = 'default', title = '', isActive } = props;
 
 	const [isHovered, setIsHovered] = useState(false);
 
@@ -76,6 +92,7 @@ const ButtonLayout = (props: Props) => {
 		<ButtonLayoutWrapper
 			onMouseOver={() => setIsHovered(true)}
 			onMouseOut={() => setIsHovered(false)}
+			$isActive={isActive}
 		>
 			<AnimatePresence mode="wait">
 				{isHovered ? (
@@ -100,7 +117,7 @@ const ButtonLayout = (props: Props) => {
 					</HoverTitle>
 				)}
 			</AnimatePresence>
-			<span>{type === 'link' ? '↗' : '↧'}</span>
+			{type === 'download' && <span>↧</span>}
 		</ButtonLayoutWrapper>
 	);
 };
