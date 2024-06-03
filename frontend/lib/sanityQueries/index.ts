@@ -25,10 +25,7 @@ export const siteSettingsQueryString = `
 export const homePageQueryString = `
 	*[_type == 'homePage'][0] {
 		...,
-		media {
-			${mediaField}
-		},
-		whitePaperPdf {
+		documentationPdf {
 			asset-> {
 				url,
 			},

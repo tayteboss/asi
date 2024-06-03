@@ -44,11 +44,9 @@ export type SlugType = {
 export type HomePageType = {
 	seoTitle: string | null;
 	seoDescription: string | null;
-	generalQuestionsUrl: string | null;
-	media: MediaType | null;
-	migrationGuideUrl: string | null;
 	title: string | null;
-	whitePaperPdf: FileType | null;
+	migrationGuideContent: any | null;
+	documentationPdf: FileType | null;
 };
 
 export type SiteSettingsType = {

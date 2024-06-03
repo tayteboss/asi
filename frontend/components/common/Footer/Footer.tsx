@@ -46,51 +46,6 @@ const LinksWrapper = styled.div`
 	gap: ${pxToRem(30)};
 `;
 
-const LogosWrapper = styled.div`
-	display: flex;
-	align-items: center;
-	gap: ${pxToRem(25)};
-
-	@media ${(props) => props.theme.mediaBreakpoints.tabletPortrait} {
-		gap: ${pxToRem(20)};
-	}
-`;
-
-const LogoWrapper = styled.div<{ $height: number }>`
-	height: ${(props) => props.$height}px;
-	width: auto;
-
-	svg {
-		height: 100%;
-		width: auto;
-
-		path {
-			transition: all var(--transition-speed-default)
-				var(--transition-ease);
-		}
-	}
-
-	&:hover {
-		svg {
-			path {
-				fill: var(--colour-lime);
-			}
-		}
-	}
-`;
-
-const Divider = styled.div`
-	height: ${pxToRem(30)};
-	width: 1px;
-	background: #747474;
-`;
-
-const SecondaryLogoWrapper = styled.div`
-	display: flex;
-	align-items: center;
-	gap: ${pxToRem(20)};
-`;
-
 const SecondaryLinksWrapper = styled.div`
 	display: flex;
 	gap: ${pxToRem(20)};
@@ -145,9 +100,6 @@ const Footer = (props: Props) => {
 	const { telegram, twitter, privacy, terms, cookies, animateContent } =
 		props;
 
-	const viewport = useViewportWidth();
-	const isMobile = viewport === 'mobile';
-
 	return (
 		<AnimatePresence>
 			{animateContent && (
@@ -176,35 +128,6 @@ const Footer = (props: Props) => {
 								</Link>
 							)}
 						</LinksWrapper>
-						<LogosWrapper>
-							<LogoWrapper $height={isMobile ? 20 : 28}>
-								<LogoSvg colour="#747474" />
-							</LogoWrapper>
-							<Divider />
-							<SecondaryLogoWrapper>
-								<Link
-									href="https://singularitynet.io"
-									target="_blank"
-								>
-									<LogoWrapper $height={isMobile ? 20 : 23}>
-										<SingularityLogo />
-									</LogoWrapper>
-								</Link>
-								<Link href="https://fetch.ai" target="_blank">
-									<LogoWrapper $height={isMobile ? 10 : 13}>
-										<FetchLogoSvg />
-									</LogoWrapper>
-								</Link>
-								<Link
-									href="https://oceanprotocol.com"
-									target="_blank"
-								>
-									<LogoWrapper $height={isMobile ? 16 : 23}>
-										<OceanLogoSvg />
-									</LogoWrapper>
-								</Link>
-							</SecondaryLogoWrapper>
-						</LogosWrapper>
 						<SecondaryLinksWrapper>
 							{privacy && (
 								<Link href={privacy} target="_blank">

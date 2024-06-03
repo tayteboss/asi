@@ -30,24 +30,25 @@ export default {
       type: 'string',
     },
     {
-      title: 'Media',
-      name: 'media',
-      type: 'mux.video',
+      title: 'Migration Guide Content',
+      name: 'migrationGuideContent',
+      type: 'array',
+      of: [
+        {
+          type: 'block',
+          styles: [{title: 'Normal', value: 'normal'}],
+          lists: [{title: 'Bullet', value: 'bullet'}],
+          marks: {
+            decorators: [],
+            annotations: [],
+          },
+        },
+      ],
     },
     {
-      title: 'Migration Guide URL',
-      name: 'migrationGuideUrl',
-      type: 'url',
-    },
-    {
-      title: 'White Paper PDF',
-      name: 'whitePaperPdf',
+      title: 'Documentation PDF',
+      name: 'documentationPdf',
       type: 'file',
-    },
-    {
-      title: 'General Questions URL',
-      name: 'generalQuestionsUrl',
-      type: 'url',
     },
   ],
 }

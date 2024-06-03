@@ -44,7 +44,7 @@ const Page = (props: Props) => {
 	useEffect(() => {
 		const timer = setTimeout(() => {
 			setAnimateContent(true);
-		}, 1500);
+		}, 750);
 
 		return () => {
 			clearTimeout(timer);
@@ -85,13 +85,12 @@ const Page = (props: Props) => {
 			/>
 			<Intro
 				title={data?.title}
-				migrationGuideUrl={data?.migrationGuideUrl}
-				generalQuestionsUrl={data?.generalQuestionsUrl}
-				whitePaperPdf={data?.whitePaperPdf}
 				animateContent={animateContent}
 				animation={backAnimation}
 			/>
 			<Footer
+				documentationPdf={data?.documentationPdf}
+				migrationGuideContent={data?.migrationGuideContent}
 				telegram={siteSettings?.telegram}
 				twitter={siteSettings?.twitter}
 				cookies={siteSettings?.cookiesUrl}

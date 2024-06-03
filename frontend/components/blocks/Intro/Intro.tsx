@@ -6,12 +6,13 @@ import ButtonLayout from '../../layout/ButtonLayout';
 import Link from 'next/link';
 import VideoComponent from '../../common/MediaStack/VideoComponent';
 import { AnimatePresence, motion } from 'framer-motion';
+import FetchLogoSvg from '../../svgs/FetchLogoSvg';
+import OceanLogoSvg from '../../svgs/OceanLogoSvg';
+import SingularityLogo from '../../svgs/SingularityLogo';
+import useViewportWidth from '../../../hooks/useViewportWidth';
 
 type Props = {
 	title: string | null;
-	migrationGuideUrl: string | null;
-	generalQuestionsUrl: string | null;
-	whitePaperPdf: FileType | null;
 	animateContent: boolean;
 	animation: any;
 };
@@ -30,7 +31,7 @@ const Inner = styled.div<{ $animateContent: boolean }>`
 	flex-direction: column;
 	justify-content: space-between;
 	border-radius: ${(props) => (props.$animateContent ? pxToRem(30) : '0')};
-	padding: ${pxToRem(40)};
+	padding: ${pxToRem(44)} ${pxToRem(40)};
 	overflow: auto;
 	height: 100%;
 	position: relative;
@@ -39,24 +40,24 @@ const Inner = styled.div<{ $animateContent: boolean }>`
 		var(--transition-ease);
 
 	@media ${(props) => props.theme.mediaBreakpoints.tabletMedium} {
-		padding: ${pxToRem(30)};
+		padding: ${pxToRem(36)} ${pxToRem(30)};
 	}
 
 	@media ${(props) => props.theme.mediaBreakpoints.tabletPortrait} {
-		padding: ${pxToRem(20)};
+		padding: ${pxToRem(26)} ${pxToRem(20)};
 	}
 `;
 
-const LogoWrapper = styled.div`
+const PrimaryLogoWrapper = styled.div`
 	position: relative;
 	z-index: 2;
 
 	svg {
-		width: ${pxToRem(236)};
+		width: ${pxToRem(417)};
 		height: auto;
 
 		@media ${(props) => props.theme.mediaBreakpoints.tabletPortrait} {
-			width: ${pxToRem(200)};
+			width: ${pxToRem(300)};
 		}
 	}
 `;
@@ -82,20 +83,58 @@ const Title = styled(motion.h1)`
 	}
 `;
 
-const LinksWrapper = styled.div`
+const Partnership = styled(motion.p)`
+	color: var(--colour-black);
+`;
+
+const LogosWrapper = styled(motion.div)`
+	position: relative;
+	z-index: 2;
 	display: flex;
-	gap: ${pxToRem(30)};
+	align-items: center;
+	gap: ${pxToRem(35)};
 
 	@media ${(props) => props.theme.mediaBreakpoints.tabletPortrait} {
+		gap: ${pxToRem(16)};
 		flex-direction: column;
 		align-items: flex-start;
-		gap: ${pxToRem(10)};
 	}
 `;
 
-const BlankCell = styled.div``;
+const SecondaryLogoWrapper = styled(motion.div)<{ $height: number }>`
+	height: ${(props) => props.$height}px;
+	width: auto;
 
-const VideoWrapper = styled.div`
+	svg {
+		height: 100%;
+		width: auto;
+
+		path {
+			transition: all var(--transition-speed-default)
+				var(--transition-ease);
+		}
+	}
+
+	&:hover {
+		svg {
+			path {
+				opacity: 0.5;
+			}
+		}
+	}
+`;
+
+const SecondaryLogosWrapper = styled.div`
+	display: flex;
+	align-items: center;
+	gap: ${pxToRem(35)};
+
+	@media ${(props) => props.theme.mediaBreakpoints.tabletPortrait} {
+		gap: ${pxToRem(20)};
+	}
+`;
+
+const ColourBlock = styled.div`
 	position: absolute;
 	top: 0;
 	left: 0;
@@ -103,13 +142,8 @@ const VideoWrapper = styled.div`
 	height: 100%;
 	z-index: 1;
 	overflow: hidden;
-
-	.media-wrapper {
-		transform: scale(1.2);
-	}
+	background: var(--colour-lime);
 `;
-
-const MotionWrapper = styled(motion.div)``;
 
 const wrapperVariants = {
 	hidden: {
@@ -149,44 +183,19 @@ const titleVariants = {
 	}
 };
 
-const childVariants = {
-	hidden: {
-		opacity: 0,
-		y: 3,
-		transition: {
-			duration: 0.3,
-			ease: 'easeInOut'
-		}
-	},
-	visible: {
-		opacity: 1,
-		y: 0,
-		transition: {
-			duration: 0.3,
-			ease: 'easeInOut'
-		}
-	}
-};
-
 const Intro = (props: Props) => {
-	const {
-		title,
-		migrationGuideUrl,
-		generalQuestionsUrl,
-		whitePaperPdf,
-		animateContent,
-		animation
-	} = props;
+	const { title, animateContent } = props;
+
+	const viewport = useViewportWidth();
+	const isMobile = viewport === 'tabletPortrait' || viewport === 'mobile';
 
 	return (
 		<IntroWrapper>
 			<Inner $animateContent={animateContent}>
-				<VideoWrapper>
-					<VideoComponent isPriority />
-				</VideoWrapper>
-				<LogoWrapper>
+				<ColourBlock />
+				<PrimaryLogoWrapper>
 					<LogoSvg colour="var(--colour-black)" />
-				</LogoWrapper>
+				</PrimaryLogoWrapper>
 				<AnimatePresence>
 					{animateContent && (
 						<TitleWrapper
@@ -194,60 +203,66 @@ const Intro = (props: Props) => {
 							initial="hidden"
 							animate="visible"
 							exit="hidden"
+							key="title"
 						>
 							{title && (
 								<Title variants={titleVariants} key={0}>
 									{title}
 								</Title>
 							)}
-							<LinksWrapper>
-								{migrationGuideUrl && (
-									<MotionWrapper
-										variants={childVariants}
-										key={1}
-									>
-										<Link
-											href={migrationGuideUrl}
-											target="_blank"
-										>
-											<ButtonLayout title="Migration Guide" />
-										</Link>
-									</MotionWrapper>
-								)}
-								{whitePaperPdf?.asset?.url && (
-									<MotionWrapper
-										variants={childVariants}
-										key={2}
-									>
-										<Link
-											href={whitePaperPdf.asset.url}
-											target="_blank"
-										>
-											<ButtonLayout
-												type="download"
-												title="White Paper"
-											/>
-										</Link>
-									</MotionWrapper>
-								)}
-								{generalQuestionsUrl && (
-									<MotionWrapper
-										variants={childVariants}
-										key={3}
-									>
-										<Link
-											href={generalQuestionsUrl}
-											target="_blank"
-										>
-											<ButtonLayout title="General Questions" />
-										</Link>
-									</MotionWrapper>
-								)}
-							</LinksWrapper>
 						</TitleWrapper>
 					)}
 				</AnimatePresence>
-				<BlankCell />
+				<AnimatePresence>
+					{animateContent && (
+						<LogosWrapper
+							variants={wrapperVariants}
+							initial="hidden"
+							animate="visible"
+							exit="hidden"
+							key="logos"
+						>
+							<Partnership
+								className="type-book"
+								variants={titleVariants}
+							>
+								A partnership between
+							</Partnership>
+							<SecondaryLogosWrapper>
+								<Link
+									href="https://singularitynet.io"
+									target="_blank"
+								>
+									<SecondaryLogoWrapper
+										$height={isMobile ? 22 : 46}
+										variants={titleVariants}
+									>
+										<SingularityLogo />
+									</SecondaryLogoWrapper>
+								</Link>
+								<Link href="https://fetch.ai" target="_blank">
+									<SecondaryLogoWrapper
+										$height={isMobile ? 15 : 23}
+										variants={titleVariants}
+									>
+										<FetchLogoSvg />
+									</SecondaryLogoWrapper>
+								</Link>
+								<Link
+									href="https://oceanprotocol.com"
+									target="_blank"
+								>
+									<SecondaryLogoWrapper
+										$height={isMobile ? 24 : 38}
+										variants={titleVariants}
+									>
+										<OceanLogoSvg />
+									</SecondaryLogoWrapper>
+								</Link>
+							</SecondaryLogosWrapper>
+						</LogosWrapper>
+					)}
+				</AnimatePresence>
 			</Inner>
 		</IntroWrapper>
 	);

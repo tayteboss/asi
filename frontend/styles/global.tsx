@@ -10,6 +10,7 @@ export const GlobalStyles = createGlobalStyle`
 		--colour-lime: ${theme.colours.lime};
 		--font-default: ${theme.fonts.default};
 		--font-mono: ${theme.fonts.mono};
+		--font-book: ${theme.fonts.book};
 		--transition-speed-default: ${theme.transitionSpeed.default};
 		--transition-speed-fast: ${theme.transitionSpeed.fast};
 		--transition-speed-extra-fast: ${theme.transitionSpeed.extraFast};
@@ -93,21 +94,20 @@ export const GlobalStyles = createGlobalStyle`
 	.type-h3,
 	h4,
 	.type-h4{
-		font-size: ${pxToRem(70)};
-		line-height: ${pxToRem(75)};
-		letter-spacing: -2.1px;
-		font-weight: 200;
+		font-size: ${pxToRem(80)};
+		line-height: ${pxToRem(80)};
+		letter-spacing: -5.6px;
 
 		@media ${theme.mediaBreakpoints.tabletMedium} {
 			font-size: ${pxToRem(50)};
-			line-height: ${pxToRem(55)};
-			letter-spacing: -1.75px;
+			line-height: ${pxToRem(50)};
+			letter-spacing: -3.5px;
 		}
 
 		@media ${theme.mediaBreakpoints.tabletPortrait} {
 			font-size: ${pxToRem(35)};
-			line-height: ${pxToRem(38)};
-			letter-spacing: -1.05px;
+			line-height: ${pxToRem(35)};
+			letter-spacing: -2.45px;
 		}
 	}
 
@@ -134,6 +134,10 @@ export const GlobalStyles = createGlobalStyle`
 			font-size: ${pxToRem(11)};
 			line-height: ${pxToRem(14)};
 		}
+	}
+
+	.type-book {
+		font-family: var(--font-book);
 	}
 
 	mux-player {
