@@ -48,7 +48,7 @@ export default {
     {
       title: 'Documentation PDF',
       name: 'documentationPdf',
-      type: 'file',
+      type: 'url',
     },
   ],
 }

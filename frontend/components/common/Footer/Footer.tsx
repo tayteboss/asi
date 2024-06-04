@@ -14,7 +14,7 @@ type Props = {
 	cookies: string | null;
 	animateContent: boolean;
 	migrationGuideContent: any | null;
-	documentationPdf: FileType | null;
+	documentationPdf: string | null;
 };
 
 const OuterWrapper = styled(motion.div)`
@@ -150,27 +150,21 @@ const Footer = (props: Props) => {
 							)}
 						</LinksWrapper>
 						<SecondaryLinksWrapper>
-							{privacy && (
-								<Link href={privacy} target="_blank">
-									<TextLink className="type-book">
-										Privacy Policy
-									</TextLink>
-								</Link>
-							)}
-							{cookies && (
-								<Link href={cookies} target="_blank">
-									<TextLink className="type-book">
-										Cookie Policy
-									</TextLink>
-								</Link>
-							)}
-							{terms && (
-								<Link href={terms} target="_blank">
-									<TextLink className="type-book">
-										Terms & Conditions
-									</TextLink>
-								</Link>
-							)}
+							<Link href={'/'} target="_blank">
+								<TextLink className="type-book">
+									Privacy Policy
+								</TextLink>
+							</Link>
+							<Link href={'/'} target="_blank">
+								<TextLink className="type-book">
+									Cookie Policy
+								</TextLink>
+							</Link>
+							<Link href={'/'} target="_blank">
+								<TextLink className="type-book">
+									Terms & Conditions
+								</TextLink>
+							</Link>
 						</SecondaryLinksWrapper>
 					</FooterWrapper>
 				</OuterWrapper>

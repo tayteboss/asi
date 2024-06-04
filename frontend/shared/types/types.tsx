@@ -46,7 +46,7 @@ export type HomePageType = {
 	seoDescription: string | null;
 	title: string | null;
 	migrationGuideContent: any | null;
-	documentationPdf: FileType | null;
+	documentationPdf: string | null;
 };
 
 export type SiteSettingsType = {

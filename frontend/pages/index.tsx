@@ -14,7 +14,7 @@ import {
 import Footer from '../components/common/Footer';
 import Intro from '../components/blocks/Intro';
 import pxToRem from '../utils/pxToRem';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 const PageWrapper = styled(motion.div)<{ $animateContent: boolean }>`
 	background: var(--colour-black);
@@ -36,17 +36,7 @@ type Props = {
 const Page = (props: Props) => {
 	const { data, siteSettings, pageTransitionVariants } = props;
 
-	const [animateContent, setAnimateContent] = useState(true);
-
-	// useEffect(() => {
-	// 	const timer = setTimeout(() => {
-	// 		setAnimateContent(true);
-	// 	}, 750);
-
-	// 	return () => {
-	// 		clearTimeout(timer);
-	// 	};
-	// }, []);
+	const animateContent = true;
 
 	return (
 		<PageWrapper

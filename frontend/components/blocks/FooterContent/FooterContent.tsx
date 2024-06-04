@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { FileType } from '../../../shared/types/types';
 import pxToRem from '../../../utils/pxToRem';
 import PlusSvg from '../../svgs/PlusSvg';
 import { useState } from 'react';
@@ -10,7 +9,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 
 type Props = {
 	migrationGuideContent: any | null;
-	documentationPdf: FileType | null;
+	documentationPdf: string | null;
 };
 
 const FooterContentWrapper = styled.div`
@@ -146,10 +145,7 @@ const FooterContent = (props: Props) => {
 						</Trigger>
 					)}
 					{documentationPdf && (
-						<Link
-							href={documentationPdf?.asset?.url}
-							target="_blank"
-						>
+						<Link href={documentationPdf} target="_blank">
 							<ButtonLayout
 								title="Documentation"
 								type="download"
