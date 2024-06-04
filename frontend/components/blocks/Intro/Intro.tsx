@@ -15,11 +15,11 @@ type Props = {
 };
 
 const IntroWrapper = styled.div`
-	height: 80vh;
+	height: 80dvh;
 	min-height: ${pxToRem(720)};
 
 	@media ${(props) => props.theme.mediaBreakpoints.tabletPortrait} {
-		min-height: ${pxToRem(500)};
+		min-height: 70dvh;
 	}
 
 	.media-wrapper {
@@ -70,10 +70,6 @@ const TitleWrapper = styled(motion.div)`
 	display: flex;
 	flex-direction: column;
 	gap: ${pxToRem(46)};
-
-	@media ${(props) => props.theme.mediaBreakpoints.mobile} {
-		padding-top: ${pxToRem(20)};
-	}
 `;
 
 const Title = styled(motion.h1)`
