@@ -40,7 +40,6 @@ const LinksWrapper = styled.div`
 	gap: ${pxToRem(30)};
 
 	@media ${(props) => props.theme.mediaBreakpoints.mobile} {
-		justify-content: space-between;
 		width: 100%;
 	}
 `;
