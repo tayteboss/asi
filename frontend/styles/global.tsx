@@ -139,6 +139,10 @@ export const GlobalStyles = createGlobalStyle`
 				line-height: ${pxToRem(20)};
 			}
 		}
+
+		b {
+			font-weight: 900;
+		}
 	
 		p {
 			&:not(:last-child) {

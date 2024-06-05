@@ -39,7 +39,7 @@ export default {
           styles: [{title: 'Normal', value: 'normal'}],
           lists: [{title: 'Bullet', value: 'bullet'}],
           marks: {
-            decorators: [],
+            decorators: [{title: 'Strong', value: 'strong'}],
             annotations: [],
           },
         },
