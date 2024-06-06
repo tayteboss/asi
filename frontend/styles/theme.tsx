@@ -6,7 +6,7 @@ export const theme = {
 		lime: '#B1FCAB'
 	},
 	fonts: {
-		default: 'Favorit Pro Medium',
+		default: 'Favorit Pro Regular',
 		mono: 'Decima Mono',
 		book: 'Favorit Pro Book'
 	},

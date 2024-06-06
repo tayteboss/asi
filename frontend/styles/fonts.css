@@ -15,3 +15,9 @@
 	src: url('/fonts/FavoritPro-Medium.otf') format('opentype');
 	font-display: swap;
 }
+
+@font-face {
+	font-family: 'Favorit Pro Regular';
+	src: url('/fonts/FavoritPro-Regular.ttf') format('truetype');
+	font-display: swap;
+}

@@ -36,8 +36,8 @@ export const GlobalStyles = createGlobalStyle`
 	-webkit-text-size-adjust: 100%;
 
 	::selection {
-		background-color: var(--colour-lime);
-		color: var(--colour-black);
+		background-color: var(--colour-black);
+		color: var(--colour-lime);
 	}
 
 	html {
@@ -96,19 +96,19 @@ export const GlobalStyles = createGlobalStyle`
 	.type-h4{
 		font-size: ${pxToRem(80)};
 		line-height: ${pxToRem(80)};
-		letter-spacing: -5.6px;
+		letter-spacing: -3.2px;
 		font-weight: 200;
 
 		@media ${theme.mediaBreakpoints.tabletMedium} {
 			font-size: ${pxToRem(50)};
 			line-height: ${pxToRem(50)};
-			letter-spacing: -3.5px;
+			letter-spacing: -2.5px;
 		}
 
 		@media ${theme.mediaBreakpoints.tabletPortrait} {
 			font-size: ${pxToRem(35)};
 			line-height: ${pxToRem(35)};
-			letter-spacing: -2.45px;
+			letter-spacing: -1.4px;
 		}
 	}
 
