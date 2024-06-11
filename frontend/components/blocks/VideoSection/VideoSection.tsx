@@ -2,11 +2,13 @@ import styled from 'styled-components';
 import { MainPageType } from '../../../shared/types/types';
 import MuxPlayer from '@mux/mux-player-react';
 import { motion, useTransform, useViewportScroll } from 'framer-motion';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
+import { useRouter } from 'next/navigation';
 
 type Props = {
 	data: MainPageType['videoOne'];
 	animateIn?: boolean;
+	index: number;
 };
 
 const VideoSectionWrapper = styled(motion.div)`
@@ -31,9 +33,46 @@ const VideoSectionWrapper = styled(motion.div)`
 `;
 
 const VideoSection = (props: Props) => {
-	const { data, animateIn = false } = props;
+	const { data, animateIn = false, index } = props;
+
+	const [windowHeight, setWindowHeight] = useState(0);
+	const [distanceToTop, setDistanceToTop] = useState(0);
+
+	const wrapperRef = useRef<HTMLDivElement>(null);
+
 	const { scrollY } = useViewportScroll();
-	const y = useTransform(scrollY, [0, 1000], [0, 300], { clamp: false });
+
+	const y = useTransform(
+		scrollY,
+		[distanceToTop, distanceToTop + windowHeight * 2],
+		[0, 1000]
+	);
+
+	const router = useRouter();
+
+	useEffect(() => {
+		if (wrapperRef?.current) {
+			setDistanceToTop(
+				window.pageYOffset +
+					wrapperRef.current.getBoundingClientRect().top
+			);
+		}
+
+		setWindowHeight(window.innerHeight);
+
+		const timer = setTimeout(() => {
+			if (wrapperRef?.current) {
+				setDistanceToTop(
+					window.pageYOffset +
+						wrapperRef.current.getBoundingClientRect().top
+				);
+			}
+
+			setWindowHeight(window.innerHeight);
+		}, 1000);
+
+		return () => clearTimeout(timer);
+	}, [distanceToTop, router]);
 
 	return (
 		<VideoSectionWrapper
@@ -53,6 +92,8 @@ const VideoSection = (props: Props) => {
 			initial="hidden"
 			animate={animateIn ? 'visible' : 'hidden'}
 			exit="hidden"
+			key={index}
+			ref={wrapperRef}
 		>
 			{data && (
 				<MuxPlayer

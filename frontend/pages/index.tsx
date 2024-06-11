@@ -64,9 +64,28 @@ const Page = (props: Props) => {
 				oceanProtocolContent={mainData?.oceanProtocolContent}
 				oceanProtocolLink={mainData?.oceanProtocolLink}
 			/>
-			<TokenSection />
-			<FoundationSection />
-			<PathwaySection />
+			<TokenSection
+				title="Token Merge"
+				content={mainData?.tokenMerge}
+				content1={mainData?.tokenMergeContent1}
+				content2={mainData?.tokenMergeContent2}
+				content3={mainData?.tokenMergeContent3}
+				videoData={mainData?.videoTwo}
+			/>
+			<FoundationSection
+				title="Foundation Team"
+				content={mainData?.foundationTeam}
+				teamMembers={mainData?.teamMembers}
+				videoData={mainData?.videoThree}
+			/>
+			<PathwaySection
+				title="Pathway to ASI"
+				content={mainData?.pathwayToAsi}
+				content1={mainData?.pathwayContent1}
+				content2={mainData?.pathwayContent2}
+				content3={mainData?.pathwayContent3}
+				contactLink={mainData?.pathwayContactLink}
+			/>
 		</PageWrapper>
 	);
 };

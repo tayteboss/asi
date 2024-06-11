@@ -233,8 +233,8 @@ export const GlobalStyles = createGlobalStyle`
 
 			li {
 				position: relative;
-				list-style-type: none;
-				padding-left: 10px;
+				list-style-type: disc;
+				padding-left: 1px;
 
 				&::before {
 					content: '•';
@@ -245,10 +245,18 @@ export const GlobalStyles = createGlobalStyle`
 				}
 			}
 		}
+
+		&--small {
+			* {
+				font-size: ${pxToRem(18)};
+				line-height: ${pxToRem(27)};
+				letter-spacing: -0.5px;
+			}
+		}
 	}
 
 	.section-padding-y {
-		padding: 25vh 0;
+		padding: 33vh 0;
 	}
 
 	.type-mono {

@@ -80,9 +80,9 @@ export type MainPageType = {
 	oceanProtocolContent: string | null;
 	oceanProtocolLink: string | null;
 	pathwayContactLink: string | null;
-	pathwayContact1: [] | null;
-	pathwayContact2: [] | null;
-	pathwayContact3: [] | null;
+	pathwayContent1: [] | null;
+	pathwayContent2: [] | null;
+	pathwayContent3: [] | null;
 	pathwayToAsi: string | null;
 	singularityNetContent: string | null;
 	singularityNetLink: string | null;

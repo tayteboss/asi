@@ -14,6 +14,7 @@ type Props = {
 	title: string | null;
 	content: string | null | [];
 	link?: string | null;
+	linkTitle?: string;
 };
 
 const ColumnCardWrapper = styled(motion.div)`
@@ -21,6 +22,7 @@ const ColumnCardWrapper = styled(motion.div)`
 	flex-direction: column;
 	align-items: flex-start;
 	gap: ${pxToRem(36)};
+	flex: 1;
 
 	@media ${(props) => props.theme.mediaBreakpoints.tabletPortrait} {
 		gap: ${pxToRem(24)};
@@ -60,7 +62,7 @@ const childVariants = {
 };
 
 const ColumnCard = (props: Props) => {
-	const { icon, title, content, link } = props;
+	const { icon, title, content, link, linkTitle = 'Learn more' } = props;
 
 	const contentIsPortableText = typeof content !== 'string';
 
@@ -73,7 +75,9 @@ const ColumnCard = (props: Props) => {
 			</IconWrapper>
 			<Title>{title || ''}</Title>
 			{contentIsPortableText ? (
-				<>{content && <PortableText value={content} />}</>
+				<div className="rich-text rich-text--small">
+					{content && <PortableText value={content} />}
+				</div>
 			) : (
 				<>
 					{content && (
@@ -87,7 +91,7 @@ const ColumnCard = (props: Props) => {
 			)}
 			{link && (
 				<Link href={link} target="_blank">
-					<ButtonLayout title="Learn more" isActive={true} />
+					<ButtonLayout title={linkTitle} isActive={true} />
 				</Link>
 			)}
 		</ColumnCardWrapper>

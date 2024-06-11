@@ -191,7 +191,7 @@ const HeroSection = (props: Props) => {
 					</SecondaryLogosWrapper>
 				</LogosWrapper>
 			</LayoutWrapper>
-			<VideoSection data={videoData} animateIn />
+			<VideoSection data={videoData} animateIn index={1} key={1} />
 		</HeroSectionWrapper>
 	);
 };
