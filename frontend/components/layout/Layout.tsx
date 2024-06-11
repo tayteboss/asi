@@ -4,6 +4,7 @@ import Footer from '../common/Footer';
 import Header from '../common/Header';
 import Menu from '../blocks/Menu';
 import useNoScroll from '../../hooks/useNoScroll';
+import { ReactLenis, useLenis } from '@studio-freight/react-lenis';
 
 const siteSettings = require('../../json/siteSettings.json');
 
@@ -18,6 +19,8 @@ const Layout = (props: Props) => {
 
 	const [menuIsActive, setMenuIsActive] = useState(false);
 
+	const lenis = useLenis(({ scroll }) => {});
+
 	useEffect(() => useNoScroll(menuIsActive), [menuIsActive]);
 
 	return (
@@ -30,7 +33,9 @@ const Layout = (props: Props) => {
 				setMenuIsActive={setMenuIsActive}
 				menuIsActive={menuIsActive}
 			/>
-			<Main>{children}</Main>
+			<ReactLenis root>
+				<Main>{children}</Main>
+			</ReactLenis>
 			<Footer
 				telegram={siteSettings?.telegram}
 				twitter={siteSettings?.twitter}

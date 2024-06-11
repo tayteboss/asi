@@ -16,6 +16,7 @@ const ButtonLayoutWrapper = styled.div<{ $isActive: boolean }>`
 	backdrop-filter: blur(10px);
 	color: var(--colour-black);
 	display: flex;
+	align-items: center;
 	gap: ${pxToRem(8)};
 	border-radius: 100px;
 	position: relative;
@@ -23,7 +24,10 @@ const ButtonLayoutWrapper = styled.div<{ $isActive: boolean }>`
 	transition: all var(--transition-speed-default) var(--transition-ease);
 
 	&:hover {
-		background: var(--colour-lime);
+		background: ${(props) =>
+			props.$isActive ? 'var(--colour-black)' : 'var(--colour-lime)'};
+		color: ${(props) =>
+			props.$isActive ? 'var(--colour-lime)' : 'var(--colour-white)'};
 	}
 
 	@media ${(props) => props.theme.mediaBreakpoints.tabletPortrait} {
@@ -43,6 +47,10 @@ const HoverTitle = styled(motion.span)`
 		font-size: ${pxToRem(13)};
 		white-space: nowrap;
 	}
+`;
+
+const Icon = styled.span`
+	padding-top: 2px;
 `;
 
 const titleVariants = {
@@ -93,6 +101,7 @@ const ButtonLayout = (props: Props) => {
 			onMouseOver={() => setIsHovered(true)}
 			onMouseOut={() => setIsHovered(false)}
 			$isActive={isActive}
+			className="button-layout"
 		>
 			<AnimatePresence mode="wait">
 				{isHovered ? (
@@ -117,7 +126,8 @@ const ButtonLayout = (props: Props) => {
 					</HoverTitle>
 				)}
 			</AnimatePresence>
-			{type === 'download' && <span>↧</span>}
+			{type === 'download' && <Icon>↧</Icon>}
+			{type === 'default' && <Icon>↗</Icon>}
 		</ButtonLayoutWrapper>
 	);
 };

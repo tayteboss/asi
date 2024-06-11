@@ -5,6 +5,7 @@ import pxToRem from '../../../utils/pxToRem';
 import Link from 'next/link';
 import { useRef } from 'react';
 import { useClickOutside } from '../../../hooks/useClickOutside';
+import { useLenis } from '@studio-freight/react-lenis';
 
 type Props = {
 	menuIsActive: boolean;
@@ -90,7 +91,8 @@ const ItemsWrapper = styled.div`
 	}
 `;
 
-const Item = styled(motion.a)`
+const Item = styled(motion.button)`
+	text-align: left;
 	font-size: ${pxToRem(70)};
 	line-height: ${pxToRem(70)};
 	letter-spacing: -2.8px;
@@ -130,6 +132,16 @@ const ClickOutside = styled(motion.div)`
 const Menu = (props: Props) => {
 	const { menuIsActive, setMenuIsActive } = props;
 
+	const lenis = useLenis(({ scroll }) => {});
+
+	const handleScrollToAnchor = (anchor: string) => {
+		if (lenis) {
+			lenis.scrollTo(`#${anchor}`, {
+				duration: 1
+			});
+		}
+	};
+
 	return (
 		<AnimatePresence>
 			{menuIsActive && (
@@ -146,36 +158,56 @@ const Menu = (props: Props) => {
 							<ItemsWrapper
 								onClick={() => setMenuIsActive(false)}
 							>
-								<Link href="/#what-is-asi">
-									<Item variants={childVariants}>
-										What is ASI?
-									</Item>
-								</Link>
-								<Link href="/#about-the-alliance">
-									<Item variants={childVariants}>
-										About the Alliance
-									</Item>
-								</Link>
-								<Link href="/#token-merge">
-									<Item variants={childVariants}>
-										Token Merge
-									</Item>
-								</Link>
-								<Link href="/#foundation-team">
-									<Item variants={childVariants}>
-										Foundation Team
-									</Item>
-								</Link>
-								<Link href="/#pathway-to-asi">
-									<Item variants={childVariants}>
-										Pathway to ASI
-									</Item>
-								</Link>
-								<Link href="/#resources">
-									<Item variants={childVariants}>
-										Resources
-									</Item>
-								</Link>
+								<Item
+									variants={childVariants}
+									onClick={() =>
+										handleScrollToAnchor('what-is-asi')
+									}
+								>
+									What is ASI?
+								</Item>
+								<Item
+									variants={childVariants}
+									onClick={() => {
+										handleScrollToAnchor(
+											'about-the-alliance'
+										);
+									}}
+								>
+									About the Alliance
+								</Item>
+								<Item
+									variants={childVariants}
+									onClick={() => {
+										handleScrollToAnchor('token-merge');
+									}}
+								>
+									Token Merge
+								</Item>
+								<Item
+									variants={childVariants}
+									onClick={() => {
+										handleScrollToAnchor('foundation-team');
+									}}
+								>
+									Foundation Team
+								</Item>
+								<Item
+									variants={childVariants}
+									onClick={() => {
+										handleScrollToAnchor('pathway-to-asi');
+									}}
+								>
+									Pathway to ASI
+								</Item>
+								<Item
+									variants={childVariants}
+									onClick={() => {
+										handleScrollToAnchor('resources');
+									}}
+								>
+									Resources
+								</Item>
 							</ItemsWrapper>
 						</Inner>
 					</MenuWrapper>

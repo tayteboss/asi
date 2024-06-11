@@ -10,6 +10,8 @@ type Props = {
 	content?: string | null;
 };
 
+const BlurMainContentWrapper = styled.div``;
+
 const Title = styled.h2`
 	margin-bottom: ${pxToRem(40)};
 `;
@@ -30,7 +32,7 @@ const BlurMainContent = (props: Props) => {
 	});
 
 	return (
-		<>
+		<BlurMainContentWrapper>
 			{title && (
 				<Title className="type-h2 type-h2--blur-in" ref={ref}>
 					<AnimateText text={title} active={inView} />
@@ -51,7 +53,7 @@ const BlurMainContent = (props: Props) => {
 					}}
 				/>
 			)}
-		</>
+		</BlurMainContentWrapper>
 	);
 };
 

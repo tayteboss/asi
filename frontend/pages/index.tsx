@@ -54,7 +54,16 @@ const Page = (props: Props) => {
 				subheading={mainData?.whatIsAsiSubheading}
 				content={mainData?.whatIsAsiContent}
 			/>
-			<AllianceSection />
+			<AllianceSection
+				title="About the Alliance"
+				content={mainData?.aboutTheAlliance}
+				fetchAiContent={mainData?.fetchAiContent}
+				fetchAiLink={mainData?.fetchAiLink}
+				singularityNetContent={mainData?.singularityNetContent}
+				singularityNetLink={mainData?.singularityNetLink}
+				oceanProtocolContent={mainData?.oceanProtocolContent}
+				oceanProtocolLink={mainData?.oceanProtocolLink}
+			/>
 			<TokenSection />
 			<FoundationSection />
 			<PathwaySection />

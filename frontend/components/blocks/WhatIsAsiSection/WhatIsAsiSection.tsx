@@ -18,7 +18,7 @@ const WhatIsAsiSection = (props: Props) => {
 	const { title, subheading, content } = props;
 
 	return (
-		<WhatIsAsiSectionWrapper className="section-padding-y">
+		<WhatIsAsiSectionWrapper className="section-padding-y" id="what-is-asi">
 			<BlurContentLayout>
 				<BlurMainContent
 					title={title}

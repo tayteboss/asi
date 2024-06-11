@@ -248,7 +248,7 @@ export const GlobalStyles = createGlobalStyle`
 	}
 
 	.section-padding-y {
-		padding: 33vh 0;
+		padding: 25vh 0;
 	}
 
 	.type-mono {
@@ -278,8 +278,8 @@ export const GlobalStyles = createGlobalStyle`
 	{
 		opacity: 0;
 
-		transition: opacity var(--transition-speed-default) ease;
-		transition-delay: 500ms;
+		transition: opacity 1000ms ease;
+		transition-delay: 750ms;
 
 		&--in-view
 		{

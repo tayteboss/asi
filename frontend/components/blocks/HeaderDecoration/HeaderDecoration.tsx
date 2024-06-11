@@ -11,6 +11,7 @@ const HeaderDecorationWrapper = styled.div`
 	width: 100%;
 	display: flex;
 	justify-content: space-between;
+	z-index: 90;
 `;
 
 const IconWrapper = styled(motion.div)`

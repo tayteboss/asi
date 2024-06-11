@@ -12,6 +12,9 @@ const BlurContentLayoutWrapper = styled.div`
 	margin: 0 auto;
 	border-radius: ${pxToRem(20)};
 	background: rgba(255, 255, 255, 0.2);
+	display: flex;
+	flex-direction: column;
+	gap: ${pxToRem(50)};
 
 	@media ${(props) => props.theme.mediaBreakpoints.tabletMedium} {
 		width: 100%;
