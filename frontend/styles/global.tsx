@@ -279,6 +279,7 @@ export const GlobalStyles = createGlobalStyle`
 		opacity: 0;
 
 		transition: opacity var(--transition-speed-default) ease;
+		transition-delay: 500ms;
 
 		&--in-view
 		{

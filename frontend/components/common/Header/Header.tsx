@@ -4,6 +4,12 @@ import Link from 'next/link';
 import LogoSvg from '../../svgs/LogoSvg';
 import MenuTrigger from '../../elements/MenuTrigger';
 import HeaderDecoration from '../../blocks/HeaderDecoration';
+import useScrolled from '../../../hooks/useScrolled';
+
+type StyledProps = {
+	$hasScrolled: boolean;
+	$menuIsActive: boolean;
+};
 
 type Props = {
 	setMenuIsActive: (isActive: boolean) => void;
@@ -26,11 +32,11 @@ const HeaderWrapper = styled.header`
 	}
 `;
 
-const LogoWrapper = styled.div<{ $menuIsActive: boolean }>`
-	padding: ${pxToRem(28)};
+const LogoWrapper = styled.div<StyledProps>`
+	padding: ${(props) => (props.$hasScrolled ? pxToRem(16) : pxToRem(24))};
 	border-radius: 27.04px;
 	background: rgba(255, 255, 255, 0.2);
-	backdrop-filter: blur(10px);
+	backdrop-filter: blur(30px);
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -48,8 +54,10 @@ const LogoWrapper = styled.div<{ $menuIsActive: boolean }>`
 	}
 
 	svg {
-		width: ${pxToRem(300)};
+		width: ${(props) => (props.$hasScrolled ? pxToRem(200) : pxToRem(300))};
 		height: auto;
+
+		transition: all var(--transition-speed-default) var(--transition-ease);
 
 		@media ${(props) => props.theme.mediaBreakpoints.tabletPortrait} {
 			width: ${pxToRem(200)};
@@ -64,12 +72,17 @@ const LogoWrapper = styled.div<{ $menuIsActive: boolean }>`
 const Header = (props: Props) => {
 	const { setMenuIsActive, menuIsActive } = props;
 
+	const hasScrolled = useScrolled(200);
+
 	return (
 		<>
 			<HeaderDecoration />
 			<HeaderWrapper className="header">
 				<Link href="/">
-					<LogoWrapper $menuIsActive={menuIsActive}>
+					<LogoWrapper
+						$hasScrolled={hasScrolled}
+						$menuIsActive={menuIsActive}
+					>
 						<LogoSvg />
 					</LogoWrapper>
 				</Link>

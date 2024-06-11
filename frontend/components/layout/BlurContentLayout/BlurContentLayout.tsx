@@ -7,10 +7,22 @@ type Props = {
 
 const BlurContentLayoutWrapper = styled.div`
 	padding: ${pxToRem(50)};
-	backdrop-filter: blur(10px);
-	/* background: rgba(0, 0, 0, 0); */
+	backdrop-filter: blur(30px);
 	width: ${pxToRem(980)};
 	margin: 0 auto;
+	border-radius: ${pxToRem(20)};
+	background: rgba(255, 255, 255, 0.2);
+
+	@media ${(props) => props.theme.mediaBreakpoints.tabletMedium} {
+		width: 100%;
+		margin: 0 ${pxToRem(16)};
+		padding: ${pxToRem(32)};
+	}
+
+	@media ${(props) => props.theme.mediaBreakpoints.mobile} {
+		margin: 0 ${pxToRem(8)};
+		padding: ${pxToRem(16)};
+	}
 `;
 
 const BlurContentLayout = (props: Props) => {

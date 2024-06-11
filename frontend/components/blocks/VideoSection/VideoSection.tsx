@@ -1,7 +1,8 @@
 import styled from 'styled-components';
 import { MainPageType } from '../../../shared/types/types';
 import MuxPlayer from '@mux/mux-player-react';
-import { motion } from 'framer-motion';
+import { motion, useTransform, useViewportScroll } from 'framer-motion';
+import { useEffect, useState } from 'react';
 
 type Props = {
 	data: MainPageType['videoOne'];
@@ -16,6 +17,12 @@ const VideoSectionWrapper = styled(motion.div)`
 	height: auto;
 	z-index: 1;
 
+	@media ${(props) => props.theme.mediaBreakpoints.tabletPortrait} {
+		top: 0;
+		width: 200%;
+		transform: translateX(-50%);
+	}
+
 	mux-player {
 		width: 100%;
 		height: 100%;
@@ -25,9 +32,12 @@ const VideoSectionWrapper = styled(motion.div)`
 
 const VideoSection = (props: Props) => {
 	const { data, animateIn = false } = props;
+	const { scrollY } = useViewportScroll();
+	const y = useTransform(scrollY, [0, 1000], [0, 300], { clamp: false });
 
 	return (
 		<VideoSectionWrapper
+			style={{ y }}
 			variants={{
 				hidden: {
 					opacity: 0

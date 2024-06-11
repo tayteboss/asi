@@ -75,7 +75,7 @@ const Inner = styled(motion.div)`
 	height: 100%;
 
 	@media ${(props) => props.theme.mediaBreakpoints.tabletPortrait} {
-		padding: ${pxToRem(16)};
+		padding: ${pxToRem(16)} ${pxToRem(16)} 50vh ${pxToRem(16)};
 	}
 `;
 
@@ -83,6 +83,11 @@ const ItemsWrapper = styled.div`
 	display: flex;
 	flex-direction: column;
 	gap: ${pxToRem(8)};
+
+	@media ${(props) => props.theme.mediaBreakpoints.tabletPortrait} {
+		position: relative;
+		transform: translateY(50%);
+	}
 `;
 
 const Item = styled(motion.a)`
