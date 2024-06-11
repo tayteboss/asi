@@ -25,9 +25,13 @@ export default defineConfig({
               .child(S.editor().schemaType('siteSettings').documentId('siteSettings')),
             S.divider(),
             S.listItem()
-              .title('Home Page')
+              .title('Temporary Page')
               .icon(DocumentIcon)
               .child(S.editor().schemaType('homePage').documentId('homePage')),
+            S.listItem()
+              .title('Main Page')
+              .icon(DocumentIcon)
+              .child(S.editor().schemaType('mainPage').documentId('mainPage')),
           ])
       },
     }),

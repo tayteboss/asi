@@ -49,6 +49,12 @@ export type HomePageType = {
 	documentationPdf: string | null;
 };
 
+export type MainPageType = {
+	seoTitle: string | null;
+	seoDescription: string | null;
+	title: string | null;
+};
+
 export type SiteSettingsType = {
 	privacyUrl: string | null;
 	telegram: string | null;

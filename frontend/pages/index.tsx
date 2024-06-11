@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import { NextSeo } from 'next-seo';
 import {
 	HomePageType,
+	MainPageType,
 	SiteSettingsType,
 	TransitionsType
 } from '../shared/types/types';
@@ -9,12 +10,18 @@ import { motion, useAnimation } from 'framer-motion';
 import client from '../client';
 import {
 	homePageQueryString,
+	mainPageQueryString,
 	siteSettingsQueryString
 } from '../lib/sanityQueries';
 import Footer from '../components/common/Footer';
 import Intro from '../components/blocks/Intro';
 import pxToRem from '../utils/pxToRem';
-import { useState } from 'react';
+import AllianceSection from '../components/blocks/AllianceSection';
+import FoundationSection from '../components/blocks/FoundationSection';
+import HeroSection from '../components/blocks/HeroSection';
+import PathwaySection from '../components/blocks/PathwaySection';
+import TokenSection from '../components/blocks/TokenSection';
+import WhatIsAsiSection from '../components/blocks/WhatIsAsiSection';
 
 const PageWrapper = styled(motion.div)<{ $animateContent: boolean }>`
 	background: var(--colour-black);
@@ -29,14 +36,17 @@ const PageWrapper = styled(motion.div)<{ $animateContent: boolean }>`
 
 type Props = {
 	data: HomePageType;
+	mainData: MainPageType;
 	siteSettings: SiteSettingsType;
 	pageTransitionVariants: TransitionsType;
 };
 
 const Page = (props: Props) => {
-	const { data, siteSettings, pageTransitionVariants } = props;
+	const { data, mainData, siteSettings, pageTransitionVariants } = props;
 
 	const animateContent = true;
+
+	console.log('mainData', mainData);
 
 	return (
 		<PageWrapper
@@ -50,17 +60,12 @@ const Page = (props: Props) => {
 				title={data?.seoTitle || ''}
 				description={data?.seoDescription || ''}
 			/>
-			<Intro title={data?.title} animateContent={animateContent} />
-			<Footer
-				documentationPdf={data?.documentationPdf}
-				migrationGuideContent={data?.migrationGuideContent}
-				telegram={siteSettings?.telegram}
-				twitter={siteSettings?.twitter}
-				cookies={siteSettings?.cookiesUrl}
-				privacy={siteSettings?.privacyUrl}
-				terms={siteSettings?.termsUrl}
-				animateContent={animateContent}
-			/>
+			<HeroSection />
+			<WhatIsAsiSection />
+			<AllianceSection />
+			<TokenSection />
+			<FoundationSection />
+			<PathwaySection />
 		</PageWrapper>
 	);
 };
@@ -68,10 +73,12 @@ const Page = (props: Props) => {
 export async function getStaticProps() {
 	const siteSettings = await client.fetch(siteSettingsQueryString);
 	const data = await client.fetch(homePageQueryString);
+	const mainData = await client.fetch(mainPageQueryString);
 
 	return {
 		props: {
 			data,
+			mainData,
 			siteSettings
 		}
 	};

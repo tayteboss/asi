@@ -28,6 +28,12 @@ export const homePageQueryString = `
 	}
 `;
 
+export const mainPageQueryString = `
+	*[_type == 'mainPage'][0] {
+		...,
+	}
+`;
+
 export const workPageQueryString = `
 	*[_type == "workPage"] {
 		...,

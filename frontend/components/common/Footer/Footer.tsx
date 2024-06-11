@@ -2,9 +2,6 @@ import Link from 'next/link';
 import styled from 'styled-components';
 import SecondaryButtonLayout from '../../layout/SecondaryButtonLayout';
 import pxToRem from '../../../utils/pxToRem';
-import { AnimatePresence, motion } from 'framer-motion';
-import { FileType } from '../../../shared/types/types';
-import FooterContent from '../../blocks/FooterContent';
 
 type Props = {
 	telegram: string | null;
@@ -12,16 +9,9 @@ type Props = {
 	privacy: string | null;
 	terms: string | null;
 	cookies: string | null;
-	animateContent: boolean;
-	migrationGuideContent: any | null;
-	documentationPdf: string | null;
 };
 
-const OuterWrapper = styled(motion.div)`
-	padding-top: ${pxToRem(36)};
-`;
-
-const FooterWrapper = styled(motion.footer)`
+const FooterWrapper = styled.footer`
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
@@ -69,106 +59,43 @@ const TextLink = styled.span`
 	}
 `;
 
-const wrapperVariants = {
-	hidden: {
-		height: 0,
-		transition: {
-			duration: 0.5,
-			ease: 'easeInOut'
-		}
-	},
-	visible: {
-		height: 'auto',
-		transition: {
-			duration: 0.5,
-			ease: 'easeInOut',
-			when: 'beforeChildren'
-		}
-	}
-};
-
-const innerVariants = {
-	hidden: {
-		opacity: 0,
-		transition: {
-			duration: 0.5,
-			ease: 'easeInOut'
-		}
-	},
-	visible: {
-		opacity: 1,
-		transition: {
-			duration: 0.5,
-			ease: 'easeInOut'
-		}
-	}
-};
-
 const Footer = (props: Props) => {
-	const {
-		telegram,
-		twitter,
-		privacy,
-		terms,
-		cookies,
-		animateContent,
-		documentationPdf,
-		migrationGuideContent
-	} = props;
+	const { telegram, twitter, privacy, terms, cookies } = props;
 
 	return (
-		<AnimatePresence>
-			{animateContent && (
-				<OuterWrapper
-					variants={wrapperVariants}
-					initial="hidden"
-					animate="visible"
-					exit="hidden"
-				>
-					<FooterContent
-						documentationPdf={documentationPdf}
-						migrationGuideContent={migrationGuideContent}
-					/>
-					<FooterWrapper variants={innerVariants}>
-						<LinksWrapper>
-							{telegram && (
-								<Link href={telegram} target="_blank">
-									<SecondaryButtonLayout
-										useTelegram
-										title="Join our telegram channel"
-									/>
-								</Link>
-							)}
-							{twitter && (
-								<Link href={twitter} target="_blank">
-									<SecondaryButtonLayout
-										useTwitter
-										title="Follow us on X"
-									/>
-								</Link>
-							)}
-						</LinksWrapper>
-						<SecondaryLinksWrapper>
-							<Link href={'/'} target="_blank">
-								<TextLink className="type-book">
-									Privacy Policy
-								</TextLink>
-							</Link>
-							<Link href={'/'} target="_blank">
-								<TextLink className="type-book">
-									Cookie Policy
-								</TextLink>
-							</Link>
-							<Link href={'/'} target="_blank">
-								<TextLink className="type-book">
-									Terms & Conditions
-								</TextLink>
-							</Link>
-						</SecondaryLinksWrapper>
-					</FooterWrapper>
-				</OuterWrapper>
-			)}
-		</AnimatePresence>
+		<FooterWrapper>
+			<LinksWrapper>
+				{telegram && (
+					<Link href={telegram} target="_blank">
+						<SecondaryButtonLayout
+							useTelegram
+							title="Join our telegram channel"
+						/>
+					</Link>
+				)}
+				{twitter && (
+					<Link href={twitter} target="_blank">
+						<SecondaryButtonLayout
+							useTwitter
+							title="Follow us on X"
+						/>
+					</Link>
+				)}
+			</LinksWrapper>
+			<SecondaryLinksWrapper>
+				<Link href={'/'} target="_blank">
+					<TextLink className="type-book">Privacy Policy</TextLink>
+				</Link>
+				<Link href={'/'} target="_blank">
+					<TextLink className="type-book">Cookie Policy</TextLink>
+				</Link>
+				<Link href={'/'} target="_blank">
+					<TextLink className="type-book">
+						Terms & Conditions
+					</TextLink>
+				</Link>
+			</SecondaryLinksWrapper>
+		</FooterWrapper>
 	);
 };
 

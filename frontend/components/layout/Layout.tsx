@@ -1,5 +1,9 @@
 import styled from 'styled-components';
 import { ReactNode } from 'react';
+import Footer from '../common/Footer';
+import Header from '../common/Header';
+
+const siteSettings = require('../../json/siteSettings.json');
 
 const Main = styled.main``;
 
@@ -12,7 +16,15 @@ const Layout = (props: Props) => {
 
 	return (
 		<>
+			<Header />
 			<Main>{children}</Main>
+			<Footer
+				telegram={siteSettings?.telegram}
+				twitter={siteSettings?.twitter}
+				privacy={siteSettings?.privacyUrl}
+				terms={siteSettings?.termsUrl}
+				cookies={siteSettings?.cookiesUrl}
+			/>
 		</>
 	);
 };

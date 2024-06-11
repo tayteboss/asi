@@ -35,5 +35,23 @@ export default {
       name: 'termsUrl',
       type: 'url',
     },
+    {
+      title: 'Footer Content',
+      name: 'footerContent',
+      type: 'array',
+      of: [
+        {
+          type: 'block',
+          styles: [{title: 'Normal', value: 'normal'}],
+          lists: [],
+          marks: {
+            decorators: [],
+            annotations: [
+              {title: 'Link', value: 'link', type: 'object', fields: [{name: 'href', type: 'url'}]},
+            ],
+          },
+        },
+      ],
+    },
   ],
 }
