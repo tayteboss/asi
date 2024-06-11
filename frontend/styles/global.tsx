@@ -36,12 +36,12 @@ export const GlobalStyles = createGlobalStyle`
 	-webkit-text-size-adjust: 100%;
 
 	::selection {
-		background-color: var(--colour-black);
-		color: var(--colour-lime);
+		background-color: var(--colour-lime);
+		color: var(--colour-black);
 	}
 
 	html {
-		background: var(--colour-black);
+		background: var(--colour-white);
 		font-size: 16px;
 
 		&.no-scroll {

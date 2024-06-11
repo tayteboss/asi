@@ -6,15 +6,13 @@ import {
 	SiteSettingsType,
 	TransitionsType
 } from '../shared/types/types';
-import { motion, useAnimation } from 'framer-motion';
+import { motion } from 'framer-motion';
 import client from '../client';
 import {
 	homePageQueryString,
 	mainPageQueryString,
 	siteSettingsQueryString
 } from '../lib/sanityQueries';
-import Footer from '../components/common/Footer';
-import Intro from '../components/blocks/Intro';
 import pxToRem from '../utils/pxToRem';
 import AllianceSection from '../components/blocks/AllianceSection';
 import FoundationSection from '../components/blocks/FoundationSection';
@@ -23,16 +21,7 @@ import PathwaySection from '../components/blocks/PathwaySection';
 import TokenSection from '../components/blocks/TokenSection';
 import WhatIsAsiSection from '../components/blocks/WhatIsAsiSection';
 
-const PageWrapper = styled(motion.div)<{ $animateContent: boolean }>`
-	background: var(--colour-black);
-	padding: ${(props) => (props.$animateContent ? pxToRem(30) : '0')};
-
-	transition: padding var(--transition-speed-slow) var(--transition-ease);
-
-	@media ${(props) => props.theme.mediaBreakpoints.tabletMedium} {
-		padding: ${(props) => (props.$animateContent ? pxToRem(20) : '0')};
-	}
-`;
+const PageWrapper = styled(motion.div)``;
 
 type Props = {
 	data: HomePageType;
@@ -44,8 +33,6 @@ type Props = {
 const Page = (props: Props) => {
 	const { data, mainData, siteSettings, pageTransitionVariants } = props;
 
-	const animateContent = true;
-
 	console.log('mainData', mainData);
 
 	return (
@@ -54,7 +41,6 @@ const Page = (props: Props) => {
 			initial="hidden"
 			animate="visible"
 			exit="hidden"
-			$animateContent={animateContent}
 		>
 			<NextSeo
 				title={data?.seoTitle || ''}

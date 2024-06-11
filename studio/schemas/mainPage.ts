@@ -12,6 +12,11 @@ export default {
       options: {collapsible: true, collapsed: true},
     },
     {
+      name: 'whatIsAsi',
+      title: 'What is ASI Information',
+      options: {collapsible: true, collapsed: true},
+    },
+    {
       name: 'alliances',
       title: 'Alliances Information',
       options: {collapsible: true, collapsed: true},
@@ -64,9 +69,22 @@ export default {
       type: 'string',
     },
     {
-      title: 'What is ASI?',
-      name: 'whatIsAsi',
+      title: 'What is ASI Heading',
+      name: 'whatIsAsiHeading',
+      type: 'string',
+      fieldset: 'whatIsAsi',
+    },
+    {
+      title: 'What is ASI Subheading',
+      name: 'whatIsAsiSubheading',
+      type: 'string',
+      fieldset: 'whatIsAsi',
+    },
+    {
+      title: 'What is ASI Content',
+      name: 'whatIsAsiContent',
       type: 'text',
+      fieldset: 'whatIsAsi',
     },
     {
       title: 'About the alliance',
