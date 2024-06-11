@@ -94,9 +94,9 @@ export const GlobalStyles = createGlobalStyle`
 	.type-h3,
 	h4,
 	.type-h4{
-		font-size: ${pxToRem(80)};
-		line-height: ${pxToRem(80)};
-		letter-spacing: -3.2px;
+		font-size: ${pxToRem(77)};
+		line-height: ${pxToRem(77)};
+		letter-spacing: -3.1px;
 		font-weight: 200;
 
 		@media ${theme.mediaBreakpoints.tabletMedium} {
@@ -109,6 +109,27 @@ export const GlobalStyles = createGlobalStyle`
 			font-size: ${pxToRem(35)};
 			line-height: ${pxToRem(35)};
 			letter-spacing: -1.4px;
+		}
+
+		&--blur-in {
+			* {
+				font-size: ${pxToRem(77)};
+				line-height: ${pxToRem(77)};
+				letter-spacing: -3.1px;
+				font-weight: 200;
+
+				@media ${theme.mediaBreakpoints.tabletMedium} {
+					font-size: ${pxToRem(50)};
+					line-height: ${pxToRem(50)};
+					letter-spacing: -2.5px;
+				}
+
+				@media ${theme.mediaBreakpoints.tabletPortrait} {
+					font-size: ${pxToRem(35)};
+					line-height: ${pxToRem(35)};
+					letter-spacing: -1.4px;
+				}
+			}
 		}
 	}
 

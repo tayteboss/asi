@@ -46,7 +46,7 @@ const Page = (props: Props) => {
 				title={data?.seoTitle || ''}
 				description={data?.seoDescription || ''}
 			/>
-			<HeroSection />
+			<HeroSection title={mainData?.heroTitle} />
 			<WhatIsAsiSection />
 			<AllianceSection />
 			<TokenSection />

@@ -56,7 +56,7 @@ const LogoWrapper = styled.div<{ $menuIsActive: boolean }>`
 		}
 
 		@media ${(props) => props.theme.mediaBreakpoints.mobile} {
-			width: ${pxToRem(150)};
+			width: ${pxToRem(180)};
 		}
 	}
 `;

@@ -55,6 +55,12 @@ export type ImageType = {
 	};
 };
 
+export type MuxVideoType = {
+	asset: {
+		playbackId: string;
+	};
+};
+
 export type TeamMemberType = {
 	name: string | null;
 	title: string | null;
@@ -88,6 +94,9 @@ export type MainPageType = {
 	whatIsAsiContent: string | null;
 	whatIsAsiHeading: string | null;
 	whatIsAsiSubheading: string | null;
+	videoOne: MuxVideoType | null;
+	videoTwo: MuxVideoType | null;
+	videoThree: MuxVideoType | null;
 };
 
 export type SiteSettingsType = {

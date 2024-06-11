@@ -41,6 +41,11 @@ export default {
       title: 'Resources Information',
       options: {collapsible: true, collapsed: true},
     },
+    {
+      name: 'media',
+      title: 'Media',
+      options: {collapsible: true, collapsed: true},
+    },
   ],
   fields: [
     {
@@ -278,6 +283,24 @@ export default {
       name: 'resourcesDocumentationLink',
       type: 'url',
       fieldset: 'resources',
+    },
+    {
+      title: 'Video one',
+      name: 'videoOne',
+      type: 'mux.video',
+      fieldset: 'media',
+    },
+    {
+      title: 'Video two',
+      name: 'videoTwo',
+      type: 'mux.video',
+      fieldset: 'media',
+    },
+    {
+      title: 'Video three',
+      name: 'videoThree',
+      type: 'mux.video',
+      fieldset: 'media',
     },
   ],
 }
