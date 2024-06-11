@@ -3,6 +3,7 @@ import pxToRem from '../../../utils/pxToRem';
 import Link from 'next/link';
 import LogoSvg from '../../svgs/LogoSvg';
 import MenuTrigger from '../../elements/MenuTrigger';
+import HeaderDecoration from '../../blocks/HeaderDecoration';
 
 type Props = {
 	setMenuIsActive: (isActive: boolean) => void;
@@ -13,7 +14,7 @@ const HeaderWrapper = styled.header`
 	position: fixed;
 	top: 0;
 	left: 0;
-	padding: ${pxToRem(16)} ${pxToRem(8)};
+	padding: ${pxToRem(24)} ${pxToRem(8)};
 	width: 100%;
 	display: flex;
 	align-items: flex-start;
@@ -21,7 +22,7 @@ const HeaderWrapper = styled.header`
 	z-index: 100;
 
 	@media ${(props) => props.theme.mediaBreakpoints.mobile} {
-		padding: ${pxToRem(8)};
+		padding: ${pxToRem(24)} ${pxToRem(8)};
 	}
 `;
 
@@ -64,17 +65,20 @@ const Header = (props: Props) => {
 	const { setMenuIsActive, menuIsActive } = props;
 
 	return (
-		<HeaderWrapper className="header">
-			<Link href="/">
-				<LogoWrapper $menuIsActive={menuIsActive}>
-					<LogoSvg />
-				</LogoWrapper>
-			</Link>
-			<MenuTrigger
-				setMenuIsActive={setMenuIsActive}
-				menuIsActive={menuIsActive}
-			/>
-		</HeaderWrapper>
+		<>
+			<HeaderDecoration />
+			<HeaderWrapper className="header">
+				<Link href="/">
+					<LogoWrapper $menuIsActive={menuIsActive}>
+						<LogoSvg />
+					</LogoWrapper>
+				</Link>
+				<MenuTrigger
+					setMenuIsActive={setMenuIsActive}
+					menuIsActive={menuIsActive}
+				/>
+			</HeaderWrapper>
+		</>
 	);
 };
 

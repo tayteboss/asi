@@ -49,10 +49,45 @@ export type HomePageType = {
 	documentationPdf: string | null;
 };
 
+export type ImageType = {
+	asset: {
+		url: string;
+	};
+};
+
+export type TeamMemberType = {
+	name: string | null;
+	title: string | null;
+	image: ImageType | null;
+	link: string | null;
+	description: string | null;
+};
+
 export type MainPageType = {
 	seoTitle: string | null;
 	seoDescription: string | null;
-	title: string | null;
+	aboutTheAlliance: string | null;
+	fetchAiContent: string | null;
+	fetchAiLink: string | null;
+	foundationTeam: string | null;
+	heroTitle: string | null;
+	oceanProtocolContent: string | null;
+	oceanProtocolLink: string | null;
+	pathwayContactLink: string | null;
+	pathwayContact1: [] | null;
+	pathwayContact2: [] | null;
+	pathwayContact3: [] | null;
+	pathwayToAsi: string | null;
+	singularityNetContent: string | null;
+	singularityNetLink: string | null;
+	teamMembers: TeamMemberType[] | null;
+	tokenMerge: string | null;
+	tokenMergeContent1: [] | null;
+	tokenMergeContent2: [] | null;
+	tokenMergeContent3: [] | null;
+	whatIsAsiContent: string | null;
+	whatIsAsiHeading: string | null;
+	whatIsAsiSubheading: string | null;
 };
 
 export type SiteSettingsType = {
