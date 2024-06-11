@@ -13,7 +13,6 @@ import {
 	mainPageQueryString,
 	siteSettingsQueryString
 } from '../lib/sanityQueries';
-import pxToRem from '../utils/pxToRem';
 import AllianceSection from '../components/blocks/AllianceSection';
 import FoundationSection from '../components/blocks/FoundationSection';
 import HeroSection from '../components/blocks/HeroSection';
@@ -46,8 +45,15 @@ const Page = (props: Props) => {
 				title={data?.seoTitle || ''}
 				description={data?.seoDescription || ''}
 			/>
-			<HeroSection title={mainData?.heroTitle} />
-			<WhatIsAsiSection />
+			<HeroSection
+				title={mainData?.heroTitle}
+				videoData={mainData?.videoOne}
+			/>
+			<WhatIsAsiSection
+				title={mainData?.whatIsAsiHeading}
+				subheading={mainData?.whatIsAsiSubheading}
+				content={mainData?.whatIsAsiContent}
+			/>
 			<AllianceSection />
 			<TokenSection />
 			<FoundationSection />

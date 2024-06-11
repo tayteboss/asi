@@ -94,9 +94,9 @@ export type MainPageType = {
 	whatIsAsiContent: string | null;
 	whatIsAsiHeading: string | null;
 	whatIsAsiSubheading: string | null;
-	videoOne: MuxVideoType | null;
-	videoTwo: MuxVideoType | null;
-	videoThree: MuxVideoType | null;
+	videoOne: string | null;
+	videoTwo: string | null;
+	videoThree: string | null;
 };
 
 export type SiteSettingsType = {

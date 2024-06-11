@@ -88,8 +88,6 @@ export const GlobalStyles = createGlobalStyle`
 
 	h1,
 	.type-h1,
-	h2,
-	.type-h2,
 	h3,
 	.type-h3,
 	h4,
@@ -133,6 +131,62 @@ export const GlobalStyles = createGlobalStyle`
 		}
 	}
 
+	h2,
+	.type-h2 {
+		font-size: ${pxToRem(50)};
+		line-height: ${pxToRem(50)};
+		letter-spacing: -2px;
+		font-weight: 200;
+
+		@media ${theme.mediaBreakpoints.tabletPortrait} {
+			font-size: ${pxToRem(35)};
+			line-height: ${pxToRem(35)};
+			letter-spacing: -1px;
+		}
+
+		&--blur-in {
+			* {
+				font-size: ${pxToRem(50)};
+				line-height: ${pxToRem(50)};
+				letter-spacing: -3.1px;
+				font-weight: 200;
+
+				@media ${theme.mediaBreakpoints.tabletPortrait} {
+					font-size: ${pxToRem(35)};
+					line-height: ${pxToRem(35)};
+					letter-spacing: -1px;
+				}
+			}
+		}
+	}
+
+	h3,
+	.type-h3 {
+		font-size: ${pxToRem(30)};
+		line-height: ${pxToRem(39)};
+		letter-spacing: -0.9px;
+		font-weight: 600;
+
+		@media ${theme.mediaBreakpoints.tabletPortrait} {
+			font-size: ${pxToRem(20)};
+			line-height: ${pxToRem(25)};
+		}
+
+		&--blur-in {
+			* {
+			font-size: ${pxToRem(30)};
+			line-height: ${pxToRem(39)};
+			letter-spacing: -0.9px;
+			font-weight: 600;
+
+			@media ${theme.mediaBreakpoints.tabletPortrait} {
+				font-size: ${pxToRem(20)};
+				line-height: ${pxToRem(25)};
+			}
+			}
+		}
+	}
+
 	p,
 	.type-p,
 	a,
@@ -149,15 +203,14 @@ export const GlobalStyles = createGlobalStyle`
 
 	.rich-text {
 		* {
-			font-size: ${pxToRem(22)};
-			line-height: ${pxToRem(29)};
-			letter-spacing: -0.7px;
-			color: var(--colour-white);
-			font-family: var(--font-book);
-	
+			font-size: ${pxToRem(30)};
+			line-height: ${pxToRem(39)};
+			letter-spacing: -0.9px;
+			font-weight: 200;
+
 			@media ${theme.mediaBreakpoints.tabletPortrait} {
-				font-size: ${pxToRem(16)};
-				line-height: ${pxToRem(20)};
+				font-size: ${pxToRem(20)};
+				line-height: ${pxToRem(25)};
 			}
 		}
 
@@ -192,6 +245,10 @@ export const GlobalStyles = createGlobalStyle`
 				}
 			}
 		}
+	}
+
+	.section-padding-y {
+		padding: 33vh 0;
 	}
 
 	.type-mono {

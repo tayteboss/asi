@@ -65,7 +65,7 @@ const MenuWrapper = styled(motion.div)`
 `;
 
 const Inner = styled(motion.div)`
-	padding: ${pxToRem(30)};
+	padding: ${pxToRem(30)} ${pxToRem(80)} ${pxToRem(50)} ${pxToRem(30)};
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
@@ -117,9 +117,9 @@ const ClickOutside = styled(motion.div)`
 	left: 0;
 	width: 100%;
 	height: 100dvh;
-	background: rgba(0, 0, 0, 0.2);
-	backdrop-filter: blur(10px);
+	background: rgba(0, 0, 0, 0.4);
 	z-index: 5;
+	cursor: pointer;
 `;
 
 const Menu = (props: Props) => {
@@ -180,6 +180,7 @@ const Menu = (props: Props) => {
 						animate="visible"
 						exit="hidden"
 						key="menu-wrapper"
+						onClick={() => setMenuIsActive(false)}
 					/>
 				</>
 			)}

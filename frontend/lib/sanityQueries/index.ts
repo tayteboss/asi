@@ -31,21 +31,9 @@ export const homePageQueryString = `
 export const mainPageQueryString = `
 	*[_type == 'mainPage'][0] {
 		...,
-		'videoOne': videoOne {
-			asset-> {
-				playbackId,
-			}
-		},
-		'videoTwo': videoTwo {
-			asset-> {
-				playbackId,
-			}
-		},
-		'videoThree': videoThree {
-			asset-> {
-				playbackId,
-			}
-		},
+		"videoOne": videoOne.asset->playbackId,
+		"videoTwo": videoTwo.asset->playbackId,
+		"videoThree": videoThree.asset->playbackId
 	}
 `;
 

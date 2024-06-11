@@ -10,9 +10,11 @@ import useViewportWidth from '../../../hooks/useViewportWidth';
 import SingularityLogo from '../../svgs/SingularityLogo';
 import FetchLogoSvg from '../../svgs/FetchLogoSvg';
 import OceanLogoSvg from '../../svgs/OceanLogoSvg';
+import VideoSection from '../VideoSection';
 
 type Props = {
 	title: MainPageType['heroTitle'];
+	videoData: MainPageType['videoOne'];
 };
 
 const wrapperVariants = {
@@ -53,15 +55,17 @@ const titleVariants = {
 	}
 };
 
-const HeroSectionWrapper = styled.div`
+const HeroSectionWrapper = styled.section`
 	height: 100dvh;
 	display: flex;
 	flex-direction: column;
 	align-items: flex-start;
 	justify-content: space-between;
+	position: relative;
 
 	.layout-wrapper {
 		width: 100%;
+		z-index: 2;
 	}
 `;
 
@@ -125,7 +129,7 @@ const SecondaryLogosWrapper = styled.div`
 `;
 
 const HeroSection = (props: Props) => {
-	const { title } = props;
+	const { title, videoData } = props;
 
 	const { ref, inView } = useInView({
 		triggerOnce: true,
@@ -187,6 +191,7 @@ const HeroSection = (props: Props) => {
 					</SecondaryLogosWrapper>
 				</LogosWrapper>
 			</LayoutWrapper>
+			<VideoSection data={videoData} animateIn />
 		</HeroSectionWrapper>
 	);
 };
