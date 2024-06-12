@@ -11,6 +11,12 @@ export default {
       initialValue: 'Site Settings',
     },
     {
+      title: 'Logo SVG',
+      name: 'logoSvg',
+      type: 'image',
+      description: 'Please upload an svg',
+    },
+    {
       title: 'Telegram',
       name: 'telegram',
       type: 'string',
