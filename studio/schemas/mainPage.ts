@@ -36,11 +36,11 @@ export default {
       title: 'Pathway to ASI Information',
       options: {collapsible: true, collapsed: true},
     },
-    {
-      name: 'resources',
-      title: 'Resources Information',
-      options: {collapsible: true, collapsed: true},
-    },
+    // {
+    //   name: 'resources',
+    //   title: 'Resources Information',
+    //   options: {collapsible: true, collapsed: true},
+    // },
     {
       name: 'media',
       title: 'Media',
@@ -266,24 +266,24 @@ export default {
       type: 'string',
       fieldset: 'pathwayToAsi',
     },
-    {
-      title: 'Resources White Paper',
-      name: 'resourcesWhitePaper',
-      type: 'url',
-      fieldset: 'resources',
-    },
-    {
-      title: 'Resources General Questions Link',
-      name: 'resourcesGeneralQuestionsLink',
-      type: 'url',
-      fieldset: 'resources',
-    },
-    {
-      title: 'Resources Documentation Link',
-      name: 'resourcesDocumentationLink',
-      type: 'url',
-      fieldset: 'resources',
-    },
+    // {
+    //   title: 'Resources White Paper',
+    //   name: 'resourcesWhitePaper',
+    //   type: 'url',
+    //   fieldset: 'resources',
+    // },
+    // {
+    //   title: 'Resources General Questions Link',
+    //   name: 'resourcesGeneralQuestionsLink',
+    //   type: 'url',
+    //   fieldset: 'resources',
+    // },
+    // {
+    //   title: 'Resources Documentation Link',
+    //   name: 'resourcesDocumentationLink',
+    //   type: 'url',
+    //   fieldset: 'resources',
+    // },
     {
       title: 'Video one',
       name: 'videoOne',

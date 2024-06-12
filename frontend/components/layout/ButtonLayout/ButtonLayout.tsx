@@ -7,6 +7,7 @@ type Props = {
 	type?: 'link' | 'download';
 	title?: string;
 	isActive?: boolean;
+	isSmall?: boolean;
 };
 
 const ButtonLayoutWrapper = styled.div<{ $isActive: boolean }>`
@@ -35,16 +36,20 @@ const ButtonLayoutWrapper = styled.div<{ $isActive: boolean }>`
 	}
 `;
 
-const Title = styled(motion.span)`
+const Title = styled(motion.span)<{ $isSmall: boolean }>`
+	font-size: ${(props) => props.$isSmall && '12px'};
+
 	@media ${(props) => props.theme.mediaBreakpoints.tabletPortrait} {
-		font-size: ${pxToRem(13)};
+		font-size: ${pxToRem(12)};
 		white-space: nowrap;
 	}
 `;
 
-const HoverTitle = styled(motion.span)`
+const HoverTitle = styled(motion.span)<{ $isSmall: boolean }>`
+	font-size: ${(props) => props.$isSmall && '12px'};
+
 	@media ${(props) => props.theme.mediaBreakpoints.tabletPortrait} {
-		font-size: ${pxToRem(13)};
+		font-size: ${pxToRem(12)};
 		white-space: nowrap;
 	}
 `;
@@ -92,7 +97,7 @@ const hoverTitleVariants = {
 };
 
 const ButtonLayout = (props: Props) => {
-	const { type = 'default', title = '', isActive } = props;
+	const { type = 'default', title = '', isActive, isSmall = false } = props;
 
 	const [isHovered, setIsHovered] = useState(false);
 
@@ -111,6 +116,7 @@ const ButtonLayout = (props: Props) => {
 						initial="hidden"
 						animate="visible"
 						exit="hidden"
+						$isSmall={isSmall}
 					>
 						{title}
 					</Title>
@@ -118,6 +124,7 @@ const ButtonLayout = (props: Props) => {
 					<HoverTitle
 						key="hover-title"
 						variants={hoverTitleVariants}
+						$isSmall={isSmall}
 						initial="hidden"
 						animate="visible"
 						exit="hidden"

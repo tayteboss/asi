@@ -3,6 +3,8 @@ import BlurContentLayout from '../../layout/BlurContentLayout';
 import BlurMainContent from '../BlurMainContent';
 import VideoSection from '../VideoSection';
 import { MainPageType } from '../../../shared/types/types';
+import TeamCarousel from '../TeamCarousel';
+import pxToRem from '../../../utils/pxToRem';
 
 type Props = {
 	title: string;
@@ -13,6 +15,10 @@ type Props = {
 
 const FoundationSectionWrapper = styled.section`
 	position: relative;
+
+	.blur-content-layout {
+		margin-bottom: ${pxToRem(40)};
+	}
 `;
 
 const FoundationSection = (props: Props) => {
@@ -24,8 +30,8 @@ const FoundationSection = (props: Props) => {
 		>
 			<BlurContentLayout>
 				<BlurMainContent title={title} content={content} />
-				{/* // Carousel Here */}
 			</BlurContentLayout>
+			<TeamCarousel data={teamMembers} />
 			<VideoSection data={videoData} animateIn index={2} key={2} />
 		</FoundationSectionWrapper>
 	);

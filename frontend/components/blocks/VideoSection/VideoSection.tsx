@@ -42,25 +42,8 @@ const VideoSection = (props: Props) => {
 
 	const { scrollY } = useViewportScroll();
 
-	const y = useTransform(
-		scrollY,
-		[distanceToTop, distanceToTop + windowHeight * 2],
-		[0, 1000]
-	);
-
-	const router = useRouter();
-
 	useEffect(() => {
-		if (wrapperRef?.current) {
-			setDistanceToTop(
-				window.pageYOffset +
-					wrapperRef.current.getBoundingClientRect().top
-			);
-		}
-
-		setWindowHeight(window.innerHeight);
-
-		const timer = setTimeout(() => {
+		const handleScroll = () => {
 			if (wrapperRef?.current) {
 				setDistanceToTop(
 					window.pageYOffset +
@@ -69,10 +52,20 @@ const VideoSection = (props: Props) => {
 			}
 
 			setWindowHeight(window.innerHeight);
-		}, 1000);
+		};
 
-		return () => clearTimeout(timer);
-	}, [distanceToTop, router]);
+		window.addEventListener('scroll', handleScroll);
+
+		return () => {
+			window.removeEventListener('scroll', handleScroll);
+		};
+	}, []);
+
+	const y = useTransform(
+		scrollY,
+		[distanceToTop, distanceToTop + windowHeight * 2],
+		[0, 1000]
+	);
 
 	return (
 		<VideoSectionWrapper

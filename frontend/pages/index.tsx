@@ -19,6 +19,7 @@ import HeroSection from '../components/blocks/HeroSection';
 import PathwaySection from '../components/blocks/PathwaySection';
 import TokenSection from '../components/blocks/TokenSection';
 import WhatIsAsiSection from '../components/blocks/WhatIsAsiSection';
+import ResourcesSection from '../components/blocks/ResourcesSection';
 
 const PageWrapper = styled(motion.div)``;
 
@@ -86,6 +87,7 @@ const Page = (props: Props) => {
 				content3={mainData?.pathwayContent3}
 				contactLink={mainData?.pathwayContactLink}
 			/>
+			<ResourcesSection />
 		</PageWrapper>
 	);
 };

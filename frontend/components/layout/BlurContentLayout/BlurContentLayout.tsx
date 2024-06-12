@@ -33,7 +33,11 @@ const BlurContentLayoutWrapper = styled.div`
 const BlurContentLayout = (props: Props) => {
 	const { children } = props;
 
-	return <BlurContentLayoutWrapper>{children}</BlurContentLayoutWrapper>;
+	return (
+		<BlurContentLayoutWrapper className="blur-content-layout">
+			{children}
+		</BlurContentLayoutWrapper>
+	);
 };
 
 export default BlurContentLayout;

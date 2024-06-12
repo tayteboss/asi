@@ -295,6 +295,21 @@ export const GlobalStyles = createGlobalStyle`
 		}
 	}
 
+	.view-element-blur-in
+	{
+		filter: blur(10px);
+		transform: scale(0.98);
+
+		transition: all 1000ms ease;
+		transition-delay: 200ms;
+
+		&--in-view
+		{
+			filter: blur(0px);
+			transform: scale(1);
+		}
+	}
+
 	.view-element-bottom-top
 	{
 		opacity: 0;
@@ -329,11 +344,20 @@ export const GlobalStyles = createGlobalStyle`
 
 	.embla__container {
 		display: flex;
+		gap: ${pxToRem(80)};
+
+		@media ${theme.mediaBreakpoints.tabletPortrait} {
+			gap: ${pxToRem(40)};
+		}
 	}
 
 	.embla__slide {
-		flex: 0 0 100%;
-		min-width: 0;
+		flex: 0 0 15%;
+		min-width: 280px;
+
+		@media ${theme.mediaBreakpoints.tabletPortrait} {
+			min-width: 220px;
+		}
 	}
 
 	.performance {

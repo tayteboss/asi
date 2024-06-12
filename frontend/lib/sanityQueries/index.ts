@@ -33,7 +33,11 @@ export const mainPageQueryString = `
 		...,
 		"videoOne": videoOne.asset->playbackId,
 		"videoTwo": videoTwo.asset->playbackId,
-		"videoThree": videoThree.asset->playbackId
+		"videoThree": videoThree.asset->playbackId,
+		"teamMembers": teamMembers[]{
+			...,
+			"imageUrl": image.asset->url,
+		},
 	}
 `;
 
