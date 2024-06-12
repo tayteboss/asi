@@ -77,8 +77,6 @@ const MemberCard = (props: MemberCardProps) => {
 		setIsHovered
 	} = props;
 
-	console.log('isHovered', isHovered);
-
 	const { ref, inView } = useInView({
 		triggerOnce: true,
 		threshold: 0.2,

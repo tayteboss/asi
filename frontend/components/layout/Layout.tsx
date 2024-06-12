@@ -42,6 +42,7 @@ const Layout = (props: Props) => {
 				privacy={siteSettings?.privacyUrl}
 				terms={siteSettings?.termsUrl}
 				cookies={siteSettings?.cookiesUrl}
+				footerContent={siteSettings?.footerContent}
 			/>
 		</>
 	);

@@ -2,6 +2,8 @@ import Link from 'next/link';
 import styled from 'styled-components';
 import SecondaryButtonLayout from '../../layout/SecondaryButtonLayout';
 import pxToRem from '../../../utils/pxToRem';
+import LayoutWrapper from '../../layout/LayoutWrapper';
+import { PortableText } from '@portabletext/react';
 
 type Props = {
 	telegram: string | null;
@@ -9,14 +11,24 @@ type Props = {
 	privacy: string | null;
 	terms: string | null;
 	cookies: string | null;
+	footerContent: [] | null;
 };
 
-const FooterWrapper = styled.footer`
+const FooterWrapper = styled.footer``;
+
+const Inner = styled.div`
+	border-top: 1px solid var(--colour-black);
+`;
+
+const ContentWrapper = styled.div`
+	padding: ${pxToRem(20)} 0;
+`;
+
+const BottomWrapper = styled.div`
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	border-top: 1px solid var(--colour-white);
-	padding-top: ${pxToRem(26)};
+	padding: ${pxToRem(40)} 0;
 
 	@media ${(props) => props.theme.mediaBreakpoints.tabletPortrait} {
 		flex-direction: column;
@@ -45,8 +57,8 @@ const SecondaryLinksWrapper = styled.div`
 `;
 
 const TextLink = styled.span`
-	color: var(--colour-white);
-	font-size: 1rem;
+	color: var(--colour-black);
+	font-size: ${pxToRem(14)};
 
 	transition: all var(--transition-speed-default) var(--transition-ease);
 
@@ -55,46 +67,61 @@ const TextLink = styled.span`
 	}
 
 	&:hover {
-		color: var(--colour-lime);
+		text-decoration: underline;
 	}
 `;
 
 const Footer = (props: Props) => {
-	const { telegram, twitter, privacy, terms, cookies } = props;
+	const { telegram, twitter, privacy, terms, cookies, footerContent } = props;
 
 	return (
 		<FooterWrapper>
-			<LinksWrapper>
-				{telegram && (
-					<Link href={telegram} target="_blank">
-						<SecondaryButtonLayout
-							useTelegram
-							title="Join our telegram channel"
-						/>
-					</Link>
-				)}
-				{twitter && (
-					<Link href={twitter} target="_blank">
-						<SecondaryButtonLayout
-							useTwitter
-							title="Follow us on X"
-						/>
-					</Link>
-				)}
-			</LinksWrapper>
-			<SecondaryLinksWrapper>
-				<Link href={'/'} target="_blank">
-					<TextLink className="type-book">Privacy Policy</TextLink>
-				</Link>
-				<Link href={'/'} target="_blank">
-					<TextLink className="type-book">Cookie Policy</TextLink>
-				</Link>
-				<Link href={'/'} target="_blank">
-					<TextLink className="type-book">
-						Terms & Conditions
-					</TextLink>
-				</Link>
-			</SecondaryLinksWrapper>
+			<LayoutWrapper>
+				<Inner>
+					<ContentWrapper>
+						{footerContent && (
+							<PortableText value={footerContent} />
+						)}
+					</ContentWrapper>
+					<BottomWrapper>
+						<LinksWrapper>
+							{telegram && (
+								<Link href={telegram} target="_blank">
+									<SecondaryButtonLayout
+										useTelegram
+										title="Join our telegram channel"
+									/>
+								</Link>
+							)}
+							{twitter && (
+								<Link href={twitter} target="_blank">
+									<SecondaryButtonLayout
+										useTwitter
+										title="Follow us on X"
+									/>
+								</Link>
+							)}
+						</LinksWrapper>
+						<SecondaryLinksWrapper>
+							<Link href={'/'} target="_blank">
+								<TextLink className="type-book">
+									Privacy Policy
+								</TextLink>
+							</Link>
+							<Link href={'/'} target="_blank">
+								<TextLink className="type-book">
+									Cookie Policy
+								</TextLink>
+							</Link>
+							<Link href={'/'} target="_blank">
+								<TextLink className="type-book">
+									Terms & Conditions
+								</TextLink>
+							</Link>
+						</SecondaryLinksWrapper>
+					</BottomWrapper>
+				</Inner>
+			</LayoutWrapper>
 		</FooterWrapper>
 	);
 };

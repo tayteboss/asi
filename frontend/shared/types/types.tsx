@@ -105,6 +105,7 @@ export type SiteSettingsType = {
 	termsUrl: string | null;
 	twitter: string | null;
 	cookiesUrl: string | null;
+	footerContent: [] | null;
 };
 
 export type WorkPageType = {

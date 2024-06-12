@@ -17,14 +17,14 @@ const SecondaryButtonLayoutWrapper = styled.div`
 	gap: ${pxToRem(12)};
 
 	span {
-		color: var(--colour-white);
+		color: var(--colour-black);
 	}
 `;
 
 const IconWrapper = styled.div`
 	height: ${pxToRem(23)};
 	width: ${pxToRem(23)};
-	background: var(--colour-white);
+	background: var(--colour-black);
 	border-radius: 100px;
 	display: flex;
 	align-items: center;
