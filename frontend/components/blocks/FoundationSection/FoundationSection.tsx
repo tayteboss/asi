@@ -7,10 +7,11 @@ import TeamCarousel from '../TeamCarousel';
 import pxToRem from '../../../utils/pxToRem';
 
 type Props = {
-	title: string;
+	title: string | null;
 	content: MainPageType['foundationTeam'];
 	teamMembers: MainPageType['teamMembers'];
 	videoData: MainPageType['videoThree'];
+	videoMobileData?: MainPageType['videoThreeMobile'];
 };
 
 const FoundationSectionWrapper = styled.section`
@@ -23,7 +24,7 @@ const FoundationSectionWrapper = styled.section`
 `;
 
 const FoundationSection = (props: Props) => {
-	const { title, content, teamMembers, videoData } = props;
+	const { title, content, teamMembers, videoData, videoMobileData } = props;
 	return (
 		<FoundationSectionWrapper
 			className="section-padding-y"
@@ -33,7 +34,13 @@ const FoundationSection = (props: Props) => {
 				<BlurMainContent title={title} content={content} />
 			</BlurContentLayout>
 			<TeamCarousel data={teamMembers} />
-			<VideoSection data={videoData} animateIn index={2} key={2} />
+			<VideoSection
+				data={videoData}
+				mobileData={videoMobileData}
+				animateIn
+				index={2}
+				key={2}
+			/>
 		</FoundationSectionWrapper>
 	);
 };

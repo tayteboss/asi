@@ -34,10 +34,16 @@ export const mainPageQueryString = `
 		"videoOne": videoOne.asset->playbackId,
 		"videoTwo": videoTwo.asset->playbackId,
 		"videoThree": videoThree.asset->playbackId,
+		"videoOneMobile": videoOneMobile.asset->playbackId,
+		"videoTwoMobile": videoTwoMobile.asset->playbackId,
+		"videoThreeMobile": videoThreeMobile.asset->playbackId,
 		"teamMembers": teamMembers[]{
 			...,
 			"imageUrl": image.asset->url,
 		},
+		"fetchAiThumbnail": fetchAiThumbnail.asset->url,
+		"singularityNetThumbnail": singularityNetThumbnail.asset->url,
+		"oceanProtocolThumbnail": oceanProtocolThumbnail.asset->url,
 	}
 `;
 

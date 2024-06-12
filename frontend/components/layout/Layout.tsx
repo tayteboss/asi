@@ -5,6 +5,7 @@ import Header from '../common/Header';
 import Menu from '../blocks/Menu';
 import useNoScroll from '../../hooks/useNoScroll';
 import { ReactLenis, useLenis } from '@studio-freight/react-lenis';
+import Cursor from '../elements/Cursor';
 
 const siteSettings = require('../../json/siteSettings.json');
 
@@ -18,10 +19,13 @@ const Layout = (props: Props) => {
 	const { children } = props;
 
 	const [menuIsActive, setMenuIsActive] = useState(false);
+	const [cursorRefresh, setCursorRefresh] = useState(0);
 
 	const lenis = useLenis(({ scroll }) => {});
 
 	useEffect(() => useNoScroll(menuIsActive), [menuIsActive]);
+
+	console.log('siteSettings', siteSettings);
 
 	return (
 		<>
@@ -32,6 +36,7 @@ const Layout = (props: Props) => {
 			<Header
 				setMenuIsActive={setMenuIsActive}
 				menuIsActive={menuIsActive}
+				logo={siteSettings?.logoSvg}
 			/>
 			<ReactLenis root>
 				<Main>{children}</Main>
@@ -44,6 +49,7 @@ const Layout = (props: Props) => {
 				cookies={siteSettings?.cookiesUrl}
 				footerContent={siteSettings?.footerContent}
 			/>
+			<Cursor cursorRefresh={() => setCursorRefresh(cursorRefresh + 1)} />
 		</>
 	);
 };

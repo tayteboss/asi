@@ -50,6 +50,7 @@ const Page = (props: Props) => {
 			<HeroSection
 				title={mainData?.heroTitle}
 				videoData={mainData?.videoOne}
+				videoMobileData={mainData?.videoOneMobile}
 			/>
 			<WhatIsAsiSection
 				title={mainData?.whatIsAsiHeading}
@@ -57,34 +58,45 @@ const Page = (props: Props) => {
 				content={mainData?.whatIsAsiContent}
 			/>
 			<AllianceSection
-				title="About the Alliance"
+				title={mainData?.aboutTheAllianceHeading}
 				content={mainData?.aboutTheAlliance}
+				fetchAiThumbnail={mainData?.fetchAiThumbnail}
 				fetchAiContent={mainData?.fetchAiContent}
 				fetchAiLink={mainData?.fetchAiLink}
+				singularityNetThumbnail={mainData?.singularityNetThumbnail}
 				singularityNetContent={mainData?.singularityNetContent}
 				singularityNetLink={mainData?.singularityNetLink}
+				oceanProtocolThumbnail={mainData?.oceanProtocolThumbnail}
 				oceanProtocolContent={mainData?.oceanProtocolContent}
 				oceanProtocolLink={mainData?.oceanProtocolLink}
 				videoData={mainData?.videoTwo}
+				videoMobileData={mainData?.videoTwoMobile}
 			/>
 			<TokenSection
-				title="Token Merge"
+				title={mainData?.tokenMergeHeading}
 				content={mainData?.tokenMerge}
+				heading1={mainData?.tokenMergeHeading1}
 				content1={mainData?.tokenMergeContent1}
+				heading2={mainData?.tokenMergeHeading2}
 				content2={mainData?.tokenMergeContent2}
+				heading3={mainData?.tokenMergeHeading3}
 				content3={mainData?.tokenMergeContent3}
 			/>
 			<FoundationSection
-				title="Foundation Team"
+				title={mainData?.foundationTeamHeading}
 				content={mainData?.foundationTeam}
 				teamMembers={mainData?.teamMembers}
 				videoData={mainData?.videoThree}
+				videoMobileData={mainData?.videoThreeMobile}
 			/>
 			<PathwaySection
-				title="Pathway to ASI"
+				title={mainData?.pathwayToAsiHeading}
 				content={mainData?.pathwayToAsi}
+				heading1={mainData?.pathwayHeading1}
 				content1={mainData?.pathwayContent1}
+				heading2={mainData?.pathwayHeading2}
 				content2={mainData?.pathwayContent2}
+				heading3={mainData?.pathwayHeading3}
 				content3={mainData?.pathwayContent3}
 				contactLink={mainData?.pathwayContactLink}
 			/>

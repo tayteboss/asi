@@ -6,6 +6,16 @@ type Props = {
 };
 
 const BlurContentLayoutWrapper = styled.div`
+	@media ${(props) => props.theme.mediaBreakpoints.tabletMedium} {
+		padding: 0 16px;
+	}
+
+	@media ${(props) => props.theme.mediaBreakpoints.mobile} {
+		padding: 0 8px;
+	}
+`;
+
+const Inner = styled.div`
 	padding: ${pxToRem(50)};
 	backdrop-filter: blur(30px);
 	width: ${pxToRem(980)};
@@ -20,12 +30,10 @@ const BlurContentLayoutWrapper = styled.div`
 
 	@media ${(props) => props.theme.mediaBreakpoints.tabletMedium} {
 		width: 100%;
-		margin: 0 ${pxToRem(16)};
 		padding: ${pxToRem(32)};
 	}
 
 	@media ${(props) => props.theme.mediaBreakpoints.mobile} {
-		margin: 0 ${pxToRem(8)};
 		padding: ${pxToRem(16)};
 	}
 `;
@@ -35,7 +43,7 @@ const BlurContentLayout = (props: Props) => {
 
 	return (
 		<BlurContentLayoutWrapper className="blur-content-layout">
-			{children}
+			<Inner>{children}</Inner>
 		</BlurContentLayoutWrapper>
 	);
 };

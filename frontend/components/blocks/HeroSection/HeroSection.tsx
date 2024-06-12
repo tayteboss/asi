@@ -10,13 +10,7 @@ import useViewportWidth from '../../../hooks/useViewportWidth';
 import SingularityLogo from '../../svgs/SingularityLogo';
 import FetchLogoSvg from '../../svgs/FetchLogoSvg';
 import OceanLogoSvg from '../../svgs/OceanLogoSvg';
-import VideoSection from '../VideoSection';
 import HeroVideoSection from '../HeroVideoSection';
-
-type Props = {
-	title: MainPageType['heroTitle'];
-	videoData: MainPageType['videoOne'];
-};
 
 const wrapperVariants = {
 	hidden: {
@@ -129,8 +123,14 @@ const SecondaryLogosWrapper = styled.div`
 	}
 `;
 
+type Props = {
+	title: MainPageType['heroTitle'];
+	videoData: MainPageType['videoOne'];
+	videoMobileData: MainPageType['videoOneMobile'];
+};
+
 const HeroSection = (props: Props) => {
-	const { title, videoData } = props;
+	const { title, videoData, videoMobileData } = props;
 
 	const { ref, inView } = useInView({
 		triggerOnce: true,
@@ -192,7 +192,7 @@ const HeroSection = (props: Props) => {
 					</SecondaryLogosWrapper>
 				</LogosWrapper>
 			</LayoutWrapper>
-			<HeroVideoSection data={videoData} />
+			<HeroVideoSection data={videoData} mobileData={videoMobileData} />
 		</HeroSectionWrapper>
 	);
 };

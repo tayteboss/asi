@@ -55,6 +55,14 @@ export type ImageType = {
 	};
 };
 
+export type IconCarouselProps = {
+	type: 'fetch' | 'singularity' | 'ocean';
+	title: string;
+	content: string | null;
+	link: string | null;
+	image: string | null;
+}[];
+
 export type MuxVideoType = {
 	asset: {
 		playbackId: string;
@@ -73,30 +81,46 @@ export type MainPageType = {
 	seoTitle: string | null;
 	seoDescription: string | null;
 	aboutTheAlliance: string | null;
+	aboutTheAllianceHeading: string | null;
 	fetchAiContent: string | null;
 	fetchAiLink: string | null;
+	foundationTeamHeading: string | null;
 	foundationTeam: string | null;
 	heroTitle: string | null;
 	oceanProtocolContent: string | null;
 	oceanProtocolLink: string | null;
 	pathwayContactLink: string | null;
+	pathwayHeading1: string | null;
+	pathwayHeading2: string | null;
+	pathwayHeading3: string | null;
 	pathwayContent1: [] | null;
 	pathwayContent2: [] | null;
 	pathwayContent3: [] | null;
+	pathwayToAsiHeading: string | null;
 	pathwayToAsi: string | null;
 	singularityNetContent: string | null;
 	singularityNetLink: string | null;
 	teamMembers: TeamMemberType[] | null;
+	tokenMergeHeading: string | null;
 	tokenMerge: string | null;
 	tokenMergeContent1: [] | null;
 	tokenMergeContent2: [] | null;
 	tokenMergeContent3: [] | null;
+	tokenMergeHeading1: string | null;
+	tokenMergeHeading2: string | null;
+	tokenMergeHeading3: string | null;
 	whatIsAsiContent: string | null;
 	whatIsAsiHeading: string | null;
 	whatIsAsiSubheading: string | null;
 	videoOne: string | null;
+	videoOneMobile: string | null;
 	videoTwo: string | null;
+	videoTwoMobile: string | null;
 	videoThree: string | null;
+	videoThreeMobile: string | null;
+	oceanProtocolThumbnail: string | null;
+	singularityNetThumbnail: string | null;
+	fetchAiThumbnail: string | null;
 };
 
 export type SiteSettingsType = {
@@ -106,6 +130,7 @@ export type SiteSettingsType = {
 	twitter: string | null;
 	cookiesUrl: string | null;
 	footerContent: [] | null;
+	logoSvg: string | null;
 };
 
 export type WorkPageType = {

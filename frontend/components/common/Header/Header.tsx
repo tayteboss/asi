@@ -5,6 +5,7 @@ import LogoSvg from '../../svgs/LogoSvg';
 import MenuTrigger from '../../elements/MenuTrigger';
 import HeaderDecoration from '../../blocks/HeaderDecoration';
 import useScrolled from '../../../hooks/useScrolled';
+import { SiteSettingsType } from '../../../shared/types/types';
 
 type StyledProps = {
 	$hasScrolled: boolean;
@@ -14,6 +15,7 @@ type StyledProps = {
 type Props = {
 	setMenuIsActive: (isActive: boolean) => void;
 	menuIsActive: boolean;
+	logo: SiteSettingsType['logoSvg'];
 };
 
 const HeaderWrapper = styled.header`
@@ -53,7 +55,7 @@ const LogoWrapper = styled.div<StyledProps>`
 		padding: ${pxToRem(12)} ${pxToRem(8)};
 	}
 
-	svg {
+	img {
 		width: ${(props) => (props.$hasScrolled ? pxToRem(200) : pxToRem(300))};
 		height: auto;
 
@@ -70,7 +72,7 @@ const LogoWrapper = styled.div<StyledProps>`
 `;
 
 const Header = (props: Props) => {
-	const { setMenuIsActive, menuIsActive } = props;
+	const { setMenuIsActive, menuIsActive, logo } = props;
 
 	const hasScrolled = useScrolled(200);
 
@@ -83,7 +85,7 @@ const Header = (props: Props) => {
 						$hasScrolled={hasScrolled}
 						$menuIsActive={menuIsActive}
 					>
-						<LogoSvg />
+						{logo && <img src={logo} alt="logo" />}
 					</LogoWrapper>
 				</Link>
 				<MenuTrigger

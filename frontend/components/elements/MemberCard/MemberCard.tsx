@@ -24,6 +24,15 @@ const MemberCardWrapper = styled.div<{ $isHovered: boolean }>`
 		}
 	}
 
+	@media ${(props) => props.theme.mediaBreakpoints.tabletPortrait} {
+		filter: none !important;
+		transform: none !important;
+
+		img {
+			transform: scale(1.05);
+		}
+	}
+
 	img {
 		transition: all 4000ms ease;
 	}

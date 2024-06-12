@@ -12,6 +12,7 @@ const getSiteData = async () => {
     const query = `
     *[_type == "siteSettings"][0] {
         ...,
+        "logoSvg": logoSvg.asset->url,
     }
   `;
 

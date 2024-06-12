@@ -3,9 +3,11 @@ import { MainPageType } from '../../../shared/types/types';
 import MuxPlayer from '@mux/mux-player-react';
 import { motion, useViewportScroll, useTransform } from 'framer-motion';
 import { useState, useRef, useEffect } from 'react';
+import useViewportWidth from '../../../hooks/useViewportWidth';
 
 type Props = {
 	data: MainPageType['videoOne'];
+	mobileData?: MainPageType['videoOne'];
 };
 
 const HeroVideoSectionWrapper = styled(motion.div)`
@@ -25,15 +27,17 @@ const HeroVideoSectionWrapper = styled(motion.div)`
 `;
 
 const HeroVideoSection = (props: Props) => {
-	const { data } = props;
+	const { data, mobileData } = props;
 
 	const [windowHeight, setWindowHeight] = useState(0);
 	const [distanceToTop, setDistanceToTop] = useState(0);
-	const [isReady, setIsReady] = useState(false);
 
 	const wrapperRef = useRef<HTMLDivElement>(null);
 
 	const { scrollY } = useViewportScroll();
+
+	const viewport = useViewportWidth();
+	const mobile = viewport === 'mobile';
 
 	useEffect(() => {
 		const handleScroll = () => {
@@ -46,6 +50,8 @@ const HeroVideoSection = (props: Props) => {
 
 			setWindowHeight(window.innerHeight);
 		};
+
+		handleScroll();
 
 		window.addEventListener('scroll', handleScroll);
 
@@ -60,6 +66,8 @@ const HeroVideoSection = (props: Props) => {
 		[0, 1000]
 	);
 
+	const videoData = mobile && mobileData ? mobileData : data;
+
 	return (
 		<HeroVideoSectionWrapper
 			style={{ y }}
@@ -70,27 +78,27 @@ const HeroVideoSection = (props: Props) => {
 				visible: {
 					opacity: 1,
 					transition: {
-						duration: 0.5
+						duration: 0.5,
+						delay: 1
 					}
 				}
 			}}
 			initial="hidden"
-			animate={isReady ? 'visible' : 'hidden'}
+			animate="visible"
 			exit="hidden"
 			key={'intro-video'}
 			ref={wrapperRef}
 		>
-			{data && (
+			{videoData && (
 				<MuxPlayer
 					streamType="on-demand"
-					playbackId={data}
+					playbackId={videoData}
 					autoPlay="muted"
 					loop={true}
 					thumbnailTime={1}
 					preload="auto"
 					muted
 					playsInline={true}
-					onLoadedData={() => setIsReady(true)}
 				/>
 			)}
 		</HeroVideoSectionWrapper>

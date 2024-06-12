@@ -92,13 +92,25 @@ export default {
       fieldset: 'whatIsAsi',
     },
     {
-      title: 'About the alliance',
+      title: 'About the Alliance Heading',
+      name: 'aboutTheAllianceHeading',
+      type: 'string',
+      fieldset: 'alliances',
+    },
+    {
+      title: 'About the Alliance Content',
       name: 'aboutTheAlliance',
       type: 'text',
       fieldset: 'alliances',
     },
     {
-      title: 'Fetch.ai content',
+      title: 'Fetch.ai Thumbnail',
+      name: 'fetchAiThumbnail',
+      type: 'image',
+      fieldset: 'alliances',
+    },
+    {
+      title: 'Fetch.ai Content',
       name: 'fetchAiContent',
       type: 'text',
       fieldset: 'alliances',
@@ -110,7 +122,13 @@ export default {
       fieldset: 'alliances',
     },
     {
-      title: 'Singularity.Net content',
+      title: 'Singularity.Net Thumbnail',
+      name: 'singularityNetThumbnail',
+      type: 'image',
+      fieldset: 'alliances',
+    },
+    {
+      title: 'Singularity.Net Content',
       name: 'singularityNetContent',
       type: 'text',
       fieldset: 'alliances',
@@ -122,7 +140,13 @@ export default {
       fieldset: 'alliances',
     },
     {
-      title: 'Ocean Protocol content',
+      title: 'Ocean Protocol Thumbnail',
+      name: 'oceanProtocolThumbnail',
+      type: 'image',
+      fieldset: 'alliances',
+    },
+    {
+      title: 'Ocean Protocol Content',
       name: 'oceanProtocolContent',
       type: 'text',
       fieldset: 'alliances',
@@ -134,13 +158,25 @@ export default {
       fieldset: 'alliances',
     },
     {
-      title: 'Token Merge',
+      title: 'Token Merge Heading',
+      name: 'tokenMergeHeading',
+      type: 'string',
+      fieldset: 'tokenMerge',
+    },
+    {
+      title: 'Token Merge Content',
       name: 'tokenMerge',
       type: 'text',
       fieldset: 'tokenMerge',
     },
     {
-      title: 'Token Merge About',
+      title: 'Token Merge Column 1 Heading',
+      name: 'tokenMergeHeading1',
+      type: 'string',
+      fieldset: 'tokenMerge',
+    },
+    {
+      title: 'Token Merge Column 1 Content',
       name: 'tokenMergeContent1',
       type: 'array',
       of: [
@@ -157,7 +193,13 @@ export default {
       fieldset: 'tokenMerge',
     },
     {
-      title: 'Token Merge Merger',
+      title: 'Token Merge Column 2 Heading',
+      name: 'tokenMergeHeading2',
+      type: 'string',
+      fieldset: 'tokenMerge',
+    },
+    {
+      title: 'Token Merge Column 2 Content',
       name: 'tokenMergeContent2',
       type: 'array',
       of: [
@@ -174,7 +216,13 @@ export default {
       fieldset: 'tokenMerge',
     },
     {
-      title: 'Token Merge Migration Ratio',
+      title: 'Token Merge Column 3 Heading',
+      name: 'tokenMergeHeading3',
+      type: 'string',
+      fieldset: 'tokenMerge',
+    },
+    {
+      title: 'Token Merge Column 3 Content',
       name: 'tokenMergeContent3',
       type: 'array',
       of: [
@@ -191,7 +239,13 @@ export default {
       fieldset: 'tokenMerge',
     },
     {
-      title: 'Foundation Team',
+      title: 'Foundation Team Heading',
+      name: 'foundationTeamHeading',
+      type: 'string',
+      fieldset: 'foundationTeam',
+    },
+    {
+      title: 'Foundation Team Content',
       name: 'foundationTeam',
       type: 'text',
       fieldset: 'foundationTeam',
@@ -204,13 +258,25 @@ export default {
       fieldset: 'foundationTeam',
     },
     {
-      title: 'Pathway to ASI',
+      title: 'Pathway to ASI Heading',
+      name: 'pathwayToAsiHeading',
+      type: 'string',
+      fieldset: 'pathwayToAsi',
+    },
+    {
+      title: 'Pathway to ASI Content',
       name: 'pathwayToAsi',
       type: 'text',
       fieldset: 'pathwayToAsi',
     },
     {
-      title: 'Pathway Application',
+      title: 'Pathway Column 1 Heading',
+      name: 'pathwayHeading1',
+      type: 'string',
+      fieldset: 'pathwayToAsi',
+    },
+    {
+      title: 'Pathway Column 1 Content',
       name: 'pathwayContent1',
       type: 'array',
       of: [
@@ -227,7 +293,13 @@ export default {
       fieldset: 'pathwayToAsi',
     },
     {
-      title: 'Pathway Types of Members',
+      title: 'Pathway Column 2 Heading',
+      name: 'pathwayHeading2',
+      type: 'string',
+      fieldset: 'pathwayToAsi',
+    },
+    {
+      title: 'Pathway Column 2 Content',
       name: 'pathwayContent2',
       type: 'array',
       of: [
@@ -244,7 +316,13 @@ export default {
       fieldset: 'pathwayToAsi',
     },
     {
-      title: 'Pathway Contact',
+      title: 'Pathway Contact Heading',
+      name: 'pathwayHeading3',
+      type: 'string',
+      fieldset: 'pathwayToAsi',
+    },
+    {
+      title: 'Pathway Contact Content',
       name: 'pathwayContent3',
       type: 'array',
       of: [
@@ -285,20 +363,38 @@ export default {
     //   fieldset: 'resources',
     // },
     {
-      title: 'Video one',
+      title: 'Video One Desktop',
       name: 'videoOne',
       type: 'mux.video',
       fieldset: 'media',
     },
     {
-      title: 'Video two',
+      title: 'Video One Mobile',
+      name: 'videoOneMobile',
+      type: 'mux.video',
+      fieldset: 'media',
+    },
+    {
+      title: 'Video Two Desktop',
       name: 'videoTwo',
       type: 'mux.video',
       fieldset: 'media',
     },
     {
-      title: 'Video three',
+      title: 'Video Two Mobile',
+      name: 'videoTwoMobile',
+      type: 'mux.video',
+      fieldset: 'media',
+    },
+    {
+      title: 'Video Three Desktop',
       name: 'videoThree',
+      type: 'mux.video',
+      fieldset: 'media',
+    },
+    {
+      title: 'Video Three Mobile',
+      name: 'videoThreeMobile',
       type: 'mux.video',
       fieldset: 'media',
     },

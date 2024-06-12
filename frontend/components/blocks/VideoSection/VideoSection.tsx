@@ -3,9 +3,11 @@ import { MainPageType } from '../../../shared/types/types';
 import MuxPlayer from '@mux/mux-player-react';
 import { motion, useTransform, useViewportScroll } from 'framer-motion';
 import { useEffect, useRef, useState } from 'react';
+import useViewportWidth from '../../../hooks/useViewportWidth';
 
 type Props = {
 	data: MainPageType['videoOne'];
+	mobileData?: MainPageType['videoOneMobile'];
 	animateIn?: boolean;
 	index: number;
 };
@@ -20,8 +22,6 @@ const VideoSectionWrapper = styled(motion.div)`
 
 	@media ${(props) => props.theme.mediaBreakpoints.tabletPortrait} {
 		top: 0;
-		width: 200%;
-		transform: translateX(-50%);
 	}
 
 	mux-player {
@@ -32,7 +32,7 @@ const VideoSectionWrapper = styled(motion.div)`
 `;
 
 const VideoSection = (props: Props) => {
-	const { data, animateIn = false, index } = props;
+	const { data, animateIn = false, index, mobileData } = props;
 
 	const [windowHeight, setWindowHeight] = useState(0);
 	const [distanceToTop, setDistanceToTop] = useState(0);
@@ -40,6 +40,9 @@ const VideoSection = (props: Props) => {
 	const wrapperRef = useRef<HTMLDivElement>(null);
 
 	const { scrollY } = useViewportScroll();
+
+	const viewport = useViewportWidth();
+	const mobile = viewport === 'mobile';
 
 	useEffect(() => {
 		const handleScroll = () => {
@@ -66,6 +69,8 @@ const VideoSection = (props: Props) => {
 		[0, 1000]
 	);
 
+	const videoData = mobile && mobileData ? mobileData : data;
+
 	return (
 		<VideoSectionWrapper
 			style={{ y }}
@@ -87,10 +92,10 @@ const VideoSection = (props: Props) => {
 			key={index}
 			ref={wrapperRef}
 		>
-			{data && (
+			{videoData && (
 				<MuxPlayer
 					streamType="on-demand"
-					playbackId={data}
+					playbackId={videoData}
 					autoPlay="muted"
 					loop={true}
 					thumbnailTime={1}
