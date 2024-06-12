@@ -15,6 +15,7 @@ type Props = {
 
 const FoundationSectionWrapper = styled.section`
 	position: relative;
+	z-index: 2;
 
 	.blur-content-layout {
 		margin-bottom: ${pxToRem(40)};

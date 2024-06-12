@@ -1,11 +1,9 @@
-import { title } from 'process';
 import styled from 'styled-components';
 import ColumnCard from '../../elements/ColumnCard';
 import BlurContentLayout from '../../layout/BlurContentLayout';
 import ColumnsWrapper from '../../layout/ColumnsWrapper';
 import BlurMainContent from '../BlurMainContent';
 import { MainPageType } from '../../../shared/types/types';
-import VideoSection from '../VideoSection';
 
 type Props = {
 	title: string;
@@ -13,7 +11,6 @@ type Props = {
 	content1: MainPageType['tokenMergeContent1'];
 	content2: MainPageType['tokenMergeContent2'];
 	content3: MainPageType['tokenMergeContent3'];
-	videoData: MainPageType['videoTwo'];
 };
 
 const TokenSectionWrapper = styled.section`
@@ -22,7 +19,7 @@ const TokenSectionWrapper = styled.section`
 `;
 
 const TokenSection = (props: Props) => {
-	const { title, content, content1, content2, content3, videoData } = props;
+	const { title, content, content1, content2, content3 } = props;
 
 	return (
 		<TokenSectionWrapper className="section-padding-y" id="token-merge">
@@ -34,7 +31,6 @@ const TokenSection = (props: Props) => {
 					<ColumnCard title="Migration Ratio" content={content3} />
 				</ColumnsWrapper>
 			</BlurContentLayout>
-			<VideoSection data={videoData} animateIn index={2} key={2} />
 		</TokenSectionWrapper>
 	);
 };

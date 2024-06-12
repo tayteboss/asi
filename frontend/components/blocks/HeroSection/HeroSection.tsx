@@ -11,6 +11,7 @@ import SingularityLogo from '../../svgs/SingularityLogo';
 import FetchLogoSvg from '../../svgs/FetchLogoSvg';
 import OceanLogoSvg from '../../svgs/OceanLogoSvg';
 import VideoSection from '../VideoSection';
+import HeroVideoSection from '../HeroVideoSection';
 
 type Props = {
 	title: MainPageType['heroTitle'];
@@ -191,7 +192,7 @@ const HeroSection = (props: Props) => {
 					</SecondaryLogosWrapper>
 				</LogosWrapper>
 			</LayoutWrapper>
-			<VideoSection data={videoData} animateIn index={1} key={1} />
+			<HeroVideoSection data={videoData} />
 		</HeroSectionWrapper>
 	);
 };

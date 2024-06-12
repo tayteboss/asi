@@ -1,28 +1,21 @@
 import styled from 'styled-components';
 import { MainPageType } from '../../../shared/types/types';
 import MuxPlayer from '@mux/mux-player-react';
-import { motion, useTransform, useViewportScroll } from 'framer-motion';
-import { useEffect, useRef, useState } from 'react';
+import { motion, useViewportScroll, useTransform } from 'framer-motion';
+import { useState, useRef, useEffect } from 'react';
 
 type Props = {
 	data: MainPageType['videoOne'];
-	animateIn?: boolean;
-	index: number;
 };
 
-const VideoSectionWrapper = styled(motion.div)`
+const HeroVideoSectionWrapper = styled(motion.div)`
 	position: absolute;
-	top: -10vh;
+	top: 0;
 	left: 0;
 	width: 100%;
-	height: auto;
+	height: 100dvh;
 	z-index: 1;
-
-	@media ${(props) => props.theme.mediaBreakpoints.tabletPortrait} {
-		top: 0;
-		width: 200%;
-		transform: translateX(-50%);
-	}
+	overflow: hidden;
 
 	mux-player {
 		width: 100%;
@@ -31,11 +24,12 @@ const VideoSectionWrapper = styled(motion.div)`
 	}
 `;
 
-const VideoSection = (props: Props) => {
-	const { data, animateIn = false, index } = props;
+const HeroVideoSection = (props: Props) => {
+	const { data } = props;
 
 	const [windowHeight, setWindowHeight] = useState(0);
 	const [distanceToTop, setDistanceToTop] = useState(0);
+	const [isReady, setIsReady] = useState(false);
 
 	const wrapperRef = useRef<HTMLDivElement>(null);
 
@@ -67,7 +61,7 @@ const VideoSection = (props: Props) => {
 	);
 
 	return (
-		<VideoSectionWrapper
+		<HeroVideoSectionWrapper
 			style={{ y }}
 			variants={{
 				hidden: {
@@ -76,15 +70,14 @@ const VideoSection = (props: Props) => {
 				visible: {
 					opacity: 1,
 					transition: {
-						duration: 0.5,
-						delay: 1
+						duration: 0.5
 					}
 				}
 			}}
 			initial="hidden"
-			animate={animateIn ? 'visible' : 'hidden'}
+			animate={isReady ? 'visible' : 'hidden'}
 			exit="hidden"
-			key={index}
+			key={'intro-video'}
 			ref={wrapperRef}
 		>
 			{data && (
@@ -97,10 +90,11 @@ const VideoSection = (props: Props) => {
 					preload="auto"
 					muted
 					playsInline={true}
+					onLoadedData={() => setIsReady(true)}
 				/>
 			)}
-		</VideoSectionWrapper>
+		</HeroVideoSectionWrapper>
 	);
 };
 
-export default VideoSection;
+export default HeroVideoSection;

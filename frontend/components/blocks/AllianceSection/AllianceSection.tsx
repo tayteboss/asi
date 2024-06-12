@@ -4,6 +4,7 @@ import BlurContentLayout from '../../layout/BlurContentLayout';
 import BlurMainContent from '../BlurMainContent';
 import ColumnsWrapper from '../../layout/ColumnsWrapper';
 import ColumnCard from '../../elements/ColumnCard';
+import VideoSection from '../VideoSection';
 
 type Props = {
 	title: string;
@@ -14,6 +15,7 @@ type Props = {
 	singularityNetLink: MainPageType['singularityNetLink'];
 	oceanProtocolContent: MainPageType['oceanProtocolContent'];
 	oceanProtocolLink: MainPageType['oceanProtocolLink'];
+	videoData: MainPageType['videoTwo'];
 };
 
 const AllianceSectionWrapper = styled.section`
@@ -30,7 +32,8 @@ const AllianceSection = (props: Props) => {
 		singularityNetContent,
 		singularityNetLink,
 		oceanProtocolContent,
-		oceanProtocolLink
+		oceanProtocolLink,
+		videoData
 	} = props;
 
 	return (
@@ -61,6 +64,7 @@ const AllianceSection = (props: Props) => {
 					/>
 				</ColumnsWrapper>
 			</BlurContentLayout>
+			<VideoSection data={videoData} animateIn index={2} key={2} />
 		</AllianceSectionWrapper>
 	);
 };

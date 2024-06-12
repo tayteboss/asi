@@ -64,6 +64,7 @@ const Page = (props: Props) => {
 				singularityNetLink={mainData?.singularityNetLink}
 				oceanProtocolContent={mainData?.oceanProtocolContent}
 				oceanProtocolLink={mainData?.oceanProtocolLink}
+				videoData={mainData?.videoTwo}
 			/>
 			<TokenSection
 				title="Token Merge"
@@ -71,7 +72,6 @@ const Page = (props: Props) => {
 				content1={mainData?.tokenMergeContent1}
 				content2={mainData?.tokenMergeContent2}
 				content3={mainData?.tokenMergeContent3}
-				videoData={mainData?.videoTwo}
 			/>
 			<FoundationSection
 				title="Foundation Team"
