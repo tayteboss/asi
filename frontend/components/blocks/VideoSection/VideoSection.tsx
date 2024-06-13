@@ -20,6 +20,7 @@ const VideoSectionWrapper = styled(motion.div)`
 	height: auto;
 	z-index: 1;
 	mix-blend-mode: multiply;
+	overflow: hidden;
 
 	* {
 		mix-blend-mode: multiply;
@@ -29,7 +30,6 @@ const VideoSectionWrapper = styled(motion.div)`
 	@media ${(props) => props.theme.mediaBreakpoints.tabletPortrait} {
 		top: 0;
 		height: 150vh;
-		left: 50%;
 		transform: translateX(-50%);
 	}
 
