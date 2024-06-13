@@ -47,7 +47,7 @@ const Layout = (props: Props) => {
 				cookies={siteSettings?.cookiesUrl}
 				footerContent={siteSettings?.footerContent}
 			/>
-			<Cursor cursorRefresh={() => setCursorRefresh(cursorRefresh + 1)} />
+			{/* <Cursor cursorRefresh={() => setCursorRefresh(cursorRefresh + 1)} /> */}
 		</>
 	);
 };

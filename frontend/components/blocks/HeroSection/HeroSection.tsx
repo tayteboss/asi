@@ -51,7 +51,7 @@ const titleVariants = {
 };
 
 const HeroSectionWrapper = styled.section`
-	height: 100dvh;
+	height: 100svh;
 	display: flex;
 	flex-direction: column;
 	align-items: flex-start;

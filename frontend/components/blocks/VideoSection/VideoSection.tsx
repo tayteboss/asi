@@ -28,6 +28,9 @@ const VideoSectionWrapper = styled(motion.div)`
 
 	@media ${(props) => props.theme.mediaBreakpoints.tabletPortrait} {
 		top: 0;
+		height: 150vh;
+		left: 50%;
+		transform: translateX(-50%);
 	}
 
 	mux-player {
