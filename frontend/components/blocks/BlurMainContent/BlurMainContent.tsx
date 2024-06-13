@@ -8,12 +8,17 @@ type Props = {
 	title?: string | null;
 	subheading?: string | null;
 	content?: string | null;
+	useLargeTitle?: boolean;
 };
 
 const BlurMainContentWrapper = styled.div``;
 
 const Title = styled.h2`
 	margin-bottom: ${pxToRem(40)};
+
+	@media ${(props) => props.theme.mediaBreakpoints.tabletPortrait} {
+		margin-bottom: ${pxToRem(28)};
+	}
 `;
 
 const Subheading = styled.h3`
@@ -23,7 +28,7 @@ const Subheading = styled.h3`
 const Content = styled.div``;
 
 const BlurMainContent = (props: Props) => {
-	const { title, subheading, content } = props;
+	const { title, useLargeTitle = false, subheading, content } = props;
 
 	const { ref, inView } = useInView({
 		triggerOnce: true,
@@ -34,7 +39,14 @@ const BlurMainContent = (props: Props) => {
 	return (
 		<BlurMainContentWrapper>
 			{title && (
-				<Title className="type-h2 type-h2--blur-in" ref={ref}>
+				<Title
+					className={`${
+						useLargeTitle
+							? 'type-h1 type-h1--blur-in'
+							: 'type-h2 type-h2--blur-in'
+					}`}
+					ref={ref}
+				>
 					<AnimateText text={title} active={inView} />
 				</Title>
 			)}

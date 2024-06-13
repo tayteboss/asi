@@ -31,7 +31,7 @@ const TopBar = styled.div`
 	@media ${(props) => props.theme.mediaBreakpoints.tabletPortrait} {
 		flex-direction: column;
 		align-items: flex-start;
-		gap: ${pxToRem(16)};
+		gap: ${pxToRem(24)};
 		margin-bottom: ${pxToRem(40)};
 	}
 `;
@@ -42,13 +42,13 @@ const LinksWrapper = styled.div`
 	gap: ${pxToRem(32)};
 
 	@media ${(props) => props.theme.mediaBreakpoints.tabletPortrait} {
-		gap: ${pxToRem(16)};
+		gap: ${pxToRem(24)};
 	}
 
 	@media ${(props) => props.theme.mediaBreakpoints.mobile} {
 		flex-direction: column;
 		align-items: flex-start;
-		gap: ${pxToRem(8)};
+		gap: ${pxToRem(24)};
 	}
 `;
 

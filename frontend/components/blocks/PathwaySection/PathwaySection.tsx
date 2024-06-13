@@ -41,8 +41,12 @@ const PathwaySection = (props: Props) => {
 			className="section-padding-y"
 			id="pathway-to-asi"
 		>
-			<BlurContentLayout>
-				<BlurMainContent title={title} content={content} />
+			<BlurContentLayout useGreen>
+				<BlurMainContent
+					title={title}
+					useLargeTitle
+					content={content}
+				/>
 				<ColumnsWrapper>
 					<ColumnCard title={heading1} content={content1} />
 					<ColumnCard title={heading2} content={content2} />
@@ -51,6 +55,7 @@ const PathwaySection = (props: Props) => {
 						content={content3}
 						link={contactLink}
 						linkTitle="Enquire"
+						useDarkLink
 					/>
 				</ColumnsWrapper>
 			</BlurContentLayout>

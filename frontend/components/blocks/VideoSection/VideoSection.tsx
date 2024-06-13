@@ -19,6 +19,12 @@ const VideoSectionWrapper = styled(motion.div)`
 	width: 100%;
 	height: auto;
 	z-index: 1;
+	mix-blend-mode: multiply;
+
+	* {
+		mix-blend-mode: multiply;
+		pointer-events: none;
+	}
 
 	@media ${(props) => props.theme.mediaBreakpoints.tabletPortrait} {
 		top: 0;

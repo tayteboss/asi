@@ -3,25 +3,25 @@ import pxToRem from '../../../utils/pxToRem';
 
 type Props = {
 	children?: React.ReactNode;
+	useGreen?: boolean;
 };
 
 const BlurContentLayoutWrapper = styled.div`
 	@media ${(props) => props.theme.mediaBreakpoints.tabletMedium} {
 		padding: 0 16px;
 	}
-
-	@media ${(props) => props.theme.mediaBreakpoints.mobile} {
-		padding: 0 8px;
-	}
 `;
 
-const Inner = styled.div`
+const Inner = styled.div<{ $useGreen: boolean }>`
 	padding: ${pxToRem(50)};
 	backdrop-filter: blur(30px);
 	width: ${pxToRem(980)};
 	margin: 0 auto;
 	border-radius: ${pxToRem(20)};
-	background: rgba(255, 255, 255, 0.2);
+	background: ${(props) =>
+		props.$useGreen
+			? 'rgba(177, 252, 171, 0.70)'
+			: 'rgba(255, 255, 255, 0.2)'};
 	display: flex;
 	flex-direction: column;
 	gap: ${pxToRem(50)};
@@ -32,18 +32,14 @@ const Inner = styled.div`
 		width: 100%;
 		padding: ${pxToRem(32)};
 	}
-
-	@media ${(props) => props.theme.mediaBreakpoints.mobile} {
-		padding: ${pxToRem(16)};
-	}
 `;
 
 const BlurContentLayout = (props: Props) => {
-	const { children } = props;
+	const { children, useGreen = false } = props;
 
 	return (
 		<BlurContentLayoutWrapper className="blur-content-layout">
-			<Inner>{children}</Inner>
+			<Inner $useGreen={useGreen}>{children}</Inner>
 		</BlurContentLayoutWrapper>
 	);
 };

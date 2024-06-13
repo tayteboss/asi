@@ -31,6 +31,10 @@ const AllianceSectionWrapper = styled.section`
 
 	.blur-content-layout {
 		margin-bottom: ${pxToRem(40)};
+
+		@media ${(props) => props.theme.mediaBreakpoints.tabletPortrait} {
+			margin-bottom: ${pxToRem(24)};
+		}
 	}
 `;
 

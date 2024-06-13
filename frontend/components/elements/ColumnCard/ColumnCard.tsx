@@ -14,7 +14,8 @@ type Props = {
 	content: string | null | [];
 	link?: string | null;
 	linkTitle?: string;
-	image: string | null;
+	image?: string | null;
+	useDarkLink?: boolean;
 };
 
 const ColumnCardWrapper = styled(motion.div)`
@@ -59,6 +60,13 @@ const Title = styled.h3`
 	line-height: ${pxToRem(44)};
 	letter-spacing: -1.2px;
 	font-weight: 200;
+
+	@media ${(props) => props.theme.mediaBreakpoints.tabletPortrait} {
+		font-size: ${pxToRem(30)};
+		line-height: ${pxToRem(33)};
+		letter-spacing: -0.9px;
+		font-weight: 200;
+	}
 `;
 
 const Content = styled.div``;
@@ -87,7 +95,8 @@ const ColumnCard = (props: Props) => {
 		content,
 		link,
 		linkTitle = 'Learn more',
-		image
+		image,
+		useDarkLink = false
 	} = props;
 
 	const contentIsPortableText = typeof content !== 'string';
@@ -128,7 +137,7 @@ const ColumnCard = (props: Props) => {
 			)}
 			{link && (
 				<Link href={link} target="_blank">
-					<ButtonLayout title={linkTitle} isActive={true} />
+					<ButtonLayout title={linkTitle} isActive={!useDarkLink} />
 				</Link>
 			)}
 		</ColumnCardWrapper>

@@ -13,9 +13,10 @@ type Props = {
 const ButtonLayoutWrapper = styled.div<{ $isActive: boolean }>`
 	padding: ${pxToRem(10)} ${pxToRem(20)};
 	background: ${(props) =>
-		props.$isActive ? 'var(--colour-lime)' : 'var(--colour-white)'};
+		props.$isActive ? 'var(--colour-lime)' : 'var(--colour-black)'};
 	backdrop-filter: blur(10px);
-	color: var(--colour-black);
+	color: ${(props) =>
+		props.$isActive ? 'var(--colour-black)' : 'var(--colour-white)'};
 	display: flex;
 	align-items: center;
 	gap: ${pxToRem(8)};
@@ -26,9 +27,9 @@ const ButtonLayoutWrapper = styled.div<{ $isActive: boolean }>`
 
 	&:hover {
 		background: ${(props) =>
-			props.$isActive ? 'var(--colour-black)' : 'var(--colour-lime)'};
+			props.$isActive ? 'var(--colour-black)' : 'var(--colour-white)'};
 		color: ${(props) =>
-			props.$isActive ? 'var(--colour-lime)' : 'var(--colour-white)'};
+			props.$isActive ? 'var(--colour-lime)' : 'var(--colour-black)'};
 	}
 
 	@media ${(props) => props.theme.mediaBreakpoints.tabletPortrait} {
@@ -37,10 +38,10 @@ const ButtonLayoutWrapper = styled.div<{ $isActive: boolean }>`
 `;
 
 const Title = styled(motion.span)<{ $isSmall: boolean }>`
-	font-size: ${(props) => props.$isSmall && '12px'};
+	font-size: ${(props) => (props.$isSmall ? '12px' : '14px')};
 
 	@media ${(props) => props.theme.mediaBreakpoints.tabletPortrait} {
-		font-size: ${pxToRem(12)};
+		font-size: ${(props) => (props.$isSmall ? '9px' : '14px')};
 		white-space: nowrap;
 	}
 `;
