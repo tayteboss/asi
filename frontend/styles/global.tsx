@@ -214,16 +214,16 @@ export const GlobalStyles = createGlobalStyle`
 			}
 		}
 
-		b {
+		b, strong {
 			font-weight: 900;
 		}
 	
 		p {
 			&:not(:last-child) {
-				margin-bottom: ${pxToRem(24)};
+				margin-bottom: ${pxToRem(36)};
 
 				@media ${theme.mediaBreakpoints.tabletPortrait} {
-					margin-bottom: ${pxToRem(16)};
+					margin-bottom: ${pxToRem(24)};
 				}
 			}
 		}
@@ -235,6 +235,7 @@ export const GlobalStyles = createGlobalStyle`
 				position: relative;
 				list-style-type: disc;
 				padding-left: 1px;
+				margin-bottom: ${pxToRem(24)};
 
 				&::before {
 					content: '•';

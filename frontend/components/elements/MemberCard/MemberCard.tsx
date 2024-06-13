@@ -88,7 +88,7 @@ const MemberCard = (props: MemberCardProps) => {
 
 	const { ref, inView } = useInView({
 		triggerOnce: true,
-		threshold: 0.2,
+		threshold: 0.1,
 		rootMargin: '-50px'
 	});
 

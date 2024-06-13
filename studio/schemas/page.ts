@@ -35,6 +35,24 @@ export default {
       type: 'string',
     },
     {
+      title: 'Article Content',
+      name: 'articleContent',
+      type: 'array',
+      of: [
+        {
+          type: 'block',
+          styles: [{title: 'Normal', value: 'normal'}],
+          lists: [{title: 'Bullet', value: 'bullet'}],
+          marks: {
+            decorators: [{title: 'Strong', value: 'strong'}],
+            annotations: [
+              {title: 'Link', value: 'link', type: 'object', fields: [{name: 'href', type: 'url'}]},
+            ],
+          },
+        },
+      ],
+    },
+    {
       title: 'Page Builder',
       name: 'pageBuilder',
       type: 'array',

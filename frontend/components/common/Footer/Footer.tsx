@@ -51,7 +51,6 @@ const SecondaryLinksWrapper = styled.div`
 	gap: ${pxToRem(20)};
 
 	@media ${(props) => props.theme.mediaBreakpoints.mobile} {
-		justify-content: space-between;
 		width: 100%;
 	}
 `;

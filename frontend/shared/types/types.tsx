@@ -53,7 +53,8 @@ export type PageType = {
 	seoTitle: string | null;
 	seoDescription: string | null;
 	title: string | null;
-	articleHeading: string | null;
+	articleHeadline: string | null;
+	articleContent: [] | null;
 	heroVideo: string | null;
 	pageBuilder: any[] | null;
 	slug: SlugType;

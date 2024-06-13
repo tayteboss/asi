@@ -10,7 +10,7 @@ type Props = {
 	mobileData?: MainPageType['videoOne'];
 };
 
-const HeroVideoSectionWrapper = styled(motion.div)`
+const HeroVideoSectionWrapper = styled(motion.section)`
 	position: absolute;
 	top: 0;
 	left: 0;
@@ -99,6 +99,7 @@ const HeroVideoSection = (props: Props) => {
 					preload="auto"
 					muted
 					playsInline={true}
+					minResolution="1440p"
 				/>
 			)}
 		</HeroVideoSectionWrapper>

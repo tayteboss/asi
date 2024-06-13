@@ -8,6 +8,7 @@ import HeroVideoSection from '../components/blocks/HeroVideoSection';
 import AnimateText from '../components/layout/AnimateText';
 import { useInView } from 'react-intersection-observer';
 import pxToRem from '../utils/pxToRem';
+import { PortableText } from '@portabletext/react';
 
 type Props = {
 	data: PageType;
@@ -16,19 +17,58 @@ type Props = {
 
 const PageWrapper = styled(motion.div)`
 	padding: ${pxToRem(280)} 0;
+
+	@media ${(props) => props.theme.mediaBreakpoints.tabletPortrait} {
+		padding: ${pxToRem(250)} 0 ${pxToRem(100)};
+	}
+`;
+
+const IntroContentWrapper = styled.section`
+	@media ${(props) => props.theme.mediaBreakpoints.tabletMedium} {
+		padding: 0 16px;
+	}
+`;
+
+const IntroContentInner = styled.div`
+	padding: ${pxToRem(50)};
+	backdrop-filter: blur(30px);
+	width: ${pxToRem(980)};
+	margin: 0 auto;
+	border-radius: ${pxToRem(20)};
+	background: rgba(255, 255, 255, 0.2);
+	display: flex;
+	flex-direction: column;
+	gap: ${pxToRem(50)};
+	position: relative;
+	z-index: 2;
+
+	@media ${(props) => props.theme.mediaBreakpoints.tabletMedium} {
+		width: 100%;
+		padding: ${pxToRem(32)};
+	}
 `;
 
 const Title = styled.h1`
-	margin-bottom: ${pxToRem(100)};
+	margin-bottom: ${pxToRem(80)};
 	position: relative;
 	z-index: 2;
+
+	@media ${(props) => props.theme.mediaBreakpoints.tabletPortrait} {
+		margin-bottom: ${pxToRem(30)};
+	}
 `;
 
 const Headline = styled.h2`
-	margin-bottom: ${pxToRem(100)};
+	margin-bottom: ${pxToRem(80)};
 	position: relative;
 	z-index: 2;
+
+	@media ${(props) => props.theme.mediaBreakpoints.tabletPortrait} {
+		margin-bottom: ${pxToRem(30)};
+	}
 `;
+
+const ContentWrapper = styled.div``;
 
 const workPageVariants = {
 	hidden: {
@@ -54,7 +94,7 @@ const Page = (props: Props) => {
 
 	const { ref, inView } = useInView({
 		triggerOnce: true,
-		threshold: 0.2,
+		threshold: 0.01,
 		rootMargin: '-50px'
 	});
 
@@ -70,16 +110,33 @@ const Page = (props: Props) => {
 				description={data?.seoDescription || ''}
 			/>
 			<HeroVideoSection data={data?.heroVideo} />
-			{data?.title && (
-				<Title ref={ref} className="type-h2 type-h2--blur-in">
-					<AnimateText text={data?.title} active={inView} />
-				</Title>
-			)}
-			{data?.articleHeading && (
-				<Headline>
-					<AnimateText text={data?.articleHeading} active={inView} />
-				</Headline>
-			)}
+			<IntroContentWrapper>
+				<IntroContentInner>
+					{data?.title && (
+						<Title ref={ref} className="type-h2 type-h2--blur-in">
+							<AnimateText text={data?.title} active={inView} />
+						</Title>
+					)}
+					{data?.articleHeadline && (
+						<Headline className="type-h1 type-h1--blur-in">
+							<AnimateText
+								text={data?.articleHeadline}
+								active={inView}
+								useDelay
+							/>
+						</Headline>
+					)}
+					{data?.articleContent && (
+						<ContentWrapper
+							className={`rich-text view-element-fade-in ${
+								inView ? 'view-element-fade-in--in-view' : ''
+							}`}
+						>
+							<PortableText value={data.articleContent} />
+						</ContentWrapper>
+					)}
+				</IntroContentInner>
+			</IntroContentWrapper>
 			<PageBuilder data={data?.pageBuilder} />
 		</PageWrapper>
 	);
@@ -110,7 +167,9 @@ export async function getStaticProps({ params }: any) {
 			pageBuilder[]{
 			...,
 			'imageOne': imageOne.asset->url,
+			'imageOneCaption': imageOne.caption,
 			'imageTwo': imageTwo.asset->url,
+			'imageTwoCaption': imageTwo.caption
 		},
 		}
 	`;
