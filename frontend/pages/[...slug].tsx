@@ -91,8 +91,6 @@ const workPageVariants = {
 const Page = (props: Props) => {
 	const { data } = props;
 
-	console.log('data', data);
-
 	const { ref, inView } = useInView({
 		triggerOnce: true,
 		threshold: 0.01,
