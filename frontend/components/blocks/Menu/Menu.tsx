@@ -162,6 +162,7 @@ const Menu = (props: Props) => {
 						animate="visible"
 						exit="hidden"
 						key="menu-wrapper"
+						onClick={() => setMenuIsActive(false)}
 					>
 						<Inner variants={childVariants}>
 							<LogoIconSvg />
