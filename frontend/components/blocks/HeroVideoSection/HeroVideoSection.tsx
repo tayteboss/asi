@@ -33,6 +33,7 @@ const HeroVideoSectionWrapper = styled(motion.section)`
 
 const CursorParallaxWrapper = styled(motion.div)`
 	position: relative;
+	height: 100%;
 
 	&::after {
 		content: '';
