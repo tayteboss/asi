@@ -64,7 +64,7 @@ const ResourcesSection = () => {
 	const [isHovered, setIsHovered] = useState(false);
 
 	return (
-		<ResourcesSectionWrapper>
+		<ResourcesSectionWrapper id="resources">
 			<LayoutWrapper>
 				<TopBar>
 					<Title>Resources</Title>

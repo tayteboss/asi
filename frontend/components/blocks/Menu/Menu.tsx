@@ -2,10 +2,9 @@ import { AnimatePresence, motion } from 'framer-motion';
 import styled from 'styled-components';
 import LogoIconSvg from '../../svgs/LogoIconSvg';
 import pxToRem from '../../../utils/pxToRem';
-import Link from 'next/link';
-import { useRef } from 'react';
-import { useClickOutside } from '../../../hooks/useClickOutside';
 import { useLenis } from '@studio-freight/react-lenis';
+import { useRouter } from 'next/navigation';
+import { useEffect } from 'react';
 
 type Props = {
 	menuIsActive: boolean;
@@ -131,14 +130,25 @@ const ClickOutside = styled(motion.div)`
 
 const Menu = (props: Props) => {
 	const { menuIsActive, setMenuIsActive } = props;
-
+	const router = useRouter();
 	const lenis = useLenis(({ scroll }) => {});
 
-	const handleScrollToAnchor = (anchor: string) => {
-		if (lenis) {
-			lenis.scrollTo(`#${anchor}`, {
-				duration: 1
-			});
+	const handleScrollToAnchor = async (anchor: string) => {
+		if (window.location.pathname !== '/') {
+			await router.push('/');
+			setTimeout(() => {
+				if (lenis) {
+					lenis.scrollTo(`#${anchor}`, {
+						duration: 1
+					});
+				}
+			}, 1200); // Adjust the delay as needed
+		} else {
+			if (lenis) {
+				lenis.scrollTo(`#${anchor}`, {
+					duration: 1
+				});
+			}
 		}
 	};
 

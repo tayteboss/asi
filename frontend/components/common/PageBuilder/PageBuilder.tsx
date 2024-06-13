@@ -13,9 +13,11 @@ const PageBuilderWrapper = styled.div`
 	gap: ${pxToRem(100)};
 	position: relative;
 	z-index: 2;
+	margin-bottom: ${pxToRem(200)};
 
 	@media ${(props) => props.theme.mediaBreakpoints.tabletPortrait} {
 		gap: ${pxToRem(50)};
+		margin-bottom: ${pxToRem(100)};
 	}
 `;
 

@@ -129,6 +129,8 @@ export type MainPageType = {
 	videoTwoMobile: string | null;
 	videoThree: string | null;
 	videoThreeMobile: string | null;
+	videoFour: string | null;
+	videoFourMobile: string | null;
 	oceanProtocolThumbnail: string | null;
 	singularityNetThumbnail: string | null;
 	fetchAiThumbnail: string | null;

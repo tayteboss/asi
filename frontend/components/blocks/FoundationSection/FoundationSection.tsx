@@ -28,7 +28,7 @@ const FoundationSection = (props: Props) => {
 	return (
 		<FoundationSectionWrapper
 			className="section-padding-y"
-			id="Foundation Team"
+			id="foundation-team"
 		>
 			<BlurContentLayout>
 				<BlurMainContent title={title} content={content} />

@@ -9,6 +9,7 @@ import AnimateText from '../components/layout/AnimateText';
 import { useInView } from 'react-intersection-observer';
 import pxToRem from '../utils/pxToRem';
 import { PortableText } from '@portabletext/react';
+import ResourcesSection from '../components/blocks/ResourcesSection';
 
 type Props = {
 	data: PageType;
@@ -16,10 +17,10 @@ type Props = {
 };
 
 const PageWrapper = styled(motion.div)`
-	padding: ${pxToRem(280)} 0;
+	padding-top: ${pxToRem(280)};
 
 	@media ${(props) => props.theme.mediaBreakpoints.tabletPortrait} {
-		padding: ${pxToRem(250)} 0 ${pxToRem(100)};
+		padding-top: ${pxToRem(250)};
 	}
 `;
 
@@ -138,6 +139,7 @@ const Page = (props: Props) => {
 				</IntroContentInner>
 			</IntroContentWrapper>
 			<PageBuilder data={data?.pageBuilder} />
+			<ResourcesSection />
 		</PageWrapper>
 	);
 };
@@ -155,7 +157,7 @@ export async function getStaticPaths() {
 		paths: allPages.map((item: any) => {
 			return `/${item?.slug?.current}`;
 		}),
-		fallback: true
+		fallback: false
 	};
 }
 
