@@ -32,6 +32,11 @@ export default defineConfig({
               .title('Main Page')
               .icon(DocumentIcon)
               .child(S.editor().schemaType('mainPage').documentId('mainPage')),
+            S.divider(),
+            S.listItem()
+              .title('Pages')
+              .icon(DocumentIcon)
+              .child(S.documentList().title('Pages').schemaType('page').filter('_type == "page"')),
           ])
       },
     }),

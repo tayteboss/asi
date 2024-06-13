@@ -1,38 +1,44 @@
 import styled from 'styled-components';
+import pxToRem from '../../../utils/pxToRem';
+import RichTextSection from '../../blocks/RichTextSection';
+import MediaSection from '../../blocks/MediaSection';
 
 type Props = {
 	data: any;
 };
 
-const PageBuilderWrapper = styled.div``;
+const PageBuilderWrapper = styled.div`
+	display: flex;
+	flex-direction: column;
+	gap: ${pxToRem(100)};
+	position: relative;
+	z-index: 2;
+`;
 
-const OthernessPageBuilder = (props: Props) => {
+const PageBuilder = (props: Props) => {
 	const { data } = props;
 
-	const sections: any = {};
-
-	// const sections: any = {
-	// 	incomingSection:
-	// 		linkToComp,
-	// };
+	const sections: any = {
+		richText: RichTextSection,
+		media: MediaSection
+	};
 
 	return (
 		<PageBuilderWrapper className="page-builder">
 			{data &&
 				data.map((section: any, i: number) => {
 					{
-						if (!sections[section.imageComponent]) {
+						if (!sections[section._type]) {
 							return (
 								<div key={Math.random() * 10000}>
-									No section found for{' '}
-									{section.imageComponent}
+									No section found for {section._type}
 								</div>
 							);
 						} else {
-							const Component = sections[section.component];
+							const Component = sections[section._type];
 							return (
 								<Component
-									key={`${section.component}-${i}`}
+									key={`${section._type}-${i}`}
 									{...section}
 								/>
 							);
@@ -43,4 +49,4 @@ const OthernessPageBuilder = (props: Props) => {
 	);
 };
 
-export default OthernessPageBuilder;
+export default PageBuilder;

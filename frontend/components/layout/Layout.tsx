@@ -25,8 +25,6 @@ const Layout = (props: Props) => {
 
 	useEffect(() => useNoScroll(menuIsActive), [menuIsActive]);
 
-	console.log('siteSettings', siteSettings);
-
 	return (
 		<>
 			<Menu

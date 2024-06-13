@@ -49,6 +49,16 @@ export type HomePageType = {
 	documentationPdf: string | null;
 };
 
+export type PageType = {
+	seoTitle: string | null;
+	seoDescription: string | null;
+	title: string | null;
+	articleHeading: string | null;
+	heroVideo: string | null;
+	pageBuilder: any[] | null;
+	slug: SlugType;
+};
+
 export type ImageType = {
 	asset: {
 		url: string;

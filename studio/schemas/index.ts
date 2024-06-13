@@ -1,5 +1,8 @@
 import homePage from './homePage'
 import mainPage from './mainPage'
+import media from './media'
+import page from './page'
+import richtext from './richtext'
 import siteSettings from './siteSettings'
 import teamMember from './teamMember'
 
@@ -10,7 +13,10 @@ export const schemaTypes = [
   // Pages
   homePage,
   mainPage,
+  page,
 
   // Documents
   teamMember,
+  richtext,
+  media,
 ]
