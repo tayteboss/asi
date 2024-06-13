@@ -12,11 +12,9 @@ const MemberCardWrapper = styled.div<{ $isHovered: boolean }>`
 	display: flex;
 	flex-direction: column;
 	align-items: flex-start;
-	filter: ${(props) => props.$isHovered && 'blur(2px)'} !important;
 	transform: ${(props) => props.$isHovered && 'scale(0.99)'} !important;
 
 	&:hover {
-		filter: none !important;
 		transform: none !important;
 
 		img {
