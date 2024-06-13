@@ -35,6 +35,28 @@ const VideoSectionWrapper = styled(motion.div)`
 		height: 100%;
 		object-fit: cover;
 	}
+
+	&::after {
+		content: '';
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		width: 100%;
+		height: 10px;
+		background-color: white;
+		z-index: 10;
+	}
+
+	&::before {
+		content: '';
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 10px;
+		background-color: white;
+		z-index: 10;
+	}
 `;
 
 const VideoSection = (props: Props) => {
@@ -71,7 +93,7 @@ const VideoSection = (props: Props) => {
 
 	const y = useTransform(
 		scrollY,
-		[distanceToTop, distanceToTop + windowHeight * 2],
+		[distanceToTop - windowHeight, distanceToTop + windowHeight * 2],
 		[0, 1000]
 	);
 

@@ -61,6 +61,7 @@ const HeroSectionWrapper = styled.section`
 	.layout-wrapper {
 		width: 100%;
 		z-index: 2;
+		pointer-events: none;
 	}
 `;
 
@@ -68,7 +69,9 @@ const Blank = styled.div`
 	height: ${pxToRem(82)};
 `;
 
-const TitleWrapper = styled.div``;
+const TitleWrapper = styled.div`
+	pointer-events: none;
+`;
 
 const Title = styled.h1``;
 
@@ -82,6 +85,7 @@ const LogosWrapper = styled(motion.div)`
 	align-items: center;
 	gap: ${pxToRem(35)};
 	padding-bottom: ${pxToRem(36)};
+	pointer-events: none;
 
 	@media ${(props) => props.theme.mediaBreakpoints.tabletPortrait} {
 		gap: ${pxToRem(16)};

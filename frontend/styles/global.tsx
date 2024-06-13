@@ -253,6 +253,12 @@ export const GlobalStyles = createGlobalStyle`
 				line-height: ${pxToRem(27)};
 				letter-spacing: -0.5px;
 			}
+
+			ul {
+			li {
+				margin-bottom: 0;
+			}
+		}
 		}
 	}
 
