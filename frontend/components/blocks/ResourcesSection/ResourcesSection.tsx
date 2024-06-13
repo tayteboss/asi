@@ -87,7 +87,8 @@ const ResourcesSection = () => {
 							/>
 						</Link>
 						<Link
-							href="/documentation"
+							href="https://docs.superintelligence.io/"
+							target="_blank"
 							onMouseOver={() => setIsHovered(true)}
 							onMouseOut={() => setIsHovered(false)}
 						>

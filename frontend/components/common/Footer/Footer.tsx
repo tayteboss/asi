@@ -102,17 +102,17 @@ const Footer = (props: Props) => {
 							)}
 						</LinksWrapper>
 						<SecondaryLinksWrapper>
-							<Link href={'/'} target="_blank">
+							<Link href="/privacy-policy" target="_blank">
 								<TextLink className="type-book">
 									Privacy Policy
 								</TextLink>
 							</Link>
-							<Link href={'/'} target="_blank">
+							<Link href="/cookie-policy" target="_blank">
 								<TextLink className="type-book">
 									Cookie Policy
 								</TextLink>
 							</Link>
-							<Link href={'/'} target="_blank">
+							<Link href="/terms" target="_blank">
 								<TextLink className="type-book">
 									Terms & Conditions
 								</TextLink>
