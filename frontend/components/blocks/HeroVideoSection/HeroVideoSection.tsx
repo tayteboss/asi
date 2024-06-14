@@ -22,7 +22,6 @@ const HeroVideoSectionWrapper = styled(motion.section)`
 	width: 100%;
 	height: 100vh;
 	z-index: 1;
-	overflow: hidden;
 
 	mux-player {
 		width: 100%;
@@ -30,56 +29,16 @@ const HeroVideoSectionWrapper = styled(motion.section)`
 		object-fit: cover;
 		overflow: hidden;
 	}
-
-	&::after {
-		content: '';
-		position: absolute;
-		bottom: -5px;
-		left: 0;
-		width: 100%;
-		height: 10px;
-		background-color: white;
-		z-index: 10;
-	}
-
-	&::before {
-		content: '';
-		position: absolute;
-		top: -5px;
-		left: 0;
-		width: 100%;
-		height: 10px;
-		background-color: white;
-		z-index: 10;
-	}
 `;
 
-const CursorParallaxWrapper = styled(motion.div)`
-	position: relative;
-	height: 100%;
-	overflow: hidden;
-
-	&::after {
-		content: '';
-		position: absolute;
-		bottom: -5px;
-		left: 0;
-		width: 100%;
-		height: 10px;
-		background-color: white;
-		z-index: 10;
-	}
-
-	&::before {
-		content: '';
-		position: absolute;
-		top: -5px;
-		left: 0;
-		width: 100%;
-		height: 10px;
-		background-color: white;
-		z-index: 10;
-	}
+const Cover = styled.div`
+	position: absolute;
+	bottom: -10px;
+	left: 0;
+	width: 100%;
+	height: 20px;
+	background: white;
+	z-index: 10;
 `;
 
 const HeroVideoSection = (props: Props) => {
@@ -145,21 +104,20 @@ const HeroVideoSection = (props: Props) => {
 			key={'intro-video'}
 			ref={wrapperRef}
 		>
-			<CursorParallaxWrapper>
-				{videoData && (
-					<MuxPlayer
-						streamType="on-demand"
-						playbackId={videoData}
-						autoPlay="muted"
-						loop={true}
-						thumbnailTime={1}
-						preload="auto"
-						muted
-						playsInline={true}
-						minResolution="1440p"
-					/>
-				)}
-			</CursorParallaxWrapper>
+			{videoData && (
+				<MuxPlayer
+					streamType="on-demand"
+					playbackId={videoData}
+					autoPlay="muted"
+					loop={true}
+					thumbnailTime={1}
+					preload="auto"
+					muted
+					playsInline={true}
+					minResolution="1440p"
+				/>
+			)}
+			<Cover />
 		</HeroVideoSectionWrapper>
 	);
 };
