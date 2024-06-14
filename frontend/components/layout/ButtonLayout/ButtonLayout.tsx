@@ -34,6 +34,7 @@ const ButtonLayoutWrapper = styled.div<{ $isActive: boolean }>`
 
 	@media ${(props) => props.theme.mediaBreakpoints.tabletPortrait} {
 		padding: ${pxToRem(10)} ${pxToRem(15)};
+		backdrop-filter: blur(5px);
 	}
 `;
 

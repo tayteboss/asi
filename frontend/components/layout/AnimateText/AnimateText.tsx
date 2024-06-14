@@ -62,7 +62,7 @@ const AnimateText = ({ text, active, useDelay = false }: Props) => {
 	const childVariants = {
 		hidden: {
 			opacity: 0,
-			filter: 'blur(10px)',
+			filter: 'blur(5px)',
 			transition: {
 				duration: 0.3,
 				ease: 'easeInOut'

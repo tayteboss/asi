@@ -49,6 +49,7 @@ const LogoWrapper = styled.div<StyledProps>`
 	@media ${(props) => props.theme.mediaBreakpoints.tabletPortrait} {
 		padding: ${pxToRem(16)};
 		border-radius: 12px;
+		backdrop-filter: blur(5px);
 	}
 
 	@media ${(props) => props.theme.mediaBreakpoints.mobile} {

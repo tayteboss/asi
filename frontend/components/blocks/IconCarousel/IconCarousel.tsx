@@ -16,6 +16,10 @@ const IconCarouselWrapper = styled.div`
 	border-radius: ${pxToRem(20)};
 	background: rgba(255, 255, 255, 0.2);
 	pointer-events: none;
+
+	@media ${(props) => props.theme.mediaBreakpoints.tabletPortrait} {
+		backdrop-filter: blur(5px);
+	}
 `;
 
 const Embla = styled.div`

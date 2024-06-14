@@ -302,6 +302,10 @@ export const GlobalStyles = createGlobalStyle`
 		transition: all 750ms ease;
 		transition-delay: 200ms;
 
+		@media ${theme.mediaBreakpoints.tabletPortrait} {
+			backdrop-filter: blur(5px);
+		}
+
 		&--in-view
 		{
 			filter: blur(0px);

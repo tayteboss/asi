@@ -31,6 +31,7 @@ const Inner = styled.div<{ $useGreen: boolean }>`
 	@media ${(props) => props.theme.mediaBreakpoints.tabletMedium} {
 		width: 100%;
 		padding: ${pxToRem(32)};
+		backdrop-filter: blur(5px);
 	}
 `;
 

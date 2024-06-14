@@ -61,6 +61,7 @@ const MenuWrapper = styled(motion.div)`
 
 	@media ${(props) => props.theme.mediaBreakpoints.tabletPortrait} {
 		width: 100%;
+		backdrop-filter: blur(5px);
 	}
 `;
 

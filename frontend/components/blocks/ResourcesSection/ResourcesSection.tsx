@@ -15,6 +15,7 @@ const ResourcesSectionWrapper = styled.section`
 
 	@media ${(props) => props.theme.mediaBreakpoints.tabletPortrait} {
 		margin-bottom: ${pxToRem(60)};
+		backdrop-filter: blur(5px);
 	}
 
 	@media ${(props) => props.theme.mediaBreakpoints.mobile} {
