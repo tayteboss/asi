@@ -146,7 +146,7 @@ const HeroSection = (props: Props) => {
 	const isMobile = viewport === 'mobile' || viewport === 'tabletPortrait';
 
 	return (
-		<HeroSectionWrapper ref={ref}>
+		<HeroSectionWrapper ref={ref} className="performance">
 			<Blank />
 			<LayoutWrapper>
 				<TitleWrapper>

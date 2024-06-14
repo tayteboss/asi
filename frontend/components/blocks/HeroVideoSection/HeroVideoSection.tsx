@@ -28,7 +28,36 @@ const HeroVideoSectionWrapper = styled(motion.section)`
 		width: 100%;
 		height: 100%;
 		object-fit: cover;
+		overflow: hidden;
 	}
+
+	&::after {
+		content: '';
+		position: absolute;
+		bottom: -5px;
+		left: 0;
+		width: 100%;
+		height: 10px;
+		background-color: white;
+		z-index: 10;
+	}
+
+	&::before {
+		content: '';
+		position: absolute;
+		top: -5px;
+		left: 0;
+		width: 100%;
+		height: 10px;
+		background-color: white;
+		z-index: 10;
+	}
+`;
+
+const CursorParallaxWrapper = styled(motion.div)`
+	position: relative;
+	height: 100%;
+	overflow: hidden;
 
 	&::after {
 		content: '';
@@ -116,18 +145,21 @@ const HeroVideoSection = (props: Props) => {
 			key={'intro-video'}
 			ref={wrapperRef}
 		>
-			{videoData && (
-				<MuxPlayer
-					streamType="on-demand"
-					playbackId={videoData}
-					autoPlay="muted"
-					loop={true}
-					thumbnailTime={1}
-					preload="auto"
-					muted
-					playsInline={true}
-				/>
-			)}
+			<CursorParallaxWrapper>
+				{videoData && (
+					<MuxPlayer
+						streamType="on-demand"
+						playbackId={videoData}
+						autoPlay="muted"
+						loop={true}
+						thumbnailTime={1}
+						preload="auto"
+						muted
+						playsInline={true}
+						minResolution="1440p"
+					/>
+				)}
+			</CursorParallaxWrapper>
 		</HeroVideoSectionWrapper>
 	);
 };

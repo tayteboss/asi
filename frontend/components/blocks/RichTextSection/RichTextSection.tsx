@@ -11,7 +11,7 @@ const RichTextSectionWrapper = styled.section`
 
 const Inner = styled.div`
 	padding: ${pxToRem(50)};
-	backdrop-filter: blur(30px);
+	backdrop-filter: blur(10px);
 	width: ${pxToRem(980)};
 	margin: 0 auto;
 	border-radius: ${pxToRem(20)};

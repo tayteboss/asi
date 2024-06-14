@@ -38,7 +38,7 @@ const LogoWrapper = styled.div<StyledProps>`
 	padding: ${(props) => (props.$hasScrolled ? pxToRem(16) : pxToRem(24))};
 	border-radius: 27.04px;
 	background: rgba(255, 255, 255, 0.2);
-	backdrop-filter: blur(30px);
+	backdrop-filter: blur(10px);
 	display: flex;
 	justify-content: center;
 	align-items: center;

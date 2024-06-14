@@ -122,7 +122,7 @@ const AllianceSection: React.FC<Props> = (props: Props) => {
 
 	return (
 		<AllianceSectionWrapper
-			className="section-padding-y"
+			className="section-padding-y performance"
 			id="about-the-alliance"
 		>
 			<BlurContentLayout>

@@ -42,7 +42,7 @@ const PathwaySection = (props: Props) => {
 
 	return (
 		<PathwaySectionWrapper
-			className="section-padding-y"
+			className="section-padding-y performance"
 			id="pathway-to-asi"
 		>
 			<BlurContentLayout useGreen>

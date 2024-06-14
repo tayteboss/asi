@@ -198,6 +198,14 @@ const Menu = (props: Props) => {
 								<Item
 									variants={childVariants}
 									onClick={() => {
+										handleScrollToAnchor('token-migration');
+									}}
+								>
+									Token Migration
+								</Item>
+								<Item
+									variants={childVariants}
+									onClick={() => {
 										handleScrollToAnchor('foundation-team');
 									}}
 								>

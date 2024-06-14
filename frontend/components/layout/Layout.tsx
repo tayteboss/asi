@@ -19,7 +19,6 @@ const Layout = (props: Props) => {
 	const { children } = props;
 
 	const [menuIsActive, setMenuIsActive] = useState(false);
-	const [cursorRefresh, setCursorRefresh] = useState(0);
 
 	const lenis = useLenis(({ scroll }) => {});
 
@@ -47,7 +46,6 @@ const Layout = (props: Props) => {
 				cookies={siteSettings?.cookiesUrl}
 				footerContent={siteSettings?.footerContent}
 			/>
-			{/* <Cursor cursorRefresh={() => setCursorRefresh(cursorRefresh + 1)} /> */}
 		</>
 	);
 };

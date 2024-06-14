@@ -12,7 +12,7 @@ type Props = {
 const TeamCarouselWrapper = styled.div`
 	position: relative;
 	z-index: 2;
-	backdrop-filter: blur(30px);
+	backdrop-filter: blur(10px);
 	width: 100%;
 	border-radius: ${pxToRem(20)};
 	background: rgba(255, 255, 255, 0.2);

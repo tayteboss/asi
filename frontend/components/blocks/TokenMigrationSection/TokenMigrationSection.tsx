@@ -44,7 +44,7 @@ const TokenMigrationSection = (props: Props) => {
 
 	return (
 		<TokenMigrationSectionWrapper
-			className="section-padding-y"
+			className="section-padding-y performance"
 			id="token-migration"
 		>
 			<BlurContentLayout useGreen>
