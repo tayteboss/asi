@@ -9,6 +9,7 @@ type Props = {
 	subheading?: string | null;
 	content?: string | null;
 	useLargeTitle?: boolean;
+	points?: string[];
 };
 
 const BlurMainContentWrapper = styled.div``;
@@ -25,10 +26,30 @@ const Subheading = styled.h3`
 	margin-bottom: ${pxToRem(24)};
 `;
 
+const Ul = styled.ul`
+	margin-bottom: ${pxToRem(36)};
+	padding-left: ${pxToRem(20)};
+`;
+
+const Li = styled.li`
+	position: relative;
+	list-style-type: disc;
+	padding-left: 1px;
+	font-size: ${pxToRem(30)};
+	line-height: ${pxToRem(39)};
+	letter-spacing: -0.9px;
+	font-weight: 200;
+
+	@media ${(props) => props.theme.mediaBreakpoints.tabletPortrait} {
+		font-size: ${pxToRem(20)};
+		line-height: ${pxToRem(25)};
+	}
+`;
+
 const Content = styled.div``;
 
 const BlurMainContent = (props: Props) => {
-	const { title, useLargeTitle = false, subheading, content } = props;
+	const { title, useLargeTitle = false, subheading, content, points } = props;
 
 	const { ref, inView } = useInView({
 		triggerOnce: true,
@@ -54,6 +75,13 @@ const BlurMainContent = (props: Props) => {
 				<Subheading className="type-h3 type-h3--blur-in">
 					<AnimateText text={subheading} active={inView} />
 				</Subheading>
+			)}
+			{points && points.length > 0 && (
+				<Ul>
+					{points.map((point, i) => (
+						<Li key={i}>{point}</Li>
+					))}
+				</Ul>
 			)}
 			{content && (
 				<Content

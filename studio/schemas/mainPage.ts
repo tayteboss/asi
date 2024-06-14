@@ -27,6 +27,11 @@ export default {
       options: {collapsible: true, collapsed: true},
     },
     {
+      name: 'tokenMigration',
+      title: 'Token Migration Guide',
+      options: {collapsible: true, collapsed: true},
+    },
+    {
       name: 'foundationTeam',
       title: 'Foundation Team Information',
       options: {collapsible: true, collapsed: true},
@@ -237,6 +242,94 @@ export default {
         },
       ],
       fieldset: 'tokenMerge',
+    },
+    {
+      title: 'Token Migration Heading',
+      name: 'tokenMigrationHeading',
+      type: 'string',
+      fieldset: 'tokenMigration',
+    },
+    {
+      title: 'Token Migration Points',
+      name: 'tokenMigrationPoints',
+      type: 'array',
+      of: [{type: 'string'}],
+      fieldset: 'tokenMigration',
+    },
+    {
+      title: 'Token Migration Content',
+      name: 'tokenMigrationContent',
+      type: 'text',
+      fieldset: 'tokenMigration',
+    },
+    {
+      title: 'Token Migration Column 1 Heading',
+      name: 'tokenMigrationHeading1',
+      type: 'string',
+      fieldset: 'tokenMigration',
+    },
+    {
+      title: 'Token Migration Column 1 Content',
+      name: 'tokenMigrationContent1',
+      type: 'array',
+      of: [
+        {
+          type: 'block',
+          styles: [{title: 'Normal', value: 'normal'}],
+          lists: [{title: 'Bullet', value: 'bullet'}],
+          marks: {
+            decorators: [{title: 'Strong', value: 'strong'}],
+            annotations: [],
+          },
+        },
+      ],
+      fieldset: 'tokenMigration',
+    },
+    {
+      title: 'Token Migration Column 2 Heading',
+      name: 'tokenMigrationHeading2',
+      type: 'string',
+      fieldset: 'tokenMigration',
+    },
+    {
+      title: 'Token Migration Column 2 Content',
+      name: 'tokenMigrationContent2',
+      type: 'array',
+      of: [
+        {
+          type: 'block',
+          styles: [{title: 'Normal', value: 'normal'}],
+          lists: [{title: 'Bullet', value: 'bullet'}],
+          marks: {
+            decorators: [{title: 'Strong', value: 'strong'}],
+            annotations: [],
+          },
+        },
+      ],
+      fieldset: 'tokenMigration',
+    },
+    {
+      title: 'Token Migration Column 3 Heading',
+      name: 'tokenMigrationHeading3',
+      type: 'string',
+      fieldset: 'tokenMigration',
+    },
+    {
+      title: 'Token Migration Column 3 Content',
+      name: 'tokenMigrationContent3',
+      type: 'array',
+      of: [
+        {
+          type: 'block',
+          styles: [{title: 'Normal', value: 'normal'}],
+          lists: [{title: 'Bullet', value: 'bullet'}],
+          marks: {
+            decorators: [{title: 'Strong', value: 'strong'}],
+            annotations: [],
+          },
+        },
+      ],
+      fieldset: 'tokenMigration',
     },
     {
       title: 'Foundation Team Heading',

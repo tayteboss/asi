@@ -236,14 +236,6 @@ export const GlobalStyles = createGlobalStyle`
 				list-style-type: disc;
 				padding-left: 1px;
 				margin-bottom: ${pxToRem(24)};
-
-				&::before {
-					content: '•';
-					position: absolute;
-					left: -10px;
-					top: 0;
-					color: var(--colour-white);
-				}
 			}
 		}
 

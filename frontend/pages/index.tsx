@@ -20,6 +20,7 @@ import PathwaySection from '../components/blocks/PathwaySection';
 import TokenSection from '../components/blocks/TokenSection';
 import WhatIsAsiSection from '../components/blocks/WhatIsAsiSection';
 import ResourcesSection from '../components/blocks/ResourcesSection';
+import TokenMigrationSection from '../components/blocks/TokenMigrationSection';
 
 const PageWrapper = styled(motion.div)``;
 
@@ -79,6 +80,17 @@ const Page = (props: Props) => {
 				content2={mainData?.tokenMergeContent2}
 				heading3={mainData?.tokenMergeHeading3}
 				content3={mainData?.tokenMergeContent3}
+			/>
+			<TokenMigrationSection
+				title={mainData?.tokenMigrationHeading}
+				points={mainData?.tokenMigrationPoints}
+				content={mainData?.tokenMigrationContent}
+				heading1={mainData?.tokenMigrationHeading1}
+				content1={mainData?.tokenMigrationContent1}
+				heading2={mainData?.tokenMigrationHeading2}
+				content2={mainData?.tokenMigrationContent2}
+				heading3={mainData?.tokenMigrationHeading3}
+				content3={mainData?.tokenMigrationContent3}
 			/>
 			<FoundationSection
 				title={mainData?.foundationTeamHeading}

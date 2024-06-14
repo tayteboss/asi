@@ -134,6 +134,15 @@ export type MainPageType = {
 	oceanProtocolThumbnail: string | null;
 	singularityNetThumbnail: string | null;
 	fetchAiThumbnail: string | null;
+	tokenMigrationHeading: string | null;
+	tokenMigrationPoints: string[] | null;
+	tokenMigrationContent: string | null;
+	tokenMigrationHeading1: string | null;
+	tokenMigrationHeading2: string | null;
+	tokenMigrationHeading3: string | null;
+	tokenMigrationContent1: [] | null;
+	tokenMigrationContent2: [] | null;
+	tokenMigrationContent3: [] | null;
 };
 
 export type SiteSettingsType = {
