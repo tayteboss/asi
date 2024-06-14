@@ -34,9 +34,11 @@ export const mainPageQueryString = `
 		"videoOne": videoOne.asset->playbackId,
 		"videoTwo": videoTwo.asset->playbackId,
 		"videoThree": videoThree.asset->playbackId,
+		"videoFour": videoFour.asset->playbackId,
 		"videoOneMobile": videoOneMobile.asset->playbackId,
 		"videoTwoMobile": videoTwoMobile.asset->playbackId,
 		"videoThreeMobile": videoThreeMobile.asset->playbackId,
+		"videoFourMobile": videoFourMobile.asset->playbackId,
 		"teamMembers": teamMembers[]{
 			...,
 			"imageUrl": image.asset->url,

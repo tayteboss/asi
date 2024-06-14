@@ -32,7 +32,9 @@ type Props = {
 };
 
 const Page = (props: Props) => {
-	const { data, mainData, siteSettings, pageTransitionVariants } = props;
+	const { data, mainData, pageTransitionVariants } = props;
+
+	console.log('mainData', mainData);
 
 	return (
 		<PageWrapper
@@ -91,13 +93,13 @@ const Page = (props: Props) => {
 				content2={mainData?.tokenMigrationContent2}
 				heading3={mainData?.tokenMigrationHeading3}
 				content3={mainData?.tokenMigrationContent3}
+				videoData={mainData?.videoThree}
+				videoMobileData={mainData?.videoThreeMobile}
 			/>
 			<FoundationSection
 				title={mainData?.foundationTeamHeading}
 				content={mainData?.foundationTeam}
 				teamMembers={mainData?.teamMembers}
-				videoData={mainData?.videoThree}
-				videoMobileData={mainData?.videoThreeMobile}
 			/>
 			<PathwaySection
 				title={mainData?.pathwayToAsiHeading}
@@ -109,6 +111,8 @@ const Page = (props: Props) => {
 				heading3={mainData?.pathwayHeading3}
 				content3={mainData?.pathwayContent3}
 				contactLink={mainData?.pathwayContactLink}
+				videoData={mainData?.videoFour}
+				videoMobileData={mainData?.videoFourMobile}
 			/>
 			<ResourcesSection />
 		</PageWrapper>

@@ -29,11 +29,6 @@ const HeroVideoSectionWrapper = styled(motion.section)`
 		height: 100%;
 		object-fit: cover;
 	}
-`;
-
-const CursorParallaxWrapper = styled(motion.div)`
-	position: relative;
-	height: 100%;
 
 	&::after {
 		content: '';
@@ -100,19 +95,6 @@ const HeroVideoSection = (props: Props) => {
 
 	const videoData = mobile && mobileData ? mobileData : data;
 
-	const animation = useAnimation();
-
-	const handleMouseMove = (e: any) => {
-		const { clientX, clientY } = e;
-		const moveX = clientX - window.innerWidth / 2;
-		const moveY = clientY - window.innerHeight / 2;
-		const offsetFactor = 50;
-		animation.start({
-			x: moveX / offsetFactor,
-			y: moveY / offsetFactor
-		});
-	};
-
 	return (
 		<HeroVideoSectionWrapper
 			style={{ y }}
@@ -133,23 +115,19 @@ const HeroVideoSection = (props: Props) => {
 			exit="hidden"
 			key={'intro-video'}
 			ref={wrapperRef}
-			onMouseMove={(e) => handleMouseMove(e)}
 		>
-			<CursorParallaxWrapper animate={animation}>
-				{videoData && (
-					<MuxPlayer
-						streamType="on-demand"
-						playbackId={videoData}
-						autoPlay="muted"
-						loop={true}
-						thumbnailTime={1}
-						preload="auto"
-						muted
-						playsInline={true}
-						minResolution="1440p"
-					/>
-				)}
-			</CursorParallaxWrapper>
+			{videoData && (
+				<MuxPlayer
+					streamType="on-demand"
+					playbackId={videoData}
+					autoPlay="muted"
+					loop={true}
+					thumbnailTime={1}
+					preload="auto"
+					muted
+					playsInline={true}
+				/>
+			)}
 		</HeroVideoSectionWrapper>
 	);
 };

@@ -4,6 +4,7 @@ import ColumnCard from '../../elements/ColumnCard';
 import BlurContentLayout from '../../layout/BlurContentLayout';
 import ColumnsWrapper from '../../layout/ColumnsWrapper';
 import BlurMainContent from '../BlurMainContent';
+import VideoSection from '../VideoSection';
 
 type Props = {
 	title: MainPageType['tokenMigrationHeading'];
@@ -15,9 +16,14 @@ type Props = {
 	heading2: MainPageType['tokenMigrationHeading2'];
 	heading3: MainPageType['tokenMigrationHeading3'];
 	points: MainPageType['tokenMigrationPoints'];
+	videoData: MainPageType['videoThree'];
+	videoMobileData?: MainPageType['videoThreeMobile'];
 };
 
-const TokenMigrationSectionWrapper = styled.section``;
+const TokenMigrationSectionWrapper = styled.section`
+	position: relative;
+	z-index: 2;
+`;
 
 const TokenMigrationSection = (props: Props) => {
 	const {
@@ -29,7 +35,9 @@ const TokenMigrationSection = (props: Props) => {
 		heading1,
 		heading2,
 		heading3,
-		points
+		points,
+		videoData,
+		videoMobileData
 	} = props;
 
 	const hasColumns = content1 || content2 || content3;
@@ -53,6 +61,13 @@ const TokenMigrationSection = (props: Props) => {
 					</ColumnsWrapper>
 				)}
 			</BlurContentLayout>
+			<VideoSection
+				data={videoData}
+				mobileData={videoMobileData}
+				animateIn
+				index={3}
+				key={3}
+			/>
 		</TokenMigrationSectionWrapper>
 	);
 };

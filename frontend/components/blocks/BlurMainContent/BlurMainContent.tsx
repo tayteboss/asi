@@ -9,7 +9,7 @@ type Props = {
 	subheading?: string | null;
 	content?: string | null;
 	useLargeTitle?: boolean;
-	points?: string[];
+	points?: string[] | null;
 };
 
 const BlurMainContentWrapper = styled.div``;

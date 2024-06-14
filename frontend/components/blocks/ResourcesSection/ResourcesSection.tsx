@@ -8,8 +8,10 @@ import { useState } from 'react';
 
 const ResourcesSectionWrapper = styled.section`
 	position: relative;
-	z-index: 2;
+	z-index: 3;
 	margin-bottom: ${pxToRem(100)};
+	background: rgba(255, 255, 255, 0.2);
+	backdrop-filter: blur(30px);
 
 	@media ${(props) => props.theme.mediaBreakpoints.tabletPortrait} {
 		margin-bottom: ${pxToRem(60)};

@@ -1,10 +1,10 @@
-import { title } from 'process';
 import styled from 'styled-components';
 import ColumnCard from '../../elements/ColumnCard';
 import BlurContentLayout from '../../layout/BlurContentLayout';
 import ColumnsWrapper from '../../layout/ColumnsWrapper';
 import BlurMainContent from '../BlurMainContent';
 import { MainPageType } from '../../../shared/types/types';
+import VideoSection from '../VideoSection';
 
 type Props = {
 	title: string | null;
@@ -16,6 +16,8 @@ type Props = {
 	heading2: MainPageType['pathwayHeading2'];
 	heading3: MainPageType['pathwayHeading3'];
 	contactLink: MainPageType['pathwayContactLink'];
+	videoData: MainPageType['videoFour'];
+	videoMobileData?: MainPageType['videoFourMobile'];
 };
 
 const PathwaySectionWrapper = styled.section`
@@ -33,7 +35,9 @@ const PathwaySection = (props: Props) => {
 		contactLink,
 		heading1,
 		heading2,
-		heading3
+		heading3,
+		videoData,
+		videoMobileData
 	} = props;
 
 	return (
@@ -59,6 +63,13 @@ const PathwaySection = (props: Props) => {
 					/>
 				</ColumnsWrapper>
 			</BlurContentLayout>
+			<VideoSection
+				data={videoData}
+				mobileData={videoMobileData}
+				animateIn
+				index={4}
+				key={4}
+			/>
 		</PathwaySectionWrapper>
 	);
 };

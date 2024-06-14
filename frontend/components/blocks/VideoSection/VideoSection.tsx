@@ -133,7 +133,6 @@ const VideoSection = (props: Props) => {
 					preload="auto"
 					muted
 					playsInline={true}
-					minResolution="1440p"
 				/>
 			)}
 		</VideoSectionWrapper>

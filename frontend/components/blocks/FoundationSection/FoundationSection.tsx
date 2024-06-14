@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 import BlurContentLayout from '../../layout/BlurContentLayout';
 import BlurMainContent from '../BlurMainContent';
-import VideoSection from '../VideoSection';
 import { MainPageType } from '../../../shared/types/types';
 import TeamCarousel from '../TeamCarousel';
 import pxToRem from '../../../utils/pxToRem';
@@ -10,8 +9,6 @@ type Props = {
 	title: string | null;
 	content: MainPageType['foundationTeam'];
 	teamMembers: MainPageType['teamMembers'];
-	videoData: MainPageType['videoThree'];
-	videoMobileData?: MainPageType['videoThreeMobile'];
 };
 
 const FoundationSectionWrapper = styled.section`
@@ -24,7 +21,7 @@ const FoundationSectionWrapper = styled.section`
 `;
 
 const FoundationSection = (props: Props) => {
-	const { title, content, teamMembers, videoData, videoMobileData } = props;
+	const { title, content, teamMembers } = props;
 	return (
 		<FoundationSectionWrapper
 			className="section-padding-y"
@@ -34,13 +31,6 @@ const FoundationSection = (props: Props) => {
 				<BlurMainContent title={title} content={content} />
 			</BlurContentLayout>
 			<TeamCarousel data={teamMembers} />
-			<VideoSection
-				data={videoData}
-				mobileData={videoMobileData}
-				animateIn
-				index={2}
-				key={2}
-			/>
 		</FoundationSectionWrapper>
 	);
 };

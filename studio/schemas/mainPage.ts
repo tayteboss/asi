@@ -491,17 +491,17 @@ export default {
       type: 'mux.video',
       fieldset: 'media',
     },
-    // {
-    //   title: 'Video Four Desktop',
-    //   name: 'videoFour',
-    //   type: 'mux.video',
-    //   fieldset: 'media',
-    // },
-    // {
-    //   title: 'Video Four Mobile',
-    //   name: 'videoFourMobile',
-    //   type: 'mux.video',
-    //   fieldset: 'media',
-    // },
+    {
+      title: 'Video Four Desktop',
+      name: 'videoFour',
+      type: 'mux.video',
+      fieldset: 'media',
+    },
+    {
+      title: 'Video Four Mobile',
+      name: 'videoFourMobile',
+      type: 'mux.video',
+      fieldset: 'media',
+    },
   ],
 }
