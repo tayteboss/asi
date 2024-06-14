@@ -19,7 +19,6 @@ const VideoSectionWrapper = styled(motion.div)`
 	width: 100%;
 	height: auto;
 	z-index: 1;
-	mix-blend-mode: multiply;
 	overflow: hidden;
 
 	* {

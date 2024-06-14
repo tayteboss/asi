@@ -33,10 +33,10 @@ const HeroVideoSectionWrapper = styled(motion.section)`
 
 const Cover = styled.div`
 	position: absolute;
-	bottom: -10px;
+	bottom: -2px;
 	left: 0;
 	width: 100%;
-	height: 20px;
+	height: 5px;
 	background: white;
 	z-index: 10;
 `;
