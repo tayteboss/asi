@@ -98,6 +98,16 @@ const ResourcesSection = () => {
 								isActive={true}
 							/>
 						</Link>
+						<Link
+							href="/token-holder-questions"
+							onMouseOver={() => setIsHovered(true)}
+							onMouseOut={() => setIsHovered(false)}
+						>
+							<ButtonLayout
+								title="Token Holder Questions"
+								isActive={true}
+							/>
+						</Link>
 					</LinksWrapper>
 				</TopBar>
 				<FooterDecoration isHovered={isHovered} />
