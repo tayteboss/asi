@@ -24,7 +24,7 @@ const ColumnCardWrapper = styled(motion.div)`
 	align-items: flex-start;
 	justify-content: space-between;
 	height: 100%;
-	max-height: ${pxToRem(700)};
+	max-height: ${pxToRem(750)};
 
 	gap: ${pxToRem(36)};
 	flex: 1;
@@ -63,7 +63,6 @@ const Title = styled.h3`
 	line-height: ${pxToRem(44)};
 	letter-spacing: -1.2px;
 	font-weight: 200;
-	white-space: nowrap;
 
 	@media ${(props) => props.theme.mediaBreakpoints.tabletPortrait} {
 		font-size: ${pxToRem(30)};
