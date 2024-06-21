@@ -40,7 +40,7 @@ const Container = styled.div`
 		padding-left: ${pxToRem(16)};
 		margin-right: ${pxToRem(16)};
 
-		display: inline-block !important;
+		flex-direction: column;
 	}
 `;
 

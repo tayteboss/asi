@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import FetchIconSvg from '../../svgs/FetchIconSvg';
+import { MutableRefObject, useEffect, useRef, useState } from 'react';
 import pxToRem from '../../../utils/pxToRem';
 import { PortableText } from '@portabletext/react';
 import ButtonLayout from '../../layout/ButtonLayout';
@@ -24,7 +24,6 @@ const ColumnCardWrapper = styled(motion.div)`
 	align-items: flex-start;
 	justify-content: space-between;
 	height: 100%;
-	max-height: ${pxToRem(750)};
 
 	gap: ${pxToRem(36)};
 	flex: 1;
@@ -104,8 +103,39 @@ const ColumnCard = (props: Props) => {
 
 	const contentIsPortableText = typeof content !== 'string';
 
+	const ref: any = useRef(null);
+	const siblingsRef: any = useRef([]);
+
+	// useEffect(() => {
+	// 	function getSiblings(element: HTMLElement) {
+	// 		// Get the parent node of the element
+	// 		const parent = element.parentNode;
+
+	// 		// Initialize an empty array to store the siblings
+	// 		let siblings: any[] = [];
+
+	// 		// Iterate over the parent's children
+	// 		Array.from(parent!.children).forEach((child) => {
+	// 			// Exclude the element itself
+	// 			if (child !== element) {
+	// 				siblings.push(child);
+	// 			}
+	// 		});
+
+	// 		return siblings;
+	// 	}
+
+	// 	siblingsRef.current = getSiblings(ref.current);
+
+	// 	console.log(siblingsRef.current, 'sib');
+	// }, []);
+
 	return (
-		<ColumnCardWrapper variants={childVariants} key={`icon-${type}`}>
+		<ColumnCardWrapper
+			variants={childVariants}
+			key={`icon-${type}`}
+			ref={ref}
+		>
 			{image && (
 				<ImageContainer>
 					<ImageWrapper>
@@ -123,6 +153,7 @@ const ColumnCard = (props: Props) => {
 				</ImageContainer>
 			)}
 			<Title>{title || ''}</Title>
+
 			{contentIsPortableText ? (
 				<div className="rich-text rich-text--small">
 					{content && <PortableText value={content} />}

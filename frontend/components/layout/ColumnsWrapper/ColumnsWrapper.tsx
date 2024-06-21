@@ -10,7 +10,7 @@ type Props = {
 const ColumnsWrapperWrapper = styled(motion.div)`
 	position: relative;
 	display: flex;
-	height: ${pxToRem(720)};
+	/* height: ${pxToRem(720)}; */
 
 	gap: ${pxToRem(40)};
 	padding: ${pxToRem(50)} 0;
