@@ -43,6 +43,7 @@ export const GlobalStyles = createGlobalStyle`
 	html {
 		background: var(--colour-white);
 		font-size: 16px;
+		overflow-x: hidden;
 
 		&.no-scroll {
 			overflow-y: hidden;

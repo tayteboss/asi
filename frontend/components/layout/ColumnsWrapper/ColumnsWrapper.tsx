@@ -8,10 +8,14 @@ type Props = {
 };
 
 const ColumnsWrapperWrapper = styled(motion.div)`
+	position: relative;
 	display: flex;
-	justify-content: space-between;
+	height: ${pxToRem(700)};
+	max-height: ${pxToRem(700)};
+
 	gap: ${pxToRem(40)};
 	padding: ${pxToRem(50)} 0;
+	align-items: stretch;
 
 	@media ${(props) => props.theme.mediaBreakpoints.tabletPortrait} {
 		flex-direction: column;

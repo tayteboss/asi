@@ -91,7 +91,7 @@ const AllianceSection: React.FC<Props> = (props: Props) => {
 			},
 			{
 				type: 'singularity',
-				title: 'Singularity Net',
+				title: 'SingularityNET',
 				content: singularityNetContent,
 				link: singularityNetLink,
 				image: singularityNetThumbnail

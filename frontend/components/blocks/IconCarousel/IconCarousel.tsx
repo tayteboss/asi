@@ -29,12 +29,15 @@ const Embla = styled.div`
 const Container = styled.div`
 	padding-left: ${pxToRem(36)};
 	margin-right: ${pxToRem(36)};
+	height: ${pxToRem(500)};
+	align-items: stretch;
 `;
 
 const Slide = styled.div`
 	pointer-events: all;
 	display: flex;
 	flex-direction: column;
+	align-items: stretch;
 	height: 100%;
 
 	&.embla__slide {

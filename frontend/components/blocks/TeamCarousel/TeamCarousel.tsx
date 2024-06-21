@@ -11,6 +11,7 @@ type Props = {
 
 const TeamCarouselWrapper = styled.div`
 	position: relative;
+
 	z-index: 2;
 	backdrop-filter: blur(10px);
 	width: 100%;
@@ -31,9 +32,15 @@ const Container = styled.div`
 	padding-left: ${pxToRem(36)};
 	margin-right: ${pxToRem(36)};
 
+	display: flex;
+	justify-content: center;
+	align-items: stretch;
+
 	@media ${(props) => props.theme.mediaBreakpoints.tabletPortrait} {
 		padding-left: ${pxToRem(16)};
 		margin-right: ${pxToRem(16)};
+
+		display: inline-block !important;
 	}
 `;
 
