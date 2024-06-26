@@ -51,6 +51,19 @@ const Page = (props: Props) => {
 				videoData={mainData?.videoOne}
 				videoMobileData={mainData?.videoOneMobile}
 			/>
+			<TokenMigrationSection
+				title={mainData?.tokenMigrationHeading}
+				points={mainData?.tokenMigrationPoints}
+				content={mainData?.tokenMigrationContent}
+				heading1={mainData?.tokenMigrationHeading1}
+				content1={mainData?.tokenMigrationContent1}
+				heading2={mainData?.tokenMigrationHeading2}
+				content2={mainData?.tokenMigrationContent2}
+				heading3={mainData?.tokenMigrationHeading3}
+				content3={mainData?.tokenMigrationContent3}
+				videoData={mainData?.videoThree}
+				videoMobileData={mainData?.videoThreeMobile}
+			/>
 			<WhatIsAsiSection
 				title={mainData?.whatIsAsiHeading}
 				subheading={mainData?.whatIsAsiSubheading}
@@ -81,19 +94,7 @@ const Page = (props: Props) => {
 				heading3={mainData?.tokenMergeHeading3}
 				content3={mainData?.tokenMergeContent3}
 			/>
-			<TokenMigrationSection
-				title={mainData?.tokenMigrationHeading}
-				points={mainData?.tokenMigrationPoints}
-				content={mainData?.tokenMigrationContent}
-				heading1={mainData?.tokenMigrationHeading1}
-				content1={mainData?.tokenMigrationContent1}
-				heading2={mainData?.tokenMigrationHeading2}
-				content2={mainData?.tokenMigrationContent2}
-				heading3={mainData?.tokenMigrationHeading3}
-				content3={mainData?.tokenMigrationContent3}
-				videoData={mainData?.videoThree}
-				videoMobileData={mainData?.videoThreeMobile}
-			/>
+
 			<FoundationSection
 				title={mainData?.foundationTeamHeading}
 				content={mainData?.foundationTeam}

@@ -256,7 +256,11 @@ export const GlobalStyles = createGlobalStyle`
 	}
 
 	.section-padding-y {
-		padding: 33vh 0;
+		padding: 16vh 0;
+
+		@media ${theme.mediaBreakpoints.tabletPortrait} {
+			padding: 10vh 0;
+		}
 	}
 
 	.type-mono {

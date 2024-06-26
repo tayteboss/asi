@@ -6,6 +6,8 @@ import MenuTrigger from '../../elements/MenuTrigger';
 import HeaderDecoration from '../../blocks/HeaderDecoration';
 import useScrolled from '../../../hooks/useScrolled';
 import { SiteSettingsType } from '../../../shared/types/types';
+import CountdownButton from './CountdownButton';
+import useViewportWidth from '../../../hooks/useViewportWidth';
 
 type StyledProps = {
 	$hasScrolled: boolean;
@@ -34,10 +36,23 @@ const HeaderWrapper = styled.header`
 	}
 `;
 
+const LinkWrapper = styled.div`
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: ${pxToRem(16)};
+
+	@media ${(props) => props.theme.mediaBreakpoints.mobile} {
+		flex-direction: column;
+		align-items: flex-start;
+		/* display: block; */
+	}
+`;
+
 const LogoWrapper = styled.div<StyledProps>`
 	padding: ${(props) => (props.$hasScrolled ? pxToRem(16) : pxToRem(24))};
 	border-radius: 27.04px;
-	background: rgba(255, 255, 255, 0.2);
+	background: rgba(189, 177, 177, 0.2);
 	backdrop-filter: blur(10px);
 	display: flex;
 	justify-content: center;
@@ -77,22 +92,35 @@ const Header = (props: Props) => {
 
 	const hasScrolled = useScrolled(200);
 
+	const viewport = useViewportWidth();
+	const isMobile = viewport === 'mobile' || viewport === 'tabletPortrait';
+
 	return (
 		<>
 			<HeaderDecoration />
 			<HeaderWrapper className="header">
-				<Link href="/">
-					<LogoWrapper
-						$hasScrolled={hasScrolled}
-						$menuIsActive={menuIsActive}
-					>
-						{logo && <img src={logo} alt="logo" />}
-					</LogoWrapper>
-				</Link>
-				<MenuTrigger
-					setMenuIsActive={setMenuIsActive}
-					menuIsActive={menuIsActive}
-				/>
+				<LinkWrapper>
+					<Link href="/">
+						<LogoWrapper
+							$hasScrolled={hasScrolled}
+							$menuIsActive={menuIsActive}
+						>
+							{logo && <img src={logo} alt="logo" />}
+						</LogoWrapper>
+					</Link>
+					{isMobile && (
+						<CountdownButton mergerText="Take part in the token merger" />
+					)}
+				</LinkWrapper>
+				<LinkWrapper>
+					{!isMobile && (
+						<CountdownButton mergerText="Take part in the token merger" />
+					)}
+					<MenuTrigger
+						setMenuIsActive={setMenuIsActive}
+						menuIsActive={menuIsActive}
+					/>
+				</LinkWrapper>
 			</HeaderWrapper>
 		</>
 	);
