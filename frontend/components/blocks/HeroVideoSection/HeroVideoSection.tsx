@@ -4,6 +4,7 @@ import MuxPlayer from '@mux/mux-player-react';
 import {
 	motion,
 	useViewportScroll,
+	useScroll,
 	useTransform,
 	useAnimation
 } from 'framer-motion';
@@ -49,7 +50,7 @@ const HeroVideoSection = (props: Props) => {
 
 	const wrapperRef = useRef<HTMLDivElement>(null);
 
-	const { scrollY } = useViewportScroll();
+	const { scrollY } = useScroll();
 
 	const viewport = useViewportWidth();
 	const mobile = viewport === 'mobile';

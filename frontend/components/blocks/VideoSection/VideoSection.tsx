@@ -1,7 +1,12 @@
 import styled from 'styled-components';
 import { MainPageType } from '../../../shared/types/types';
 import MuxPlayer from '@mux/mux-player-react';
-import { motion, useTransform, useViewportScroll } from 'framer-motion';
+import {
+	motion,
+	useTransform,
+	useViewportScroll,
+	useScroll
+} from 'framer-motion';
 import { useEffect, useRef, useState } from 'react';
 import useViewportWidth from '../../../hooks/useViewportWidth';
 
@@ -70,7 +75,7 @@ const VideoSection = (props: Props) => {
 
 	const wrapperRef = useRef<HTMLDivElement>(null);
 
-	const { scrollY } = useViewportScroll();
+	const { scrollY } = useScroll();
 
 	const viewport = useViewportWidth();
 	const mobile = viewport === 'mobile';

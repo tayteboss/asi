@@ -4,7 +4,7 @@ import LogoIconSvg from '../../svgs/LogoIconSvg';
 import pxToRem from '../../../utils/pxToRem';
 import { useLenis } from '@studio-freight/react-lenis';
 import { useRouter } from 'next/navigation';
-import { useEffect } from 'react';
+import useViewportWidth from '../../../hooks/useViewportWidth';
 
 type Props = {
 	menuIsActive: boolean;
@@ -134,20 +134,25 @@ const Menu = (props: Props) => {
 	const router = useRouter();
 	const lenis = useLenis(({ scroll }) => {});
 
+	const viewport = useViewportWidth();
+	const isMobile = viewport === 'mobile' || viewport === 'tabletPortrait';
+
 	const handleScrollToAnchor = async (anchor: string) => {
 		if (window.location.pathname !== '/') {
 			await router.push('/');
 			setTimeout(() => {
 				if (lenis) {
 					lenis.scrollTo(`#${anchor}`, {
-						duration: 1
+						duration: 1,
+						offset: isMobile ? -60 : 0
 					});
 				}
 			}, 1200); // Adjust the delay as needed
 		} else {
 			if (lenis) {
 				lenis.scrollTo(`#${anchor}`, {
-					duration: 1
+					duration: 1,
+					offset: isMobile ? -60 : 0
 				});
 			}
 		}
