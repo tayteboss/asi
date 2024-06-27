@@ -196,7 +196,7 @@ const HeroSection = (props: Props) => {
 					</SecondaryLogosWrapper>
 				</LogosWrapper>
 			</LayoutWrapper>
-			<HeroVideoSection data={videoData} mobileData={videoMobileData} />
+			{/* <HeroVideoSection data={videoData} mobileData={videoMobileData} /> */}
 		</HeroSectionWrapper>
 	);
 };

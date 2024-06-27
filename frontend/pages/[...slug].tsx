@@ -109,7 +109,7 @@ const Page = (props: Props) => {
 				title={data?.title || ''}
 				description={data?.seoDescription || ''}
 			/>
-			<HeroVideoSection data={data?.heroVideo} />
+			{/* <HeroVideoSection data={data?.heroVideo} /> */}
 			<IntroContentWrapper>
 				<IntroContentInner>
 					{data?.title && (

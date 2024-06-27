@@ -3,33 +3,42 @@ const nextConfig = {
 	eslint: {
 		// Warning: This allows production builds to successfully complete even if
 		// your project has ESLint errors.
-		ignoreDuringBuilds: true,
+		ignoreDuringBuilds: true
 	},
 	typescript: {
 		// Warning: This allows production builds to successfully complete even if
 		// your project has type errors.
-		ignoreBuildErrors: true,
+		ignoreBuildErrors: true
 	},
 	env: {
-		SITE_URL: process.env.SITE_URL,
+		SITE_URL: process.env.SITE_URL
 	},
 	images: {
 		remotePatterns: [
 			{
 				protocol: 'https',
 				hostname: 'image.mux.com',
-				pathname: '**',
+				pathname: '**'
 			},
 			{
 				protocol: 'https',
 				hostname: 'cdn.sanity.io',
-				pathname: '**',
-			},
-		],
+				pathname: '**'
+			}
+		]
 	},
 	compiler: {
-		styledComponents: true,
+		styledComponents: true
 	},
+	webpack: (config, options) => {
+		config.module.rules.push({
+			test: /\.(glsl|vs|fs|vert|frag)$/,
+			exclude: /node_modules/,
+			use: ['raw-loader', 'glslify-loader']
+		});
+
+		return config;
+	}
 };
 
 module.exports = nextConfig;

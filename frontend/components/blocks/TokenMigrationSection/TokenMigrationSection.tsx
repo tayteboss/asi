@@ -61,13 +61,13 @@ const TokenMigrationSection = (props: Props) => {
 					</ColumnsWrapper>
 				)}
 			</BlurContentLayout>
-			<VideoSection
+			{/* <VideoSection
 				data={videoData}
 				mobileData={videoMobileData}
 				animateIn
 				index={3}
 				key={3}
-			/>
+			/> */}
 		</TokenMigrationSectionWrapper>
 	);
 };

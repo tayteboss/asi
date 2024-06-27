@@ -19,6 +19,7 @@ type Props = {
 
 const VideoSectionWrapper = styled(motion.div)`
 	position: absolute;
+	display: none;
 	top: -10vh;
 	top: 0;
 	left: 0;

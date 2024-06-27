@@ -147,13 +147,13 @@ const AllianceSection: React.FC<Props> = (props: Props) => {
 					<IconCarousel data={carouselData} />
 				)}
 			</MobileWrapper>
-			<VideoSection
+			{/* <VideoSection
 				data={videoData}
 				mobileData={videoMobileData}
 				animateIn
 				index={2}
 				key={2}
-			/>
+			/> */}
 		</AllianceSectionWrapper>
 	);
 };

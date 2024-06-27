@@ -63,13 +63,13 @@ const PathwaySection = (props: Props) => {
 					/>
 				</ColumnsWrapper>
 			</BlurContentLayout>
-			<VideoSection
+			{/* <VideoSection
 				data={videoData}
 				mobileData={videoMobileData}
 				animateIn
 				index={4}
 				key={4}
-			/>
+			/> */}
 		</PathwaySectionWrapper>
 	);
 };
