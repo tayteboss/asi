@@ -83,9 +83,9 @@ const LinksWrapper = styled.div`
 	align-items: stretch;
 	/* margin-top: auto; */
 
-	button {
+	/* button {
 		width: 100%;
-	}
+	} */
 `;
 
 type MemberCardProps = TeamMemberType & {

@@ -5,7 +5,7 @@ import useEmblaCarousel from 'embla-carousel-react';
 import pxToRem from '../../../utils/pxToRem';
 import { useState, useCallback, useEffect } from 'react';
 import DownloadArrowSvg from '../../svgs/DownloadArrowSvg';
-
+import ForwardBlobSvg from '../../svgs/ForwardBlob';
 type Props = {
 	data: TeamMemberType[] | null;
 };
