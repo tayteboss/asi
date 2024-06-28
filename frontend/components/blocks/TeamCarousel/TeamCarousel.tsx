@@ -87,9 +87,10 @@ const ScrollIndicatorLeft = styled.div<{ $isScrolled: boolean }>`
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	z-index: 999;
+	z-index: 99999999999;
 
 	svg {
+		z-index: 99999999999;
 		transition: color 0.25s ease-in-out;
 		color: rgba(177, 252, 171, 1);
 	}
@@ -136,7 +137,8 @@ const TeamCarousel = (props: Props) => {
 	const [emblaRef, emblaApi] = useEmblaCarousel({
 		loop: false,
 		dragFree: true,
-		watchDrag: true
+		watchDrag: true,
+		skipSnaps: false
 	});
 
 	const scrollToLastSlide = useCallback(() => {
@@ -149,7 +151,13 @@ const TeamCarousel = (props: Props) => {
 	}, [emblaApi]);
 
 	const scrollNext = useCallback(() => {
-		if (emblaApi) emblaApi.scrollNext();
+		if (emblaApi) {
+			const nextIndex = Math.min(
+				emblaApi.selectedScrollSnap() + 1,
+				emblaApi.scrollSnapList().length - 1
+			);
+			emblaApi.scrollTo(nextIndex);
+		}
 	}, [emblaApi]);
 
 	useEffect(() => {
@@ -177,7 +185,6 @@ const TeamCarousel = (props: Props) => {
 			>
 				<BackwardBlobSvg
 					style={{
-						color: 'rgba(177, 252, 171, 1)',
 						width: '80px',
 						height: '80px'
 					}}
