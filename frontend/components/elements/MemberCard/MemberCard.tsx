@@ -133,7 +133,8 @@ const MemberCard = (props: MemberCardProps) => {
 							priority={isPriority}
 							fill
 							style={{
-								objectFit: 'cover'
+								objectFit: 'cover',
+								filter: 'grayscale(1)'
 							}}
 						/>
 					</RatioInner>

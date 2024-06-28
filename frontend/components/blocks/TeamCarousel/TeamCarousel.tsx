@@ -3,7 +3,8 @@ import { TeamMemberType } from '../../../shared/types/types';
 import MemberCard from '../../elements/MemberCard';
 import useEmblaCarousel from 'embla-carousel-react';
 import pxToRem from '../../../utils/pxToRem';
-import { useState } from 'react';
+import { useState, useCallback, useEffect } from 'react';
+import DownloadArrowSvg from '../../svgs/DownloadArrowSvg';
 
 type Props = {
 	data: TeamMemberType[] | null;
@@ -36,6 +37,26 @@ const Embla = styled.div`
 	justify-content: center;
 	align-items: center; */
 `;
+const ScrollIndicator = styled.div<{ $isScrolled: boolean }>`
+	position: fixed;
+	right: 1rem;
+	top: 12%;
+	cursor: pointer;
+	transition: opacity 0.25s ease-in-out;
+	opacity: ${(props) => (props.$isScrolled ? 0 : 1)};
+
+	padding: ${pxToRem(12)} ${pxToRem(16)};
+	border-radius: 17.04px;
+	/* background: rgba(189, 177, 177, 0.2); */
+	backdrop-filter: blur(10px);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	/* transform: translateY(-50%); */
+	@media ${(props) => props.theme.mediaBreakpoints.tabletPortrait} {
+		display: none;
+	}
+`;
 
 const Container = styled.div`
 	padding-left: ${pxToRem(36)};
@@ -61,11 +82,34 @@ const TeamCarousel = (props: Props) => {
 	const { data } = props;
 
 	const [isHovered, setIsHovered] = useState(false);
+	const [isScrolled, setIsScrolled] = useState(false);
 
 	const [emblaRef, emblaApi] = useEmblaCarousel({
 		loop: false,
-		dragFree: true
+		dragFree: true,
+		watchDrag: true
 	});
+
+	useEffect(() => {
+		if (!emblaApi) return;
+
+		const onSelect = () => {
+			if (emblaApi.selectedScrollSnap() !== 0) {
+				setIsScrolled(true);
+			}
+		};
+
+		emblaApi.on('select', onSelect);
+
+		return () => {
+			emblaApi.off('select', onSelect);
+		};
+	}, [emblaApi]);
+
+	const scrollToLastSlide = useCallback(() => {
+		if (!emblaApi) return;
+		emblaApi.scrollTo(emblaApi.slideNodes().length - 1);
+	}, [emblaApi]);
 
 	return (
 		<TeamCarouselWrapper>
@@ -83,6 +127,19 @@ const TeamCarousel = (props: Props) => {
 					))}
 				</Container>
 			</Embla>
+			<ScrollIndicator
+				onClick={scrollToLastSlide}
+				$isScrolled={isScrolled}
+			>
+				<DownloadArrowSvg
+					style={{
+						color: 'rgba(177, 252, 171, 1)',
+						width: '40px',
+						height: '40px',
+						transform: 'rotate(-90deg)'
+					}}
+				/>
+			</ScrollIndicator>
 		</TeamCarouselWrapper>
 	);
 };

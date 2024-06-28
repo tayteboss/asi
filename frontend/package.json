@@ -28,6 +28,7 @@
     "crypto": "^1.0.1",
     "dotenv": "^10.0.0",
     "embla-carousel-react": "^8.1.4",
+    "embla-carousel-wheel-gestures": "^8.0.1",
     "framer-motion": "^8.4.6",
     "glslify-loader": "^2.0.0",
     "graphql": "^16.6.0",
