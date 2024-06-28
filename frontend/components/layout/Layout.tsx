@@ -57,8 +57,9 @@ const Layout = (props: Props) => {
 							top: 0,
 							left: 0,
 							width: '100vw',
-							height: '100%',
+							height: '100dvh',
 							pointerEvents: 'none',
+							transition: 'all 0.25s linear',
 							zIndex: -1
 						}}
 						eventSource={mainRef}
