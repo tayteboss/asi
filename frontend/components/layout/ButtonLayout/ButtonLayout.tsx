@@ -29,6 +29,9 @@ const ButtonLayoutWrapper = styled.button<{ $isActive: boolean }>`
 
 	transition: all var(--transition-speed-default) var(--transition-ease);
 
+	display: flex;
+	justify-content: space-between;
+
 	&:hover {
 		background: ${(props) =>
 			props.$isActive ? 'var(--colour-black)' : 'var(--colour-white)'};

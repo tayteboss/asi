@@ -58,15 +58,34 @@ const Name = styled.h3`
 `;
 
 const Title = styled.p`
-	height: 64px;
+	height: 44px;
 	margin-bottom: ${pxToRem(24)};
 	@media ${(props) => props.theme.mediaBreakpoints.tabletPortrait} {
-		height: auto;
+		/* height: auto; */
 	}
 `;
 
 const Description = styled.p`
 	margin-bottom: ${pxToRem(24)};
+	min-height: 380px;
+	height: 380px;
+
+	@media ${(props) => props.theme.mediaBreakpoints.tabletPortrait} {
+		height: 380px;
+	}
+`;
+
+const LinksWrapper = styled.div`
+	display: flex;
+	flex-direction: column;
+	gap: ${pxToRem(16)};
+	justify-content: stretch;
+	align-items: stretch;
+	/* margin-top: auto; */
+
+	button {
+		width: 100%;
+	}
 `;
 
 type MemberCardProps = TeamMemberType & {
@@ -82,6 +101,7 @@ const MemberCard = (props: MemberCardProps) => {
 		title,
 		imageUrl,
 		link,
+		links,
 		description,
 		isPriority,
 		isHovered,
@@ -122,10 +142,30 @@ const MemberCard = (props: MemberCardProps) => {
 			{name && <Name>{name}</Name>}
 			{title && <Title>{title}</Title>}
 			{description && <Description>{description}</Description>}
-			{link && (
-				<Link href={link} target="_blank">
-					<ButtonLayout title="Learn More" isActive={true} isSmall />
-				</Link>
+			{/* {link && (
+				// <Link href={link} target="_blank">
+				// 	<ButtonLayout title="Learn More" isActive={true} isSmall />
+				// </Link>
+				<a href={'/'}>hi</a>
+			)} */}
+			{links && (
+				<LinksWrapper>
+					{links.map((link) => {
+						return (
+							<Link
+								href={link.url}
+								key={link._key}
+								target="_blank"
+							>
+								<ButtonLayout
+									title={link.title}
+									isActive={true}
+									isSmall
+								/>
+							</Link>
+						);
+					})}
+				</LinksWrapper>
 			)}
 		</MemberCardWrapper>
 	);

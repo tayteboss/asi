@@ -86,6 +86,7 @@ export type TeamMemberType = {
 	image: ImageType | null;
 	link: string | null;
 	description: string | null;
+	links: { url: string; title: string; _key: string }[];
 };
 
 export type MainPageType = {
