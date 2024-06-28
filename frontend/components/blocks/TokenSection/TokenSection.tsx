@@ -14,6 +14,7 @@ type Props = {
 	heading1: MainPageType['tokenMergeHeading1'];
 	heading2: MainPageType['tokenMergeHeading2'];
 	heading3: MainPageType['tokenMergeHeading3'];
+	multiLine?: boolean;
 };
 
 const TokenSectionWrapper = styled.section`
@@ -30,7 +31,8 @@ const TokenSection = (props: Props) => {
 		content3,
 		heading1,
 		heading2,
-		heading3
+		heading3,
+		multiLine
 	} = props;
 
 	return (
@@ -38,9 +40,21 @@ const TokenSection = (props: Props) => {
 			<BlurContentLayout>
 				<BlurMainContent title={title} content={content} />
 				<ColumnsWrapper>
-					<ColumnCard title={heading1} content={content1} />
-					<ColumnCard title={heading2} content={content2} />
-					<ColumnCard title={heading3} content={content3} />
+					<ColumnCard
+						title={heading1}
+						content={content1}
+						multiLine={true}
+					/>
+					<ColumnCard
+						title={heading2}
+						content={content2}
+						multiLine={true}
+					/>
+					<ColumnCard
+						title={heading3}
+						content={content3}
+						multiLine={true}
+					/>
 				</ColumnsWrapper>
 			</BlurContentLayout>
 		</TokenSectionWrapper>

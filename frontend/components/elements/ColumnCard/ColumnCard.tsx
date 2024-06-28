@@ -16,6 +16,7 @@ type Props = {
 	linkTitle?: string;
 	image?: string | null;
 	useDarkLink?: boolean;
+	multiLine?: boolean;
 };
 
 const ColumnCardWrapper = styled(motion.div)`
@@ -57,21 +58,26 @@ const RatioWrapper = styled.div`
 	border-radius: ${pxToRem(15)};
 `;
 
-const Title = styled.h3`
+const Title = styled.h3<{ $multiLine: boolean }>`
 	font-size: ${pxToRem(40)};
 	line-height: ${pxToRem(44)};
 	letter-spacing: -1.2px;
 	font-weight: 200;
+	min-height: ${(props) => (props.$multiLine ? '135px' : 'auto')};
 
 	@media ${(props) => props.theme.mediaBreakpoints.tabletPortrait} {
 		font-size: ${pxToRem(30)};
 		line-height: ${pxToRem(33)};
 		letter-spacing: -0.9px;
 		font-weight: 200;
+		min-height: auto;
 	}
 `;
 
-const Content = styled.div``;
+const Content = styled.div`
+	/* for alignment, feels slightlsy hacky */
+	min-height: 170px;
+`;
 
 const childVariants = {
 	hidden: {
@@ -98,7 +104,8 @@ const ColumnCard = (props: Props) => {
 		link,
 		linkTitle = 'Learn more',
 		image,
-		useDarkLink = false
+		useDarkLink = false,
+		multiLine = false
 	} = props;
 
 	const contentIsPortableText = typeof content !== 'string';
@@ -152,7 +159,7 @@ const ColumnCard = (props: Props) => {
 					</ImageWrapper>
 				</ImageContainer>
 			)}
-			<Title>{title || ''}</Title>
+			<Title $multiLine={multiLine}>{title || ''}</Title>
 
 			{contentIsPortableText ? (
 				<div className="rich-text rich-text--small">

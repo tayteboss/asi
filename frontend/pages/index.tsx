@@ -100,19 +100,22 @@ const Page = (props: Props) => {
 				content={mainData?.foundationTeam}
 				teamMembers={mainData?.teamMembers}
 			/>
-			<PathwaySection
-				title={mainData?.pathwayToAsiHeading}
-				content={mainData?.pathwayToAsi}
-				heading1={mainData?.pathwayHeading1}
-				content1={mainData?.pathwayContent1}
-				heading2={mainData?.pathwayHeading2}
-				content2={mainData?.pathwayContent2}
-				heading3={mainData?.pathwayHeading3}
-				content3={mainData?.pathwayContent3}
-				contactLink={mainData?.pathwayContactLink}
-				videoData={mainData?.videoFour}
-				videoMobileData={mainData?.videoFourMobile}
-			/>
+			{/* remove for now */}
+			{false && (
+				<PathwaySection
+					title={mainData?.pathwayToAsiHeading}
+					content={mainData?.pathwayToAsi}
+					heading1={mainData?.pathwayHeading1}
+					content1={mainData?.pathwayContent1}
+					heading2={mainData?.pathwayHeading2}
+					content2={mainData?.pathwayContent2}
+					heading3={mainData?.pathwayHeading3}
+					content3={mainData?.pathwayContent3}
+					contactLink={mainData?.pathwayContactLink}
+					videoData={mainData?.videoFour}
+					videoMobileData={mainData?.videoFourMobile}
+				/>
+			)}
 			<ResourcesSection />
 		</PageWrapper>
 	);

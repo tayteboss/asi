@@ -58,7 +58,11 @@ const Name = styled.h3`
 `;
 
 const Title = styled.p`
+	height: 64px;
 	margin-bottom: ${pxToRem(24)};
+	@media ${(props) => props.theme.mediaBreakpoints.tabletPortrait} {
+		height: auto;
+	}
 `;
 
 const Description = styled.p`

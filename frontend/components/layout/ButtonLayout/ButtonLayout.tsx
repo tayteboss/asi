@@ -8,9 +8,12 @@ type Props = {
 	title?: string;
 	isActive?: boolean;
 	isSmall?: boolean;
+	isLarge?: boolean;
+	disabled?: boolean;
+	style?: any;
 };
 
-const ButtonLayoutWrapper = styled.div<{ $isActive: boolean }>`
+const ButtonLayoutWrapper = styled.button<{ $isActive: boolean }>`
 	padding: ${pxToRem(10)} ${pxToRem(20)};
 	background: ${(props) =>
 		props.$isActive ? 'var(--colour-lime)' : 'var(--colour-black)'};
@@ -22,6 +25,7 @@ const ButtonLayoutWrapper = styled.div<{ $isActive: boolean }>`
 	gap: ${pxToRem(8)};
 	border-radius: 100px;
 	position: relative;
+	pointer-events: all;
 
 	transition: all var(--transition-speed-default) var(--transition-ease);
 
@@ -38,26 +42,36 @@ const ButtonLayoutWrapper = styled.div<{ $isActive: boolean }>`
 	}
 `;
 
-const Title = styled(motion.span)<{ $isSmall: boolean }>`
-	font-size: ${(props) => (props.$isSmall ? '12px' : '14px')};
+const Title = styled(motion.span)<{ $isSmall: boolean; $isLarge: boolean }>`
+	font-size: ${(props) =>
+		props.$isSmall ? '12px' : props.$isLarge ? '24px' : '14px'};
+	/* color: red !important; */
 
 	@media ${(props) => props.theme.mediaBreakpoints.tabletPortrait} {
-		font-size: ${(props) => (props.$isSmall ? '9px' : '14px')};
+		font-size: ${(props) =>
+			props.$isSmall ? '9px' : props.$isLarge ? '18px' : '14px'};
 		white-space: nowrap;
 	}
 `;
 
-const HoverTitle = styled(motion.span)<{ $isSmall: boolean }>`
-	font-size: ${(props) => props.$isSmall && '12px'};
+const HoverTitle = styled(motion.span)<{
+	$isSmall: boolean;
+	$isLarge: boolean;
+}>`
+	font-size: ${(props) =>
+		props.$isSmall ? '12px' : props.$isLarge ? '24px' : '14px'};
 
 	@media ${(props) => props.theme.mediaBreakpoints.tabletPortrait} {
-		font-size: ${pxToRem(12)};
+		font-size: ${(props) => (props.$isLarge ? '18px' : '13px')};
 		white-space: nowrap;
 	}
 `;
 
-const Icon = styled.span`
+const Icon = styled.span<{
+	$isLarge: boolean;
+}>`
 	padding-top: 2px;
+	scale: ${(props) => (props.$isLarge ? 1.5 : 1)};
 `;
 
 const titleVariants = {
@@ -99,7 +113,14 @@ const hoverTitleVariants = {
 };
 
 const ButtonLayout = (props: Props) => {
-	const { type = 'default', title = '', isActive, isSmall = false } = props;
+	const {
+		type = 'default',
+		title = '',
+		isActive,
+		isSmall = false,
+		disabled = false,
+		isLarge = false
+	} = props;
 
 	const [isHovered, setIsHovered] = useState(false);
 
@@ -109,6 +130,8 @@ const ButtonLayout = (props: Props) => {
 			onMouseOut={() => setIsHovered(false)}
 			$isActive={isActive}
 			className="button-layout"
+			disabled={disabled}
+			{...props}
 		>
 			<AnimatePresence mode="wait">
 				{isHovered ? (
@@ -119,6 +142,7 @@ const ButtonLayout = (props: Props) => {
 						animate="visible"
 						exit="hidden"
 						$isSmall={isSmall}
+						$isLarge={isLarge}
 					>
 						{title}
 					</Title>
@@ -127,6 +151,7 @@ const ButtonLayout = (props: Props) => {
 						key="hover-title"
 						variants={hoverTitleVariants}
 						$isSmall={isSmall}
+						$isLarge={isLarge}
 						initial="hidden"
 						animate="visible"
 						exit="hidden"
@@ -135,8 +160,8 @@ const ButtonLayout = (props: Props) => {
 					</HoverTitle>
 				)}
 			</AnimatePresence>
-			{type === 'download' && <Icon>↧</Icon>}
-			{type === 'default' && <Icon>↗</Icon>}
+			{type === 'download' && <Icon $isLarge={isLarge}>↧</Icon>}
+			{type === 'default' && <Icon $isLarge={isLarge}>↗</Icon>}
 		</ButtonLayoutWrapper>
 	);
 };

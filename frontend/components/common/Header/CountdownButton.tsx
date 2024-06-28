@@ -1,9 +1,11 @@
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import ButtonLayout from '../../layout/ButtonLayout';
+import pxToRem from '../../../utils/pxToRem';
 
 type Props = {
 	mergerText: string;
+	isLarge?: boolean;
 };
 
 const getTimeRemaining = (targetDate: Date) => {
@@ -22,7 +24,7 @@ const getTimeRemaining = (targetDate: Date) => {
 	};
 };
 
-const CountdownButton = ({ mergerText }: Props) => {
+const CountdownButton = ({ mergerText, isLarge = true }: Props) => {
 	const targetDate = new Date(Date.UTC(2024, 6, 1, 15, 0, 0)); // Month is 0-indexed, so 11 is December
 	const now = new Date();
 
@@ -47,20 +49,39 @@ const CountdownButton = ({ mergerText }: Props) => {
 	// const utcTimeString = `${year}-${month}-${date} ${hours}:${minutes}:${seconds} UTC`;
 
 	return (
-		<Link
-			href="/white-paper"
-			// onMouseOver={() => setIsHovered(true)}
-			// onMouseOut={() => setIsHovered(false)}
-		>
-			<ButtonLayout
-				title={
-					isLinkActive
-						? mergerText
-						: `${timeRemaining.days}d ${timeRemaining.hours}h ${timeRemaining.minutes}m ${timeRemaining.seconds}s`
-				}
-				isActive={true}
-			/>
-		</Link>
+		<>
+			{isLinkActive ? (
+				<Link
+					href="https://singularitydao.ai/migrate-asi"
+					target="_blank"
+
+					// onMouseOver={() => setIsHovered(true)}
+					// onMouseOut={() => setIsHovered(false)}
+				>
+					<ButtonLayout
+						title={
+							isLinkActive
+								? mergerText
+								: `${timeRemaining.days}d ${timeRemaining.hours}h ${timeRemaining.minutes}m ${timeRemaining.seconds}s`
+						}
+						isActive={true}
+					/>
+				</Link>
+			) : (
+				<ButtonLayout
+					title={
+						isLinkActive
+							? mergerText
+							: `${timeRemaining.days}d ${timeRemaining.hours}h ${timeRemaining.minutes}m ${timeRemaining.seconds}s`
+					}
+					isActive={false}
+					isLarge={isLarge}
+					style={{
+						pointerEvents: !isLinkActive ? 'none' : 'all'
+					}}
+				/>
+			)}
+		</>
 	);
 };
 
