@@ -5,7 +5,7 @@ import useEmblaCarousel from 'embla-carousel-react';
 import pxToRem from '../../../utils/pxToRem';
 import { useState, useCallback, useEffect } from 'react';
 import DownloadArrowSvg from '../../svgs/DownloadArrowSvg';
-import ForwardBlobSvg from '../../svgs/ForwardBlob';
+import { ForwardBlobSvg, BackwardBlobSvg } from '../../svgs/ForwardBlob';
 type Props = {
 	data: TeamMemberType[] | null;
 };
@@ -37,10 +37,10 @@ const Embla = styled.div`
 	justify-content: center;
 	align-items: center; */
 `;
-const ScrollIndicator = styled.div<{ $isScrolled: boolean }>`
+const ScrollIndicatorRight = styled.div<{ $isScrolled: boolean }>`
 	position: fixed;
 	right: 1rem;
-	top: 12%;
+	top: 20%;
 	cursor: pointer;
 	transition: opacity 0.25s ease-in-out;
 	opacity: ${(props) => (props.$isScrolled ? 0 : 1)};
@@ -48,10 +48,57 @@ const ScrollIndicator = styled.div<{ $isScrolled: boolean }>`
 	padding: ${pxToRem(12)} ${pxToRem(16)};
 	border-radius: 17.04px;
 	/* background: rgba(189, 177, 177, 0.2); */
-	backdrop-filter: blur(10px);
+	/* backdrop-filter: blur(10px); */
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	z-index: 999;
+	transform: translateY(-50%);
+
+	svg {
+		transition: color 0.25s ease-in-out;
+		color: rgba(177, 252, 171, 1);
+	}
+
+	&:hover {
+		svg {
+			color: black;
+		}
+	}
+
+	@media ${(props) => props.theme.mediaBreakpoints.tabletPortrait} {
+		display: none;
+	}
+`;
+
+const ScrollIndicatorLeft = styled.div<{ $isScrolled: boolean }>`
+	position: fixed;
+	left: 1rem;
+	top: 20%;
+	transform: translateY(-50%);
+	cursor: pointer;
+	transition: opacity 0.25s ease-in-out;
+	opacity: ${(props) => (props.$isScrolled ? 0 : 1)};
+
+	padding: ${pxToRem(12)} ${pxToRem(16)};
+	border-radius: 17.04px;
+	/* background: rgba(189, 177, 177, 0.2); */
+	/* backdrop-filter: blur(10px); */
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	z-index: 999;
+
+	svg {
+		transition: color 0.25s ease-in-out;
+		color: rgba(177, 252, 171, 1);
+	}
+
+	&:hover {
+		svg {
+			color: black;
+		}
+	}
 	/* transform: translateY(-50%); */
 	@media ${(props) => props.theme.mediaBreakpoints.tabletPortrait} {
 		display: none;
@@ -83,6 +130,8 @@ const TeamCarousel = (props: Props) => {
 
 	const [isHovered, setIsHovered] = useState(false);
 	const [isScrolled, setIsScrolled] = useState(false);
+	const [canScrollPrev, setCanScrollPrev] = useState(false);
+	const [canScrollNext, setCanScrollNext] = useState(true);
 
 	const [emblaRef, emblaApi] = useEmblaCarousel({
 		loop: false,
@@ -90,29 +139,50 @@ const TeamCarousel = (props: Props) => {
 		watchDrag: true
 	});
 
-	useEffect(() => {
-		if (!emblaApi) return;
-
-		const onSelect = () => {
-			if (emblaApi.selectedScrollSnap() !== 0) {
-				setIsScrolled(true);
-			}
-		};
-
-		emblaApi.on('select', onSelect);
-
-		return () => {
-			emblaApi.off('select', onSelect);
-		};
-	}, [emblaApi]);
-
 	const scrollToLastSlide = useCallback(() => {
 		if (!emblaApi) return;
 		emblaApi.scrollTo(emblaApi.slideNodes().length - 1);
 	}, [emblaApi]);
 
+	const scrollPrev = useCallback(() => {
+		if (emblaApi) emblaApi.scrollPrev();
+	}, [emblaApi]);
+
+	const scrollNext = useCallback(() => {
+		if (emblaApi) emblaApi.scrollNext();
+	}, [emblaApi]);
+
+	useEffect(() => {
+		if (!emblaApi) return;
+
+		const onSelect = () => {
+			setCanScrollPrev(emblaApi.canScrollPrev());
+			setCanScrollNext(emblaApi.canScrollNext());
+		};
+
+		emblaApi.on('select', onSelect);
+		emblaApi.on('init', onSelect);
+
+		return () => {
+			emblaApi.off('select', onSelect);
+			emblaApi.off('init', onSelect);
+		};
+	}, [emblaApi]);
+
 	return (
 		<TeamCarouselWrapper>
+			<ScrollIndicatorLeft
+				onClick={scrollPrev}
+				$isScrolled={!canScrollPrev}
+			>
+				<BackwardBlobSvg
+					style={{
+						color: 'rgba(177, 252, 171, 1)',
+						width: '80px',
+						height: '80px'
+					}}
+				/>
+			</ScrollIndicatorLeft>
 			<Embla className="embla" ref={emblaRef}>
 				<Container className="embla__container">
 					{data?.map((member, i) => (
@@ -127,19 +197,18 @@ const TeamCarousel = (props: Props) => {
 					))}
 				</Container>
 			</Embla>
-			<ScrollIndicator
-				onClick={scrollToLastSlide}
-				$isScrolled={isScrolled}
+			<ScrollIndicatorRight
+				onClick={scrollNext}
+				$isScrolled={!canScrollNext}
 			>
-				<DownloadArrowSvg
+				<ForwardBlobSvg
 					style={{
-						color: 'rgba(177, 252, 171, 1)',
-						width: '40px',
-						height: '40px',
-						transform: 'rotate(-90deg)'
+						// color: 'rgba(177, 252, 171, 1)',
+						width: '80px',
+						height: '80px'
 					}}
 				/>
-			</ScrollIndicator>
+			</ScrollIndicatorRight>
 		</TeamCarouselWrapper>
 	);
 };

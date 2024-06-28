@@ -1,3 +1,4 @@
 import ForwardBlobSvg from './ForwardBlobSvg';
+import BackwardBlobSvg from './BackwardBlobSvg';
 
-export default ForwardBlobSvg;
+export { ForwardBlobSvg, BackwardBlobSvg };
