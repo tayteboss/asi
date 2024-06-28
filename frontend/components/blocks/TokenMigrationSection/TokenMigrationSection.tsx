@@ -70,6 +70,7 @@ const TokenMigrationSection = (props: Props) => {
 						<CountdownButton
 							mergerText="Take part in the token merger"
 							isLarge={false}
+							isActive={false}
 						/>
 					</Link>
 				</TokenMigrationButtonWrapper>
