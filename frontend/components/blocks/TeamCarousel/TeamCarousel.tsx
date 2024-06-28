@@ -17,7 +17,11 @@ const TeamCarouselWrapper = styled.div`
 	width: 100%;
 	border-radius: ${pxToRem(20)};
 	background: rgba(255, 255, 255, 0.2);
-	pointer-events: none;
+	/* pointer-events: none; */
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
 
 	@media ${(props) => props.theme.mediaBreakpoints.tabletPortrait} {
 		backdrop-filter: blur(5px);
@@ -26,21 +30,26 @@ const TeamCarouselWrapper = styled.div`
 
 const Embla = styled.div`
 	padding: ${pxToRem(50)} 0;
+	/* background-color: blue; */
+
+	/* display: flex;
+	justify-content: center;
+	align-items: center; */
 `;
 
 const Container = styled.div`
 	padding-left: ${pxToRem(36)};
 	margin-right: ${pxToRem(36)};
 
-	display: flex;
+	/* display: flex;
 	justify-content: center;
-	align-items: stretch;
+	align-items: stretch; */
 
 	@media ${(props) => props.theme.mediaBreakpoints.tabletPortrait} {
 		padding-left: ${pxToRem(16)};
 		margin-right: ${pxToRem(16)};
 
-		flex-direction: column;
+		/* flex-direction: column; */
 	}
 `;
 
