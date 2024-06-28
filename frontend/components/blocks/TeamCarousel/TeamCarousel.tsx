@@ -39,7 +39,7 @@ const Embla = styled.div`
 `;
 const ScrollIndicatorRight = styled.div<{ $isScrolled: boolean }>`
 	position: fixed;
-	right: 1rem;
+	/* right: 1rem; */
 	top: 20%;
 	cursor: pointer;
 	transition: opacity 0.25s ease-in-out;
@@ -73,7 +73,7 @@ const ScrollIndicatorRight = styled.div<{ $isScrolled: boolean }>`
 
 const ScrollIndicatorLeft = styled.div<{ $isScrolled: boolean }>`
 	position: fixed;
-	left: 1rem;
+	/* left: 1rem; */
 	top: 20%;
 	transform: translateY(-50%);
 	cursor: pointer;

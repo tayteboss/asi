@@ -1,3 +1,4 @@
+import {defineField, defineArrayMember} from 'sanity'
 import {UserIcon} from '@sanity/icons'
 
 export default {
@@ -30,6 +31,29 @@ export default {
       title: 'Link',
       name: 'link',
       type: 'url',
+    },
+    {
+      title: 'Links',
+      name: 'links',
+      type: 'array',
+      of: [
+        defineArrayMember({
+          name: 'link',
+          title: 'Link',
+          type: 'object',
+          fields: [
+            defineField({
+              name: 'title',
+              type: 'string',
+            }),
+            defineField({
+              title: 'URL',
+              name: 'url',
+              type: 'url',
+            }),
+          ],
+        }),
+      ],
     },
   ],
 }
