@@ -217,14 +217,14 @@ const Menu = (props: Props) => {
 								>
 									Foundation Team
 								</Item>
-								<Item
+								{/* <Item
 									variants={childVariants}
 									onClick={() => {
 										handleScrollToAnchor('pathway-to-asi');
 									}}
 								>
 									Pathway to ASI
-								</Item>
+								</Item> */}
 								<Item
 									variants={childVariants}
 									onClick={() => {
