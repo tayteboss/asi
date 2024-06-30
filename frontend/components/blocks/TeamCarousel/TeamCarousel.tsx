@@ -48,6 +48,9 @@ const ScrollIndicatorRight = styled.div<{ $isScrolled: boolean }>`
 	transition: opacity 0.25s ease-in-out;
 	opacity: ${(props) => (props.$isScrolled ? 0 : 1)};
 
+	font-size: 80px;
+	color: rgba(177, 252, 171, 1);
+
 	padding: ${pxToRem(12)} ${pxToRem(16)};
 	border-radius: 17.04px;
 	/* background: rgba(189, 177, 177, 0.2); */
@@ -57,6 +60,7 @@ const ScrollIndicatorRight = styled.div<{ $isScrolled: boolean }>`
 	align-items: center;
 	z-index: 999;
 	transform: translateY(-50%);
+	transition: color 0.25s ease-in-out;
 
 	svg {
 		transition: color 0.25s ease-in-out;
@@ -64,6 +68,7 @@ const ScrollIndicatorRight = styled.div<{ $isScrolled: boolean }>`
 	}
 
 	&:hover {
+		color: black;
 		svg {
 			color: black;
 		}
@@ -83,6 +88,9 @@ const ScrollIndicatorLeft = styled.div<{ $isScrolled: boolean }>`
 	transition: opacity 0.25s ease-in-out;
 	opacity: ${(props) => (props.$isScrolled ? 0 : 1)};
 
+	font-size: 80px;
+	color: rgba(177, 252, 171, 1);
+
 	padding: ${pxToRem(12)} ${pxToRem(16)};
 	border-radius: 17.04px;
 	/* background: rgba(189, 177, 177, 0.2); */
@@ -91,6 +99,7 @@ const ScrollIndicatorLeft = styled.div<{ $isScrolled: boolean }>`
 	justify-content: center;
 	align-items: center;
 	z-index: 99999999999;
+	transition: color 0.25s ease-in-out;
 
 	svg {
 		z-index: 99999999999;
@@ -99,6 +108,7 @@ const ScrollIndicatorLeft = styled.div<{ $isScrolled: boolean }>`
 	}
 
 	&:hover {
+		color: black;
 		svg {
 			color: black;
 		}
@@ -189,12 +199,7 @@ const TeamCarousel = (props: Props) => {
 				onClick={scrollPrev}
 				$isScrolled={!canScrollPrev}
 			>
-				<BackwardBlobSvg
-					style={{
-						width: '80px',
-						height: '80px'
-					}}
-				/>
+				{'〈'}
 			</ScrollIndicatorLeft>
 			<Embla className="embla" ref={emblaRef}>
 				<Container className="embla__container">
@@ -214,13 +219,14 @@ const TeamCarousel = (props: Props) => {
 				onClick={scrollNext}
 				$isScrolled={!canScrollNext}
 			>
-				<ForwardBlobSvg
+				{/* <ForwardBlobSvg
 					style={{
 						// color: 'rgba(177, 252, 171, 1)',
 						width: '80px',
 						height: '80px'
 					}}
-				/>
+				/> */}
+				{'〉'}
 			</ScrollIndicatorRight>
 		</TeamCarouselWrapper>
 	);
