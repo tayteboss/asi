@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import { TeamMemberType } from '../../../shared/types/types';
 import MemberCard from '../../elements/MemberCard';
 import useEmblaCarousel from 'embla-carousel-react';
+import { WheelGesturesPlugin } from 'embla-carousel-wheel-gestures';
 import pxToRem from '../../../utils/pxToRem';
 import { useState, useCallback, useEffect } from 'react';
 import DownloadArrowSvg from '../../svgs/DownloadArrowSvg';
@@ -136,12 +137,15 @@ const TeamCarousel = (props: Props) => {
 	const [canScrollPrev, setCanScrollPrev] = useState(false);
 	const [canScrollNext, setCanScrollNext] = useState(true);
 
-	const [emblaRef, emblaApi] = useEmblaCarousel({
-		loop: false,
-		dragFree: true,
-		watchDrag: true,
-		skipSnaps: false
-	});
+	const [emblaRef, emblaApi] = useEmblaCarousel(
+		{
+			loop: false,
+			dragFree: true,
+			watchDrag: true,
+			skipSnaps: false
+		},
+		[WheelGesturesPlugin({ forceWheelAxis: 'x' })]
+	);
 
 	const scrollToLastSlide = useCallback(() => {
 		if (!emblaApi) return;

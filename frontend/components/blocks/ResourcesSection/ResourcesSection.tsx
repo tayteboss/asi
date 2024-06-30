@@ -71,7 +71,8 @@ const ResourcesSection = () => {
 					<Title>Resources</Title>
 					<LinksWrapper>
 						<Link
-							href="/white-paper"
+							href="https://434267010-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FE0eZgP8lxRNljW57Uw4H%2Fuploads%2FzuLTqcvU0P6PejPUONJG%2FArtificial%20Superintelligence%20(ASI)%20Alliance%20Vision%20Paper.pdf?alt=media&token=e794c589-d4ef-44d3-97c0-697b06956479"
+							target="_blank"
 							onMouseOver={() => setIsHovered(true)}
 							onMouseOut={() => setIsHovered(false)}
 						>
