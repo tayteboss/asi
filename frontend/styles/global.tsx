@@ -45,6 +45,11 @@ export const GlobalStyles = createGlobalStyle`
 		font-size: 16px;
 		overflow-x: hidden;
 
+		margin: 0;
+        padding: 0;
+        height: 100%;
+        overflow: hidden;
+
 		&.no-scroll {
 			overflow-y: hidden;
 			
@@ -56,6 +61,11 @@ export const GlobalStyles = createGlobalStyle`
 
 	body {
 		position: relative;
+
+		margin: 0;
+        padding: 0;
+        height: 100%;
+        overflow: hidden;
 	}
 
 	input,
