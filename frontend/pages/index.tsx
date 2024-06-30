@@ -133,7 +133,8 @@ export async function getStaticProps() {
 			data,
 			mainData,
 			siteSettings
-		}
+		},
+		revalidate: 3600 // In seconds
 	};
 }
 

@@ -76,7 +76,10 @@ const ResourcesSection = () => {
 							onMouseOver={() => setIsHovered(true)}
 							onMouseOut={() => setIsHovered(false)}
 						>
-							<ButtonLayout title="Whitepaper" isActive={true} />
+							<ButtonLayout
+								title="Vision Paper"
+								isActive={true}
+							/>
 						</Link>
 						{/* <Link
 							href="/general-questions"
