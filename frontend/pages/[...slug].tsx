@@ -113,11 +113,11 @@ const Page = (props: Props) => {
 			<IntroContentWrapper>
 				<IntroContentInner>
 					{/* hide title  */}
-					{/* {data?.title && (
+					{data?.title && (
 						<Title ref={ref} className="type-h2 type-h2--blur-in">
 							<AnimateText text={data?.title} active={inView} />
 						</Title>
-					)} */}
+					)}
 					{data?.articleHeadline && (
 						<Headline className="type-h1 type-h1--blur-in">
 							<AnimateText
