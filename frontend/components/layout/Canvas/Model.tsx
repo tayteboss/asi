@@ -26,7 +26,7 @@ const Model = () => {
 		color: 0xffffff,
 		metalness: 1.0,
 		roughness: 0.0,
-		transparent: false
+		transparent: true
 		// side: DoubleSide
 	});
 

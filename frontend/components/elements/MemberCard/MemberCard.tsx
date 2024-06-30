@@ -60,6 +60,7 @@ const Name = styled.h3`
 const Title = styled.p`
 	height: 44px;
 	margin-bottom: ${pxToRem(24)};
+	user-select: none;
 	@media ${(props) => props.theme.mediaBreakpoints.tabletPortrait} {
 		/* height: auto; */
 	}
@@ -69,6 +70,7 @@ const Description = styled.p`
 	margin-bottom: ${pxToRem(24)};
 	min-height: 380px;
 	height: 380px;
+	user-select: none;
 
 	@media ${(props) => props.theme.mediaBreakpoints.tabletPortrait} {
 		height: 380px;

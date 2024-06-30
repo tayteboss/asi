@@ -6,7 +6,7 @@ import pxToRem from '../../../utils/pxToRem';
 type Props = {
 	mergerText: string;
 	isLarge?: boolean;
-	isActive?: true;
+	isActive?: boolean;
 };
 
 const getTimeRemaining = (targetDate: Date) => {
@@ -69,7 +69,7 @@ const CountdownButton = ({
 								? mergerText
 								: `${timeRemaining.days}d ${timeRemaining.hours}h ${timeRemaining.minutes}m ${timeRemaining.seconds}s`
 						}
-						isActive={true}
+						isActive={isActive}
 					/>
 				</Link>
 			) : (

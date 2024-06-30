@@ -84,16 +84,18 @@ const Page = (props: Props) => {
 				videoData={mainData?.videoTwo}
 				videoMobileData={mainData?.videoTwoMobile}
 			/>
-			<TokenSection
-				title={mainData?.tokenMergeHeading}
-				content={mainData?.tokenMerge}
-				heading1={mainData?.tokenMergeHeading1}
-				content1={mainData?.tokenMergeContent1}
-				heading2={mainData?.tokenMergeHeading2}
-				content2={mainData?.tokenMergeContent2}
-				heading3={mainData?.tokenMergeHeading3}
-				content3={mainData?.tokenMergeContent3}
-			/>
+			{false && (
+				<TokenSection
+					title={mainData?.tokenMergeHeading}
+					content={mainData?.tokenMerge}
+					heading1={mainData?.tokenMergeHeading1}
+					content1={mainData?.tokenMergeContent1}
+					heading2={mainData?.tokenMergeHeading2}
+					content2={mainData?.tokenMergeContent2}
+					heading3={mainData?.tokenMergeHeading3}
+					content3={mainData?.tokenMergeContent3}
+				/>
+			)}
 
 			<FoundationSection
 				title={mainData?.foundationTeamHeading}

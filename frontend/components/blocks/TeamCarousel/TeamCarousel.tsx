@@ -20,6 +20,8 @@ const TeamCarouselWrapper = styled.div`
 	background: rgba(255, 255, 255, 0.2);
 	/* pointer-events: none; */
 
+	margin: auto;
+
 	display: flex;
 	justify-content: center;
 	align-items: center;

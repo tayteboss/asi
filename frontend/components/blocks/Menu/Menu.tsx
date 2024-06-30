@@ -193,14 +193,14 @@ const Menu = (props: Props) => {
 								>
 									About the Alliance
 								</Item>
-								<Item
+								{/* <Item
 									variants={childVariants}
 									onClick={() => {
 										handleScrollToAnchor('token-merge');
 									}}
 								>
 									Token Merge
-								</Item>
+								</Item> */}
 								<Item
 									variants={childVariants}
 									onClick={() => {

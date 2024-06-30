@@ -77,7 +77,7 @@ const ResourcesSection = () => {
 						>
 							<ButtonLayout title="Whitepaper" isActive={true} />
 						</Link>
-						<Link
+						{/* <Link
 							href="/general-questions"
 							onMouseOver={() => setIsHovered(true)}
 							onMouseOut={() => setIsHovered(false)}
@@ -86,7 +86,7 @@ const ResourcesSection = () => {
 								title="General Questions"
 								isActive={true}
 							/>
-						</Link>
+						</Link> */}
 						<Link
 							href="https://docs.superintelligence.io/"
 							target="_blank"
@@ -98,7 +98,7 @@ const ResourcesSection = () => {
 								isActive={true}
 							/>
 						</Link>
-						<Link
+						{/* <Link
 							href="/token-holder-questions"
 							onMouseOver={() => setIsHovered(true)}
 							onMouseOut={() => setIsHovered(false)}
@@ -107,7 +107,7 @@ const ResourcesSection = () => {
 								title="Token Holder Questions"
 								isActive={true}
 							/>
-						</Link>
+						</Link> */}
 					</LinksWrapper>
 				</TopBar>
 				<FooterDecoration isHovered={isHovered} />

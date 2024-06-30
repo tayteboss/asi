@@ -66,13 +66,12 @@ const TokenMigrationSection = (props: Props) => {
 					<Link href="https://asi.kremalicious.com/" target="_blank">
 						<ButtonLayout title="ASI Calculator" isActive={false} />
 					</Link>
-					<Link href="https://asi.kremalicious.com/" target="_blank">
-						<CountdownButton
-							mergerText="Take part in the token merger"
-							isLarge={false}
-							isActive={false}
-						/>
-					</Link>
+
+					<CountdownButton
+						mergerText="Take part in the token merger"
+						isLarge={false}
+						isActive={false}
+					/>
 				</TokenMigrationButtonWrapper>
 
 				{hasColumns && (

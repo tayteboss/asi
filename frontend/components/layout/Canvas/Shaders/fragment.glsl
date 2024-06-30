@@ -10,5 +10,6 @@ float fresnelTerm = dot(viewDirectionW, normalized);
 // color = normalized;
 
 diffuseColor = vec4(color, 1.0);
+// diffuseColor = vec4(color, fresnelTerm * 1.0);
 
-diffuseColor = vec4(color * ((fresnelTerm) * 1.0), fresnelTerm);
+// diffuseColor = vec4(color * ((fresnelTerm) * 2.2), 1.0);
