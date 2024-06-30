@@ -112,11 +112,11 @@ const Footer = (props: Props) => {
 									Cookie Policy
 								</TextLink>
 							</Link>
-							<Link href="/terms" target="_blank">
+							{/* <Link href="/terms" target="_blank">
 								<TextLink className="type-book">
 									Terms & Conditions
 								</TextLink>
-							</Link>
+							</Link> */}
 						</SecondaryLinksWrapper>
 					</BottomWrapper>
 				</Inner>
