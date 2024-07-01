@@ -61,9 +61,6 @@ const Title = styled.p`
 	height: 44px;
 	margin-bottom: ${pxToRem(24)};
 	user-select: none;
-	@media ${(props) => props.theme.mediaBreakpoints.tabletPortrait} {
-		/* height: auto; */
-	}
 `;
 
 const Description = styled.p`
@@ -77,11 +74,15 @@ const Description = styled.p`
 	}
 `;
 
-const LinksWrapper = styled.div`
+const LinksOuterWrapper = styled.div`
 	display: flex;
 	flex-direction: column;
 	gap: ${pxToRem(16)};
-	justify-content: stretch;
+`;
+
+const LinksWrapper = styled.div`
+	display: flex;
+	gap: ${pxToRem(8)};
 	align-items: stretch;
 `;
 
@@ -110,6 +111,9 @@ const MemberCard = (props: MemberCardProps) => {
 		threshold: 0.1,
 		rootMargin: '-50px'
 	});
+
+	const firstLink = links && links[0];
+	const restOfLinks = links && links.slice(1);
 
 	return (
 		<MemberCardWrapper
@@ -140,31 +144,36 @@ const MemberCard = (props: MemberCardProps) => {
 			{name && <Name>{name}</Name>}
 			{title && <Title>{title}</Title>}
 			{description && <Description>{description}</Description>}
-			{/* {link && (
-				// <Link href={link} target="_blank">
-				// 	<ButtonLayout title="Learn More" isActive={true} isSmall />
-				// </Link>
-				<a href={'/'}>hi</a>
-			)} */}
-			{links && (
-				<LinksWrapper>
-					{links.map((link) => {
-						return (
-							<Link
-								href={link.url}
-								key={link._key}
-								target="_blank"
-							>
-								<ButtonLayout
-									title={link.title}
-									isActive={true}
-									isSmall
-								/>
-							</Link>
-						);
-					})}
-				</LinksWrapper>
-			)}
+			<LinksOuterWrapper>
+				{firstLink && (
+					<Link href={firstLink.url} key="first-link" target="_blank">
+						<ButtonLayout
+							title={firstLink.title}
+							isActive={true}
+							isSmall
+						/>
+					</Link>
+				)}
+				{restOfLinks && (
+					<LinksWrapper>
+						{restOfLinks.map((link) => {
+							return (
+								<Link
+									href={link.url}
+									key={link._key}
+									target="_blank"
+								>
+									<ButtonLayout
+										title={link.title}
+										isActive={true}
+										isSmall
+									/>
+								</Link>
+							);
+						})}
+					</LinksWrapper>
+				)}
+			</LinksOuterWrapper>
 		</MemberCardWrapper>
 	);
 };

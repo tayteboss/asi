@@ -75,6 +75,7 @@ const Icon = styled.span<{
 }>`
 	padding-top: 2px;
 	scale: ${(props) => (props.$isLarge ? 1.5 : 1)};
+	font-size: 11px;
 `;
 
 const titleVariants = {
