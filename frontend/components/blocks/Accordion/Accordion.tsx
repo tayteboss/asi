@@ -36,7 +36,6 @@ const TriggerWrapper = styled.button`
 	position: absolute;
 	top: 0;
 	right: 0;
-
 	transition: all var(--transition-speed-default) var(--transition-ease);
 `;
 
@@ -76,13 +75,19 @@ const childVariants = {
 	}
 };
 
-const AccordionItem = (props: any) => {
-	const { title, content, index } = props;
+type AccordionItemProps = {
+	title: string;
+	content: any;
+	index: number;
+	isOpened: boolean;
+	onClick: () => void;
+};
 
-	const [isOpened, setIsOpened] = useState(index === 0 ? true : false);
+const AccordionItem = (props: AccordionItemProps) => {
+	const { title, content, index, isOpened, onClick } = props;
 
 	return (
-		<AccordionItemWrapper onClick={() => setIsOpened(!isOpened)}>
+		<AccordionItemWrapper onClick={onClick}>
 			<TriggerWrapper
 				style={{
 					transform: isOpened ? 'rotate(45deg)' : 'rotate(0deg)'
@@ -114,11 +119,23 @@ const AccordionItem = (props: any) => {
 
 const Accordion = (props: Props) => {
 	const { data } = props;
+	const [openedIndex, setOpenedIndex] = useState<number | null>(0);
+
+	const handleItemClick = (index: number) => {
+		setOpenedIndex(index === openedIndex ? null : index);
+	};
 
 	return (
 		<AccordionWrapper>
 			{data.map((item: any, i: number) => (
-				<AccordionItem key={i} {...item} index={i} />
+				<AccordionItem
+					key={i}
+					index={i}
+					title={item.title}
+					content={item.content}
+					isOpened={i === openedIndex}
+					onClick={() => handleItemClick(i)}
+				/>
 			))}
 		</AccordionWrapper>
 	);

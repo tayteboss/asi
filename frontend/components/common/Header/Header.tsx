@@ -30,6 +30,7 @@ const HeaderWrapper = styled.header`
 	align-items: flex-start;
 	justify-content: space-between;
 	z-index: 100;
+	pointer-events: none;
 
 	@media ${(props) => props.theme.mediaBreakpoints.mobile} {
 		padding: ${pxToRem(24)} ${pxToRem(8)};
@@ -41,6 +42,7 @@ const LinkWrapper = styled.div`
 	justify-content: center;
 	align-items: center;
 	gap: ${pxToRem(16)};
+	pointer-events: all;
 
 	@media ${(props) => props.theme.mediaBreakpoints.mobile} {
 		flex-direction: column;
