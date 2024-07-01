@@ -83,11 +83,6 @@ const LinksWrapper = styled.div`
 	gap: ${pxToRem(16)};
 	justify-content: stretch;
 	align-items: stretch;
-	/* margin-top: auto; */
-
-	/* button {
-		width: 100%;
-	} */
 `;
 
 type MemberCardProps = TeamMemberType & {

@@ -100,6 +100,15 @@ const Footer = (props: Props) => {
 									/>
 								</Link>
 							)}
+							<Link
+								href="mailto:info@superintelligence.io"
+								target="_blank"
+							>
+								<SecondaryButtonLayout
+									useEmail
+									title="info@superintelligence.io"
+								/>
+							</Link>
 						</LinksWrapper>
 						<SecondaryLinksWrapper>
 							<Link href="/privacy-policy" target="_blank">

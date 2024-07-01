@@ -1,3 +1,5 @@
+import {LinkIcon} from '@sanity/icons'
+
 export default {
   title: 'Token Migration Accordion',
   name: 'tokenMigrationAccordion',
@@ -20,7 +22,25 @@ export default {
           lists: [{title: 'Bullet', value: 'bullet'}],
           marks: {
             decorators: [{title: 'Strong', value: 'strong'}],
-            annotations: [],
+            annotations: [
+              {
+                name: 'link',
+                type: 'object',
+                title: 'External link',
+                fields: [
+                  {
+                    name: 'href',
+                    type: 'url',
+                    title: 'URL',
+                  },
+                  {
+                    title: 'Open in new tab',
+                    name: 'blank',
+                    type: 'boolean',
+                  },
+                ],
+              },
+            ],
           },
         },
       ],

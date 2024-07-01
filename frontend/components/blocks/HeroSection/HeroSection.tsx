@@ -11,6 +11,7 @@ import SingularityLogo from '../../svgs/SingularityLogo';
 import FetchLogoSvg from '../../svgs/FetchLogoSvg';
 import OceanLogoSvg from '../../svgs/OceanLogoSvg';
 import HeroVideoSection from '../HeroVideoSection';
+import ButtonLayout from '../../layout/ButtonLayout';
 
 const wrapperVariants = {
 	hidden: {
@@ -79,12 +80,25 @@ const Partnership = styled(motion.p)`
 	color: var(--colour-black);
 `;
 
+const Inner = styled.div`
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding-bottom: ${pxToRem(36)};
+
+	@media ${(props) => props.theme.mediaBreakpoints.tabletMedium} {
+		flex-direction: column;
+		align-items: flex-start;
+		gap: ${pxToRem(16)};
+	}
+`;
+
 const LogosWrapper = styled(motion.div)`
 	position: relative;
 	display: flex;
 	align-items: center;
 	gap: ${pxToRem(35)};
-	padding-bottom: ${pxToRem(36)};
 	pointer-events: none;
 
 	@media ${(props) => props.theme.mediaBreakpoints.tabletPortrait} {
@@ -127,6 +141,14 @@ const SecondaryLogosWrapper = styled.div`
 	}
 `;
 
+const PartnershipButtonWrapper = styled.div`
+	@media ${(props) => props.theme.mediaBreakpoints.tabletMedium} {
+		span {
+			color: var(--colour-green) !important;
+		}
+	}
+`;
+
 type Props = {
 	title: MainPageType['heroTitle'];
 	videoData: MainPageType['videoOne'];
@@ -158,43 +180,62 @@ const HeroSection = (props: Props) => {
 				</TitleWrapper>
 			</LayoutWrapper>
 			<LayoutWrapper>
-				<LogosWrapper
-					variants={wrapperVariants}
-					initial="hidden"
-					animate="visible"
-					exit="hidden"
-					key="logos"
-				>
-					<Partnership className="type-book" variants={titleVariants}>
-						A partnership between
-					</Partnership>
-					<SecondaryLogosWrapper>
-						<Link href="https://singularitynet.io" target="_blank">
-							<SecondaryLogoWrapper
-								$height={isMobile ? 22 : 46}
-								variants={titleVariants}
+				<Inner>
+					<LogosWrapper
+						variants={wrapperVariants}
+						initial="hidden"
+						animate="visible"
+						exit="hidden"
+						key="logos"
+					>
+						<Partnership
+							className="type-book"
+							variants={titleVariants}
+						>
+							A partnership between
+						</Partnership>
+						<SecondaryLogosWrapper>
+							<Link
+								href="https://singularitynet.io"
+								target="_blank"
 							>
-								<SingularityLogo />
-							</SecondaryLogoWrapper>
-						</Link>
-						<Link href="https://fetch.ai" target="_blank">
-							<SecondaryLogoWrapper
-								$height={isMobile ? 15 : 23}
-								variants={titleVariants}
+								<SecondaryLogoWrapper
+									$height={isMobile ? 22 : 46}
+									variants={titleVariants}
+								>
+									<SingularityLogo />
+								</SecondaryLogoWrapper>
+							</Link>
+							<Link href="https://fetch.ai" target="_blank">
+								<SecondaryLogoWrapper
+									$height={isMobile ? 15 : 23}
+									variants={titleVariants}
+								>
+									<FetchLogoSvg />
+								</SecondaryLogoWrapper>
+							</Link>
+							<Link
+								href="https://oceanprotocol.com"
+								target="_blank"
 							>
-								<FetchLogoSvg />
-							</SecondaryLogoWrapper>
+								<SecondaryLogoWrapper
+									$height={isMobile ? 24 : 40}
+									variants={titleVariants}
+								>
+									<OceanLogoSvg />
+								</SecondaryLogoWrapper>
+							</Link>
+						</SecondaryLogosWrapper>
+					</LogosWrapper>
+					<PartnershipButtonWrapper>
+						<Link
+							href="mailto:info@superintelligence.io"
+							target="_blank"
+						>
+							<ButtonLayout title="Join Us" isActive />
 						</Link>
-						<Link href="https://oceanprotocol.com" target="_blank">
-							<SecondaryLogoWrapper
-								$height={isMobile ? 24 : 40}
-								variants={titleVariants}
-							>
-								<OceanLogoSvg />
-							</SecondaryLogoWrapper>
-						</Link>
-					</SecondaryLogosWrapper>
-				</LogosWrapper>
+					</PartnershipButtonWrapper>
+				</Inner>
 			</LayoutWrapper>
 			{/* <HeroVideoSection data={videoData} mobileData={videoMobileData} /> */}
 		</HeroSectionWrapper>
