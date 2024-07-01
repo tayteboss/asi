@@ -21,7 +21,7 @@ const AccordionItemWrapper = styled.div`
 `;
 
 const AccordionTitle = styled.h3`
-	margin-bottom: ${pxToRem(30)};
+	padding-bottom: ${pxToRem(30)};
 	padding-right: ${pxToRem(80)};
 	cursor: pointer;
 `;
@@ -43,7 +43,7 @@ const wrapperVariants = {
 	hidden: {
 		height: 0,
 		transition: {
-			duration: 0.3,
+			duration: 0.5,
 			ease: 'easeInOut',
 			when: 'afterChildren'
 		}
@@ -51,7 +51,7 @@ const wrapperVariants = {
 	visible: {
 		height: 'auto',
 		transition: {
-			duration: 0.3,
+			duration: 0.5,
 			ease: 'easeInOut',
 			when: 'beforeChildren'
 		}

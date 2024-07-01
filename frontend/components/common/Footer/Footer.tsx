@@ -43,6 +43,8 @@ const LinksWrapper = styled.div`
 
 	@media ${(props) => props.theme.mediaBreakpoints.mobile} {
 		width: 100%;
+		flex-direction: column;
+		gap: ${pxToRem(4)};
 	}
 `;
 
