@@ -62,7 +62,7 @@ const Layout = (props: Props) => {
 							transition: 'all 0.25s linear',
 							zIndex: -1
 						}}
-						eventSource={mainRef}
+						eventSource={!isMobile ? mainRef : null}
 						eventPrefix="client"
 						camera={{
 							fov: 45,

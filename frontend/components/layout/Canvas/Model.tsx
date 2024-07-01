@@ -4,6 +4,7 @@ import { useRef } from 'react';
 import { MeshStandardMaterial, Object3D } from 'three';
 import { useGLTF, Clone } from '@react-three/drei';
 import { useFrame, useThree } from '@react-three/fiber';
+import useViewportWidth from '../../../hooks/useViewportWidth';
 
 //@ts-ignore
 import vertCommonShader from './Shaders/vertexCommon.glsl';
@@ -17,7 +18,9 @@ const Model = () => {
 
 	const rotationRef = useRef<any>(null);
 
-	const { viewport, camera } = useThree();
+	const { camera } = useThree();
+	const viewport = useViewportWidth();
+	const isMobile = viewport === 'mobile' || viewport === 'tabletPortrait';
 
 	let vec = new Vector3();
 
@@ -89,6 +92,8 @@ const Model = () => {
 		if (rotationRef.current) {
 			rotationRef.current.rotation.y += delta * 0.125;
 			rotationRef.current.rotation.z += delta * 0.125;
+
+			if (isMobile) return;
 
 			const targetRot = Math.PI * state.pointer.y * -0.25;
 
