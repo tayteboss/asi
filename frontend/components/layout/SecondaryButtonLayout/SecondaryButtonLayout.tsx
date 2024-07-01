@@ -4,10 +4,12 @@ import pxToRem from '../../../utils/pxToRem';
 import XSvg from '../../svgs/XSvg';
 import { AnimatePresence, motion } from 'framer-motion';
 import { useState } from 'react';
+import EmailSvg from '../../svgs/EmailSvg';
 
 type Props = {
 	useTelegram?: boolean;
 	useTwitter?: boolean;
+	useEmail?: boolean;
 	title: string;
 };
 
@@ -74,7 +76,12 @@ const hoverTitleVariants = {
 };
 
 const SecondaryButtonLayout = (props: Props) => {
-	const { useTelegram = false, useTwitter = false, title = '' } = props;
+	const {
+		useTelegram = false,
+		useTwitter = false,
+		useEmail = false,
+		title = ''
+	} = props;
 
 	const [isHovered, setIsHovered] = useState(false);
 
@@ -86,6 +93,7 @@ const SecondaryButtonLayout = (props: Props) => {
 			<IconWrapper>
 				{useTelegram && <TelegramSvg />}
 				{useTwitter && <XSvg />}
+				{useEmail && <EmailSvg />}
 			</IconWrapper>
 			<AnimatePresence mode="wait">
 				{isHovered ? (

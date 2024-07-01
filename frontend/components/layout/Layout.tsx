@@ -57,7 +57,7 @@ const Layout = (props: Props) => {
 							top: 0,
 							left: 0,
 							width: '100vw',
-							height: '100dvh',
+							height: '100vh',
 							pointerEvents: 'none',
 							transition: 'all 0.25s linear',
 							zIndex: -1

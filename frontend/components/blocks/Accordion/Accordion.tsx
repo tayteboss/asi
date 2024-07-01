@@ -13,7 +13,6 @@ const AccordionWrapper = styled.div``;
 
 const AccordionItemWrapper = styled.div`
 	border-bottom: 1px solid var(--colour-black);
-	cursor: pointer;
 	position: relative;
 
 	&:not(:last-child) {
@@ -24,6 +23,7 @@ const AccordionItemWrapper = styled.div`
 const AccordionTitle = styled.h3`
 	margin-bottom: ${pxToRem(30)};
 	padding-right: ${pxToRem(80)};
+	cursor: pointer;
 `;
 
 const AccordionInnerWrapper = styled(motion.div)`
@@ -87,7 +87,7 @@ const AccordionItem = (props: AccordionItemProps) => {
 	const { title, content, index, isOpened, onClick } = props;
 
 	return (
-		<AccordionItemWrapper onClick={onClick}>
+		<AccordionItemWrapper>
 			<TriggerWrapper
 				style={{
 					transform: isOpened ? 'rotate(45deg)' : 'rotate(0deg)'
@@ -95,7 +95,9 @@ const AccordionItem = (props: AccordionItemProps) => {
 			>
 				<PlusSvg colour="var(--colour-black)" />
 			</TriggerWrapper>
-			{title && <AccordionTitle>{title}</AccordionTitle>}
+			{title && (
+				<AccordionTitle onClick={onClick}>{title}</AccordionTitle>
+			)}
 			<AnimatePresence>
 				{isOpened && (
 					<AccordionInnerWrapper

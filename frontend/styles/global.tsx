@@ -213,7 +213,7 @@ export const GlobalStyles = createGlobalStyle`
 	}
 
 	.rich-text {
-		* {
+		p {
 			font-size: ${pxToRem(30)};
 			line-height: ${pxToRem(39)};
 			letter-spacing: -0.9px;
@@ -270,11 +270,35 @@ export const GlobalStyles = createGlobalStyle`
 
 				li {
 					font-size: ${pxToRem(18)};
-				line-height: ${pxToRem(27)};
-				letter-spacing: -0.5px;
-				margin-bottom: 0;
+					line-height: ${pxToRem(27)};
+					letter-spacing: -0.5px;
+					margin-bottom: 0;
 				}
 			}
+
+			p, a {
+				font-size: ${pxToRem(18)} !important;
+				line-height: ${pxToRem(27)} !important;
+				letter-spacing: -0.5px !important;
+				margin-bottom: 0 !important;
+			}
+
+			a {
+				text-decoration: underline !important;
+			}
+
+			b, strong {
+				font-size: ${pxToRem(30)};
+				line-height: ${pxToRem(39)};
+				letter-spacing: -0.9px;
+				font-weight: 200;
+
+				@media ${theme.mediaBreakpoints.tabletPortrait} {
+					font-size: ${pxToRem(20)};
+					line-height: ${pxToRem(25)};
+				}
+			}
+
 		}
 	}
 
