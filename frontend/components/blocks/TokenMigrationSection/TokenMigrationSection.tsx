@@ -25,6 +25,11 @@ const TokenMigrationSectionWrapper = styled.section`
 const TokenMigrationButtonWrapper = styled.div`
 	display: flex;
 	gap: ${pxToRem(15)};
+
+	@media ${(props) => props.theme.mediaBreakpoints.tabletPortrait} {
+		flex-direction: column;
+		gap: ${pxToRem(8)};
+	}
 `;
 
 const TokenMigrationSection = (props: Props) => {
