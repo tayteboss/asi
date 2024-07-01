@@ -77,11 +77,11 @@ const Footer = (props: Props) => {
 		<FooterWrapper>
 			<LayoutWrapper>
 				<Inner>
-					<ContentWrapper>
+					{/* <ContentWrapper>
 						{footerContent && (
 							<PortableText value={footerContent} />
 						)}
-					</ContentWrapper>
+					</ContentWrapper> */}
 					<BottomWrapper>
 						<LinksWrapper>
 							{telegram && (
