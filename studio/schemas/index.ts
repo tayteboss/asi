@@ -5,6 +5,7 @@ import page from './page'
 import richtext from './richtext'
 import siteSettings from './siteSettings'
 import teamMember from './teamMember'
+import tokenMigrationAccordion from './tokenMigrationAccordion'
 
 export const schemaTypes = [
   // Site Settings
@@ -19,4 +20,5 @@ export const schemaTypes = [
   teamMember,
   richtext,
   media,
+  tokenMigrationAccordion,
 ]

@@ -34,6 +34,8 @@ type Props = {
 const Page = (props: Props) => {
 	const { data, mainData, pageTransitionVariants } = props;
 
+	console.log('mainData', mainData);
+
 	return (
 		<PageWrapper
 			variants={pageTransitionVariants}
@@ -43,8 +45,8 @@ const Page = (props: Props) => {
 			className="performance"
 		>
 			<NextSeo
-				title={data?.seoTitle || ''}
-				description={data?.seoDescription || ''}
+				title={mainData?.seoTitle || ''}
+				description={mainData?.seoDescription || ''}
 			/>
 			<HeroSection
 				title={mainData?.heroTitle}
@@ -53,16 +55,7 @@ const Page = (props: Props) => {
 			/>
 			<TokenMigrationSection
 				title={mainData?.tokenMigrationHeading}
-				points={mainData?.tokenMigrationPoints}
-				content={mainData?.tokenMigrationContent}
-				heading1={mainData?.tokenMigrationHeading1}
-				content1={mainData?.tokenMigrationContent1}
-				heading2={mainData?.tokenMigrationHeading2}
-				content2={mainData?.tokenMigrationContent2}
-				heading3={mainData?.tokenMigrationHeading3}
-				content3={mainData?.tokenMigrationContent3}
-				videoData={mainData?.videoThree}
-				videoMobileData={mainData?.videoThreeMobile}
+				data={mainData?.tokenMigrationAccordion}
 			/>
 			<WhatIsAsiSection
 				title={mainData?.whatIsAsiHeading}

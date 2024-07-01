@@ -45,14 +45,12 @@ const LinkWrapper = styled.div`
 	@media ${(props) => props.theme.mediaBreakpoints.mobile} {
 		flex-direction: column;
 		align-items: flex-start;
-		/* display: block; */
 	}
 `;
 
 const LogoWrapper = styled.div<StyledProps>`
 	padding: ${(props) => (props.$hasScrolled ? pxToRem(16) : pxToRem(24))};
 	border-radius: 27.04px;
-	/* background: rgba(189, 177, 177, 0.2); */
 	backdrop-filter: blur(10px);
 	display: flex;
 	justify-content: center;

@@ -21,7 +21,6 @@ const Model = () => {
 
 	let vec = new Vector3();
 
-	console.log(model.scene);
 	const testMat = new MeshStandardMaterial({
 		color: 0xffffff,
 		metalness: 1.0,
@@ -83,8 +82,6 @@ const Model = () => {
 
 			fragShader
 		);
-
-		console.log(shader);
 	};
 
 	// auto-rotate

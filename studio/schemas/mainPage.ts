@@ -12,6 +12,11 @@ export default {
       options: {collapsible: true, collapsed: true},
     },
     {
+      name: 'tokenMigration',
+      title: 'Token Migration Guide',
+      options: {collapsible: true, collapsed: true},
+    },
+    {
       name: 'whatIsAsi',
       title: 'What is ASI Information',
       options: {collapsible: true, collapsed: true},
@@ -27,11 +32,6 @@ export default {
       options: {collapsible: true, collapsed: true},
     },
     {
-      name: 'tokenMigration',
-      title: 'Token Migration Guide',
-      options: {collapsible: true, collapsed: true},
-    },
-    {
       name: 'foundationTeam',
       title: 'Foundation Team Information',
       options: {collapsible: true, collapsed: true},
@@ -41,11 +41,6 @@ export default {
       title: 'Pathway to ASI Information',
       options: {collapsible: true, collapsed: true},
     },
-    // {
-    //   name: 'resources',
-    //   title: 'Resources Information',
-    //   options: {collapsible: true, collapsed: true},
-    // },
     {
       name: 'media',
       title: 'Media',
@@ -250,85 +245,10 @@ export default {
       fieldset: 'tokenMigration',
     },
     {
-      title: 'Token Migration Points',
-      name: 'tokenMigrationPoints',
+      title: 'Token Migration Accordion',
+      name: 'tokenMigrationAccordion',
       type: 'array',
-      of: [{type: 'string'}],
-      fieldset: 'tokenMigration',
-    },
-    {
-      title: 'Token Migration Content',
-      name: 'tokenMigrationContent',
-      type: 'text',
-      fieldset: 'tokenMigration',
-    },
-    {
-      title: 'Token Migration Column 1 Heading',
-      name: 'tokenMigrationHeading1',
-      type: 'string',
-      fieldset: 'tokenMigration',
-    },
-    {
-      title: 'Token Migration Column 1 Content',
-      name: 'tokenMigrationContent1',
-      type: 'array',
-      of: [
-        {
-          type: 'block',
-          styles: [{title: 'Normal', value: 'normal'}],
-          lists: [{title: 'Bullet', value: 'bullet'}],
-          marks: {
-            decorators: [{title: 'Strong', value: 'strong'}],
-            annotations: [],
-          },
-        },
-      ],
-      fieldset: 'tokenMigration',
-    },
-    {
-      title: 'Token Migration Column 2 Heading',
-      name: 'tokenMigrationHeading2',
-      type: 'string',
-      fieldset: 'tokenMigration',
-    },
-    {
-      title: 'Token Migration Column 2 Content',
-      name: 'tokenMigrationContent2',
-      type: 'array',
-      of: [
-        {
-          type: 'block',
-          styles: [{title: 'Normal', value: 'normal'}],
-          lists: [{title: 'Bullet', value: 'bullet'}],
-          marks: {
-            decorators: [{title: 'Strong', value: 'strong'}],
-            annotations: [],
-          },
-        },
-      ],
-      fieldset: 'tokenMigration',
-    },
-    {
-      title: 'Token Migration Column 3 Heading',
-      name: 'tokenMigrationHeading3',
-      type: 'string',
-      fieldset: 'tokenMigration',
-    },
-    {
-      title: 'Token Migration Column 3 Content',
-      name: 'tokenMigrationContent3',
-      type: 'array',
-      of: [
-        {
-          type: 'block',
-          styles: [{title: 'Normal', value: 'normal'}],
-          lists: [{title: 'Bullet', value: 'bullet'}],
-          marks: {
-            decorators: [{title: 'Strong', value: 'strong'}],
-            annotations: [],
-          },
-        },
-      ],
+      of: [{type: 'tokenMigrationAccordion'}],
       fieldset: 'tokenMigration',
     },
     {
@@ -437,24 +357,6 @@ export default {
       type: 'string',
       fieldset: 'pathwayToAsi',
     },
-    // {
-    //   title: 'Resources White Paper',
-    //   name: 'resourcesWhitePaper',
-    //   type: 'url',
-    //   fieldset: 'resources',
-    // },
-    // {
-    //   title: 'Resources General Questions Link',
-    //   name: 'resourcesGeneralQuestionsLink',
-    //   type: 'url',
-    //   fieldset: 'resources',
-    // },
-    // {
-    //   title: 'Resources Documentation Link',
-    //   name: 'resourcesDocumentationLink',
-    //   type: 'url',
-    //   fieldset: 'resources',
-    // },
     {
       title: 'Video One Desktop',
       name: 'videoOne',

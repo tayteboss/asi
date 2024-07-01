@@ -11,7 +11,6 @@ type Props = {
 
 const getTimeRemaining = (targetDate: Date) => {
 	const total = targetDate.getTime() - Date.now();
-	// const total = Date.parse(endTime) - Date.now();
 	const seconds = Math.floor((total / 1000) % 60);
 	const minutes = Math.floor((total / 1000 / 60) % 60);
 	const hours = Math.floor((total / (1000 * 60 * 60)) % 24);
@@ -30,15 +29,19 @@ const CountdownButton = ({
 	isLarge = true,
 	isActive = true
 }: Props) => {
-	const targetDate = new Date(Date.UTC(2024, 6, 1, 15, 0, 0)); // Month is 0-indexed, so 11 is December
-	const now = new Date();
-
-	const [timeRemaining, setTimeRemaining] = useState(
-		getTimeRemaining(targetDate)
-	);
+	const targetDate = new Date(Date.UTC(2024, 6, 1, 15, 0, 0)); // Month is 0-indexed, so 6 is July
+	const [timeRemaining, setTimeRemaining] = useState({
+		total: 0,
+		days: 0,
+		hours: 0,
+		minutes: 0,
+		seconds: 0
+	});
 	const [isLinkActive, setIsLinkActive] = useState(false);
+	const [hasMounted, setHasMounted] = useState(false);
 
 	useEffect(() => {
+		setHasMounted(true);
 		const interval = setInterval(() => {
 			const timeLeft = getTimeRemaining(targetDate);
 			setTimeRemaining(timeLeft);
@@ -51,7 +54,9 @@ const CountdownButton = ({
 		return () => clearInterval(interval);
 	}, [targetDate]);
 
-	// const utcTimeString = `${year}-${month}-${date} ${hours}:${minutes}:${seconds} UTC`;
+	if (!hasMounted) {
+		return null; // Render nothing on the server
+	}
 
 	return (
 		<>
@@ -59,26 +64,12 @@ const CountdownButton = ({
 				<Link
 					href="https://singularitydao.ai/migrate-asi"
 					target="_blank"
-
-					// onMouseOver={() => setIsHovered(true)}
-					// onMouseOut={() => setIsHovered(false)}
 				>
-					<ButtonLayout
-						title={
-							isLinkActive
-								? mergerText
-								: `${timeRemaining.days}d ${timeRemaining.hours}h ${timeRemaining.minutes}m ${timeRemaining.seconds}s`
-						}
-						isActive={isActive}
-					/>
+					<ButtonLayout title={mergerText} isActive={isActive} />
 				</Link>
 			) : (
 				<ButtonLayout
-					title={
-						isLinkActive
-							? mergerText
-							: `${timeRemaining.days}d ${timeRemaining.hours}h ${timeRemaining.minutes}m ${timeRemaining.seconds}s`
-					}
+					title={`${timeRemaining.days}d ${timeRemaining.hours}h ${timeRemaining.minutes}m ${timeRemaining.seconds}s`}
 					isActive={isActive}
 					isLarge={isLarge}
 					style={{

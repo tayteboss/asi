@@ -113,30 +113,6 @@ const ColumnCard = (props: Props) => {
 	const ref: any = useRef(null);
 	const siblingsRef: any = useRef([]);
 
-	// useEffect(() => {
-	// 	function getSiblings(element: HTMLElement) {
-	// 		// Get the parent node of the element
-	// 		const parent = element.parentNode;
-
-	// 		// Initialize an empty array to store the siblings
-	// 		let siblings: any[] = [];
-
-	// 		// Iterate over the parent's children
-	// 		Array.from(parent!.children).forEach((child) => {
-	// 			// Exclude the element itself
-	// 			if (child !== element) {
-	// 				siblings.push(child);
-	// 			}
-	// 		});
-
-	// 		return siblings;
-	// 	}
-
-	// 	siblingsRef.current = getSiblings(ref.current);
-
-	// 	console.log(siblingsRef.current, 'sib');
-	// }, []);
-
 	return (
 		<ColumnCardWrapper
 			variants={childVariants}

@@ -144,6 +144,7 @@ export type MainPageType = {
 	tokenMigrationContent1: [] | null;
 	tokenMigrationContent2: [] | null;
 	tokenMigrationContent3: [] | null;
+	tokenMigrationAccordion: any[] | null;
 };
 
 export type SiteSettingsType = {

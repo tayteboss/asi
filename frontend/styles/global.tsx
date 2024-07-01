@@ -258,10 +258,23 @@ export const GlobalStyles = createGlobalStyle`
 			}
 
 			ul {
-			li {
-				margin-bottom: 0;
+				li {
+					margin-bottom: 0;
+				}
 			}
 		}
+
+		&--accordion {
+			ul {
+				margin-bottom: ${pxToRem(40)};
+
+				li {
+					font-size: ${pxToRem(18)};
+				line-height: ${pxToRem(27)};
+				letter-spacing: -0.5px;
+				margin-bottom: 0;
+				}
+			}
 		}
 	}
 
