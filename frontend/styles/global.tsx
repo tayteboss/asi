@@ -280,7 +280,7 @@ export const GlobalStyles = createGlobalStyle`
 				font-size: ${pxToRem(18)} !important;
 				line-height: ${pxToRem(27)} !important;
 				letter-spacing: -0.5px !important;
-				margin-bottom: 0 !important;
+				/* margin-bottom: 0 !important; */
 			}
 
 			a {
@@ -288,15 +288,7 @@ export const GlobalStyles = createGlobalStyle`
 			}
 
 			b, strong {
-				font-size: ${pxToRem(30)};
-				line-height: ${pxToRem(39)};
-				letter-spacing: -0.9px;
-				font-weight: 200;
-
-				@media ${theme.mediaBreakpoints.tabletPortrait} {
-					font-size: ${pxToRem(20)};
-					line-height: ${pxToRem(25)};
-				}
+				font-weight: 900;
 			}
 
 		}

@@ -21,7 +21,10 @@ export default {
           styles: [{title: 'Normal', value: 'normal'}],
           lists: [{title: 'Bullet', value: 'bullet'}],
           marks: {
-            decorators: [{title: 'Strong', value: 'strong'}],
+            decorators: [
+              {title: 'Strong', value: 'strong'},
+              {title: 'Emphasis', value: 'em'},
+            ],
             annotations: [
               {
                 name: 'link',
@@ -41,6 +44,40 @@ export default {
                 ],
               },
             ],
+          },
+        },
+      ],
+    },
+    {
+      title: 'Buttons',
+      name: 'buttons',
+      type: 'array',
+      of: [
+        {
+          type: 'object',
+          fields: [
+            {
+              title: 'Title',
+              name: 'title',
+              type: 'string',
+            },
+            {
+              title: 'Link',
+              name: 'link',
+              type: 'url',
+            },
+          ],
+          preview: {
+            select: {
+              title: 'title',
+              link: 'link',
+            },
+            prepare({title, link}) {
+              return {
+                title,
+                subtitle: link,
+              }
+            },
           },
         },
       ],
