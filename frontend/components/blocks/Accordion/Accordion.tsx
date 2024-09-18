@@ -99,7 +99,6 @@ type AccordionItemProps = {
 const AccordionItem = (props: AccordionItemProps) => {
 	const { title, content, buttons, isOpened, onClick } = props;
 
-	console.log('buttons', buttons);
 	const hasButtons = buttons && buttons.length > 0;
 
 	return (
